@@ -13,9 +13,11 @@ import ForgotPassowrd from "./pages/auth/ForgotPassword";
 import History from "./pages/user/History";
 import Password from "./pages/user/Password";
 import Wishlist from "./pages/user/Wishlist";
+import AdminDashboard from "./pages/user/admin/AdminDashboard";
 
 // protect routes
 import UserRoute from "./components/routes/UserRoute";
+import AdminRoute from "./components/routes/AdminRoute";
 
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -52,7 +54,7 @@ const App = () => {
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -67,6 +69,7 @@ const App = () => {
         <UserRoute path="/user/history" exact component={History} />
         <UserRoute path="/user/password" exact component={Password} />
         <UserRoute path="/user/wishlist" exact component={Wishlist} />
+        <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
       </Switch>
     </>
   );
