@@ -13,7 +13,9 @@ import ForgotPassowrd from "./pages/auth/ForgotPassword";
 import History from "./pages/user/History";
 import Password from "./pages/user/Password";
 import Wishlist from "./pages/user/Wishlist";
-import AdminDashboard from "./pages/user/admin/AdminDashboard";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import CategoryCreate from "./pages/admin/category/CategoryCreate";
+import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
 
 // protect routes
 import UserRoute from "./components/routes/UserRoute";
@@ -70,6 +72,12 @@ const App = () => {
         <UserRoute path="/user/password" exact component={Password} />
         <UserRoute path="/user/wishlist" exact component={Wishlist} />
         <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
+        <AdminRoute path="/admin/category" exact component={CategoryCreate} />
+        <AdminRoute
+          path="/admin/category/:slug"
+          exact
+          component={CategoryUpdate}
+        />
       </Switch>
     </>
   );
