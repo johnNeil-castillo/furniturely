@@ -6,10 +6,17 @@ const router = express.Router();
 const { authCheck, adminCheck } = require("../middlewares/auth");
 
 // destructure controllers due to having many controllers
-const { create, read } = require("../controllers/product");
+const {
+  create,
+  read,
+  remove,
+  listAll,
+  update,
+} = require("../controllers/product");
 
 router.post("/product", authCheck, adminCheck, create);
-
-router.get("/products", read);
-
+router.get("/products/:count", listAll);
+router.delete("/product/:slug", authCheck, adminCheck, remove);
+router.get("/product/:slug", read);
+router.put("/product/:slug", authCheck, adminCheck, update);
 module.exports = router;
