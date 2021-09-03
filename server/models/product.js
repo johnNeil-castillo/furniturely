@@ -71,9 +71,14 @@ const productSchema = new mongoose.Schema(
         "La-Z-Boy",
       ],
     },
-    // ratings: [{ start: Number, postedBy: { type: ObjectId, ref: "User" } }],
+    ratings: [
+      {
+        star: Number,
+        postedBy: { type: ObjectId, ref: "User" },
+      },
+    ],
   },
-  { timestamps: true }
+  { timestamps: true, strict: false }
 );
 
 module.exports = mongoose.model("Product", productSchema);
