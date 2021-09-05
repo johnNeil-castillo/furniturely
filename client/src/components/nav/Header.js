@@ -12,6 +12,7 @@ import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Search from "../forms/Search";
 
 const { SubMenu, Item } = Menu;
 
@@ -72,6 +73,9 @@ const Header = () => {
           </Item>
         </SubMenu>
       )}
+      <span className="p-1">
+        <Search />
+      </span>
     </Menu>
   );
 };
