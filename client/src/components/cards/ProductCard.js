@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { showAverage } from "../../functions/rating";
 
 const ProductCard = ({ product }) => {
-  const { images, title, description, slug } = product;
+  const { images, title, description, slug, price } = product;
 
   return (
     <>
@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
         ]}
       >
         <Card.Meta
-          title={title}
+          title={`${title} - $${price}`}
           description={`${description && description.substring(0, 20)}...`}
         />
       </Card>
