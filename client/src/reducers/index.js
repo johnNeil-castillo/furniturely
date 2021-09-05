@@ -4,7 +4,7 @@ import { searchReducer } from "./searchReducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
-  serach: searchReducer,
+  search: searchReducer,
 });
 
 export default rootReducer;

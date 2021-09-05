@@ -31,7 +31,7 @@ const Search = () => {
         className="form-control mr-sm-2"
         placeholder="Search"
       />
-      <SearchOutlined onClick={handleSubmit} style={{ cursor: "pointer" }} />
+      {/* <SearchOutlined onClick={handleSubmit} style={{ cursor: "pointer" }} /> */}
     </form>
   );
 };

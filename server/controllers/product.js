@@ -142,8 +142,8 @@ exports.listRelated = async (req, res) => {
   res.json(related);
 };
 
-exports.handleQuery = async (req, res, query) => {
-  const products = await Product.find({ $text: { search: query } })
+const handleQuery = async (req, res, query) => {
+  const products = await Product.find({ $text: { $search: query } })
     .populate("category", "_id name")
     .populate("subs", "_id name")
     .exec();
