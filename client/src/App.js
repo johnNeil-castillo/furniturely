@@ -8,6 +8,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
 import Header from "./components/nav/Header";
+import SideDrawer from "./components/drawer/SideDrawer";
 import RegisterComplete from "./pages/auth/RegisterComplete";
 import ForgotPassowrd from "./pages/auth/ForgotPassword";
 import History from "./pages/user/History";
@@ -25,6 +26,7 @@ import Product from "./pages/Product";
 import CategoryHome from "./pages/category/CategoryHome";
 import SubHome from "./pages/sub/SubHome";
 import Shop from "./pages/Shop";
+import Cart from "./pages/Cart";
 
 // protect routes
 import UserRoute from "./components/routes/UserRoute";
@@ -70,6 +72,7 @@ const App = () => {
   return (
     <>
       <Header />
+      <SideDrawer />
       <ToastContainer />
       <Switch>
         <Route path="/" exact component={Home} />
@@ -100,6 +103,7 @@ const App = () => {
         <Route path="/category/:slug" exact component={CategoryHome} />
         <Route path="/sub/:slug" exact component={SubHome} />
         <Route path="/shop" exact component={Shop} />
+        <Route path="/cart" exact component={Cart} />
       </Switch>
     </>
   );
