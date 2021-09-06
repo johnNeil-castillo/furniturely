@@ -7,6 +7,7 @@ import { getCategories } from "../functions/category";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../components/cards/ProductCard";
 import { Menu, Slider, Checkbox } from "antd";
+import Star from "../components/forms/Star";
 
 const { SubMenu, ItemGroup } = Menu;
 
@@ -21,6 +22,7 @@ const Shop = () => {
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoryIds, setCategoryIds] = useState([]);
+  const [star, setStar] = useState("");
 
   useEffect(() => {
     loadAllProducts();
@@ -58,8 +60,8 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-
     setPrice([0, 0]);
+    setStar("");
 
     let inTheState = [...categoryIds];
     let justChecked = e.target.value;
@@ -86,6 +88,7 @@ const Shop = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
+    setStar("");
 
     setCategoryIds([]);
     setPrice(value);
@@ -110,6 +113,27 @@ const Shop = () => {
       </div>
     ));
 
+  const handleStarClick = (num) => {
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryIds([]);
+    setStar(num);
+    fetchProducts({ stars: num });
+  };
+
+  const showStars = () => (
+    <div className="pr-4 pl-4 pb-2">
+      <Star starClick={handleStarClick} numberOfStars={5} />
+      <Star starClick={handleStarClick} numberOfStars={4} />
+      <Star starClick={handleStarClick} numberOfStars={3} />
+      <Star starClick={handleStarClick} numberOfStars={2} />
+      <Star starClick={handleStarClick} numberOfStars={1} />
+    </div>
+  );
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -131,6 +155,10 @@ const Shop = () => {
 
             <SubMenu key="2" title={<span className="h6">Categories</span>}>
               <div style={{ maringTop: "-10px" }}>{showCategories()}</div>
+            </SubMenu>
+
+            <SubMenu key="4" title={<span className="h6">Rating</span>}>
+              <div style={{ maringTop: "-10px" }}>{showStars()}</div>
             </SubMenu>
           </Menu>
         </div>
