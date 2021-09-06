@@ -4,6 +4,7 @@ import {
   fetchProductsByFilter,
 } from "../functions/product";
 import { getCategories } from "../functions/category";
+import { getSubs } from "../functions/sub";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../components/cards/ProductCard";
 import { Menu, Slider, Checkbox } from "antd";
@@ -23,11 +24,15 @@ const Shop = () => {
   const [categories, setCategories] = useState([]);
   const [categoryIds, setCategoryIds] = useState([]);
   const [star, setStar] = useState("");
+  const [subs, setSubs] = useState([]);
+  const [sub, setSub] = useState("");
 
   useEffect(() => {
     loadAllProducts();
 
     getCategories().then((res) => setCategories(res.data));
+
+    getSubs().then((res) => setSubs(res.data));
   }, []);
 
   const fetchProducts = (arg) => {
@@ -62,6 +67,7 @@ const Shop = () => {
     });
     setPrice([0, 0]);
     setStar("");
+    setSub("");
 
     let inTheState = [...categoryIds];
     let justChecked = e.target.value;
@@ -89,6 +95,7 @@ const Shop = () => {
       payload: { text: "" },
     });
     setStar("");
+    setSub("");
 
     setCategoryIds([]);
     setPrice(value);
@@ -121,6 +128,7 @@ const Shop = () => {
     setPrice([0, 0]);
     setCategoryIds([]);
     setStar(num);
+    setSub("");
     fetchProducts({ stars: num });
   };
 
@@ -133,6 +141,31 @@ const Shop = () => {
       <Star starClick={handleStarClick} numberOfStars={1} />
     </div>
   );
+
+  const showSubs = () => {
+    return subs.map((s) => (
+      <div
+        key={s._id}
+        className="p-1 m-1 badge bg-secondary"
+        onClick={() => handleSubmit(s)}
+        style={{ cursor: "pointer" }}
+      >
+        {s.name}
+      </div>
+    ));
+  };
+
+  const handleSubmit = (sub) => {
+    setSub(sub);
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryIds([]);
+    setStar("");
+    fetchProducts({ sub });
+  };
 
   return (
     <div className="container-fluid">
@@ -157,8 +190,14 @@ const Shop = () => {
               <div style={{ maringTop: "-10px" }}>{showCategories()}</div>
             </SubMenu>
 
-            <SubMenu key="4" title={<span className="h6">Rating</span>}>
+            <SubMenu key="3" title={<span className="h6">Rating</span>}>
               <div style={{ maringTop: "-10px" }}>{showStars()}</div>
+            </SubMenu>
+
+            <SubMenu key="4" title={<span className="h6">Sub Categories</span>}>
+              <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
+                {showSubs()}
+              </div>
             </SubMenu>
           </Menu>
         </div>
