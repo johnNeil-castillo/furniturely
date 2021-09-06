@@ -28,6 +28,8 @@ import SubHome from "./pages/sub/SubHome";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import CreateCouponPage from "./pages/admin/coupon/CreateCouponPage";
+import Payment from "./pages/Payment";
 
 // protect routes
 import UserRoute from "./components/routes/UserRoute";
@@ -107,6 +109,8 @@ const App = () => {
         <Route path="/cart" exact component={Cart} />
 
         <UserRoute path="/checkout" exact component={Checkout} />
+        <AdminRoute path="/admin/coupon" exact component={CreateCouponPage} />
+        <UserRoute path="/payment" exact component={Payment} />
       </Switch>
     </>
   );
