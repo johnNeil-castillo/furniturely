@@ -27,6 +27,7 @@ import CategoryHome from "./pages/category/CategoryHome";
 import SubHome from "./pages/sub/SubHome";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
 // protect routes
 import UserRoute from "./components/routes/UserRoute";
@@ -104,6 +105,8 @@ const App = () => {
         <Route path="/sub/:slug" exact component={SubHome} />
         <Route path="/shop" exact component={Shop} />
         <Route path="/cart" exact component={Cart} />
+
+        <UserRoute path="/checkout" exact component={Checkout} />
       </Switch>
     </>
   );
