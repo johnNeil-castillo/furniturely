@@ -2,6 +2,7 @@ const User = require("../models/user");
 const Product = require("../models/product");
 const Cart = require("../models/cart");
 const Coupon = require("../models/coupon");
+const Order = require("../models/order");
 
 exports.userCart = async (req, res) => {
   const { cart } = req.body;
@@ -10,7 +11,7 @@ exports.userCart = async (req, res) => {
 
   const user = await User.findOne({ email: req.user.email }).exec();
 
-  let cartExistByThisUser = await Cart.findOne({ orderdBy: user._id }).exec();
+  let cartExistByThisUser = await Cart.findOne({ orderedBy: user._id }).exec();
 
   if (cartExistByThisUser) {
     cartExistByThisUser.remove();
@@ -38,7 +39,7 @@ exports.userCart = async (req, res) => {
   let newCart = await new Cart({
     products,
     cartTotal,
-    orderdBy: user._id,
+    orderedBy: user._id,
   }).save();
 
   console.log("new cart", newCart);
@@ -48,7 +49,7 @@ exports.userCart = async (req, res) => {
 exports.getUserCart = async (req, res) => {
   const user = await User.findOne({ email: req.user.email }).exec();
 
-  let cart = await Cart.findOne({ orderdBy: user._id })
+  let cart = await Cart.findOne({ orderedBy: user._id })
     .populate("products.product", "_id title price totalAfterDiscount")
     .exec();
 
@@ -86,7 +87,7 @@ exports.applyCouponToUserCart = async (req, res) => {
 
   const user = await User.findOne({ email: req.user.email }).exec();
 
-  let { products, cartTotal } = await Cart.findOne({ orderdBy: user._id })
+  let { products, cartTotal } = await Cart.findOne({ orderedBy: user._id })
     .populate("products.product", "_id title price")
     .exec();
 
@@ -98,10 +99,26 @@ exports.applyCouponToUserCart = async (req, res) => {
   ).toFixed(2);
 
   Cart.findOneAndUpdate(
-    { orderdBy: user._id },
+    { orderedBy: user._id },
     { totalAfterDiscount },
     { new: true }
   ).exec();
 
   res.json(totalAfterDiscount);
+};
+
+exports.createOrder = async (req, res) => {
+  const paymentIntent = req.body.stripeResponse;
+  const user = await User.findOne({ email: req.user.email }).exec();
+
+  let { products } = await Cart.findOne({ orderedBy: user._id }).exec();
+
+  let newOrder = await new Order({
+    products,
+    paymentIntent,
+    orderedBy: user._id,
+  }).save();
+
+  console.log("new order saved", newOrder);
+  res.json({ ok: true });
 };
