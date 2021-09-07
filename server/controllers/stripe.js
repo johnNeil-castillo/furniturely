@@ -10,7 +10,7 @@ exports.createPaymentIntent = async (req, res) => {
   const user = await User.findOne({ email: req.user.email }).exec();
 
   const { cartTotal, totalAfterDiscount } = await Cart.findOne({
-    orderdBy: user._id,
+    orderedBy: user._id,
   }).exec();
 
   let finalAmount = 0;
