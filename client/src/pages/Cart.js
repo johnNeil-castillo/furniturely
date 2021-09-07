@@ -49,6 +49,22 @@ const Cart = ({ history }) => {
       .catch((err) => console.log("cart save err", err));
   };
 
+  const saveCashOrderToDb = () => {
+    dispatch({
+      type: "COD",
+      payload: true,
+    });
+    // console.log("cart", JSON.stringify(cart, null, 4));
+    userCart(cart, user.token)
+      .then((res) => {
+        console.log("Cart post res", res);
+        if (res.data.ok) {
+          history.push("/checkout");
+        }
+      })
+      .catch((err) => console.log("cart save err", err));
+  };
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -78,13 +94,23 @@ const Cart = ({ history }) => {
           Total: <b>${getTotal()}</b>
           <hr />
           {user ? (
-            <button
-              onClick={saveOrderToDb}
-              className="btn btn-sm btn-primary mt-2"
-              disabled={!cart.length}
-            >
-              Proceed to Checkout
-            </button>
+            <>
+              <button
+                onClick={saveOrderToDb}
+                className="btn btn-sm btn-primary mt-2"
+                disabled={!cart.length}
+              >
+                Proceed to Checkout
+              </button>
+              <br />
+              <button
+                onClick={saveCashOrderToDb}
+                className="btn btn-sm btn-warning mt-2"
+                disabled={!cart.length}
+              >
+                Pay Cash on Delivery
+              </button>
+            </>
           ) : (
             <button className="btn btn-sm btn-primary mt-2">
               <Link to={{ pathname: "/login", state: { from: "cart" } }}>

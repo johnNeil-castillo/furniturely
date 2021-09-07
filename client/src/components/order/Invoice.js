@@ -41,29 +41,27 @@ const Invoice = ({ order }) => {
 
         <Text style={styles.text}>
           <Text>
-            Date:{"                        "}
-            {new Date(
-              order.paymentIntent.paymentIntent.created * 1000
-            ).toLocaleDateString()}
-            {"                    "}
+            Date: {"               "}
+            {new Date(order.paymentIntent.created * 1000).toLocaleString()}
           </Text>
-
+          {"\n"}
           <Text>
-            Order Id: {"   "} {order.paymentIntent.paymentIntent.id}
-            {"                     "}
+            Order Id: {"         "}
+            {order.paymentIntent.id}
           </Text>
-
+          {"\n"}
           <Text>
-            Order Status: {"   "} {order.orderStatus} {"     "}
+            Order Status: {"  "}
+            {order.orderStatus}
           </Text>
-
+          {"\n"}
           <Text>
-            Total Paid: {order.paymentIntent.paymentIntent.amount}{" "}
-            {"                     "}
+            Total Paid: {"       "}
+            {order.paymentIntent.amount}
           </Text>
         </Text>
 
-        <Text style={styles.footer}>~ Thank you shopping with us ~</Text>
+        <Text style={styles.footer}> ~ Thank you for shopping with us ~ </Text>
       </Page>
     </Document>
   );
