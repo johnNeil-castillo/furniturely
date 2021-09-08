@@ -3,7 +3,7 @@ const Product = require("../models/product");
 const Cart = require("../models/cart");
 const Coupon = require("../models/coupon");
 const Order = require("../models/order");
-const uniqueid = require("uniqueid");
+const uniqid = require("uniqid");
 
 exports.userCart = async (req, res) => {
   const { cart } = req.body;
@@ -195,7 +195,7 @@ exports.createCashOrder = async (req, res) => {
   let newOrder = await new Order({
     products: userCart.products,
     paymentIntent: {
-      id: uniqueid(),
+      id: uniqid("furniturelyCOD-"),
       amount: finalAmount,
       currency: "usd",
       status: "Cash On Delivery",

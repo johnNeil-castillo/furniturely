@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ../client"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,6 @@
     "nodemon": "^2.0.12",
     "slugify": "^1.6.0",
     "stripe": "^8.174.0",
-    "uniqueid": "^1.0.0"
+    "uniqid": "^5.4.0"
   }
 }
