@@ -1,5 +1,5 @@
 import React from "react";
-import { Drawer, Button } from "antd";
+import { Drawer } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import sampleImage from "../../images/SampleImage.png";
@@ -29,7 +29,7 @@ const SideDrawer = () => {
           <div className="col">
             {p.images[0] ? (
               <>
-                <img src={p.images[0].url} style={imageStyle} />
+                <img alt="sample" src={p.images[0].url} style={imageStyle} />
                 <p className="text-center">
                   {p.title} x {p.count}
                 </p>
@@ -37,7 +37,7 @@ const SideDrawer = () => {
             ) : (
               <>
                 {" "}
-                <img src={sampleImage} style={imageStyle} />
+                <img alt="sample" src={sampleImage} style={imageStyle} />
                 <p className="text-center">
                   {p.title} x {p.count}
                 </p>

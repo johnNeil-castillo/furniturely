@@ -62,10 +62,26 @@ const ProductUpdate = ({ match, history }) => {
   const { slug } = match.params;
 
   useEffect(() => {
-    loadProduct();
-    loadCategories();
-  }, []);
+    const loadSignleProduct = () => {
+      getProduct(slug)
+        .then((p) => {
+          setValues({ ...values, ...p.data });
 
+          getCategorySubs(p.data.category._id).then((res) => {
+            setSubOptions(res.data);
+          });
+          let arr = [];
+          p.data.subs.map((s) => arr.push(s._id));
+          console.log("Arr", arr);
+          setArrayOfSubs((prev) => arr);
+        })
+        .catch();
+    };
+    loadSignleProduct();
+    loadCategories();
+  }, [slug, values]);
+
+  // Move to new component
   const loadProduct = () => {
     getProduct(slug)
       .then((p) => {
@@ -75,9 +91,7 @@ const ProductUpdate = ({ match, history }) => {
           setSubOptions(res.data);
         });
         let arr = [];
-        p.data.subs.map((s) => {
-          arr.push(s._id);
-        });
+        p.data.subs.map((s) => arr.push(s._id));
         console.log("Arr", arr);
         setArrayOfSubs((prev) => arr);
       })

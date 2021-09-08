@@ -31,7 +31,7 @@ const Checkout = ({ history }) => {
       setProducts(res.data.products);
       setTotal(res.data.cartTotal);
     });
-  }, []);
+  }, [user.token]);
 
   const emptyCart = () => {
     if (typeof window !== "undefined") {

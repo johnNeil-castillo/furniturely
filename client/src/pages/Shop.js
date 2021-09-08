@@ -10,7 +10,7 @@ import ProductCard from "../components/cards/ProductCard";
 import { Menu, Slider, Checkbox, Radio } from "antd";
 import Star from "../components/forms/Star";
 
-const { SubMenu, ItemGroup } = Menu;
+const { SubMenu } = Menu;
 
 const Shop = () => {
   let dispatch = useDispatch();
@@ -89,7 +89,7 @@ const Shop = () => {
   useEffect(() => {
     console.log("ok to request");
     fetchProducts({ price });
-  }, [ok]);
+  }, [ok, price]);
 
   const handleCheck = (e) => {
     dispatch({

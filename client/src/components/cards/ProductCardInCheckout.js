@@ -37,6 +37,7 @@ const ProductCardInCheckout = ({ p }) => {
         if (product._id === p._id) {
           cart[i].color = e.target.value;
         }
+        return null;
       });
 
       localStorage.setItem("cart", JSON.stringify(cart));
@@ -63,9 +64,10 @@ const ProductCardInCheckout = ({ p }) => {
       }
 
       cart.map((product, i) => {
-        if (product._id == p._id) {
+        if (product._id === p._id) {
           cart[i].count = count;
         }
+        return null;
       });
 
       localStorage.setItem("cart", JSON.stringify(cart));
@@ -88,6 +90,7 @@ const ProductCardInCheckout = ({ p }) => {
         if (product._id === p._id) {
           cart.splice(i, 1);
         }
+        return null;
       });
 
       localStorage.setItem("cart", JSON.stringify(cart));

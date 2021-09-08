@@ -15,18 +15,17 @@ const SubUpdate = ({ match, history }) => {
   const [parent, setParent] = useState("");
 
   useEffect(() => {
+    const loadSub = () =>
+      getSub(match.params.slug).then((s) => {
+        setName(s.data.name);
+        setParent(s.data.parent);
+      });
     loadCategories();
     loadSub();
-  }, []);
+  }, [match.params.slug]);
 
   const loadCategories = () =>
     getCategories().then((c) => setCategories(c.data));
-
-  const loadSub = () =>
-    getSub(match.params.slug).then((s) => {
-      setName(s.data.name);
-      setParent(s.data.parent);
-    });
 
   const handleSubmit = (e) => {
     e.preventDefault();

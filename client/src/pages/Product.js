@@ -15,6 +15,12 @@ const Product = ({ match }) => {
   const { slug } = match.params;
 
   useEffect(() => {
+    const loadSingleProduct = () => {
+      getProduct(slug).then((res) => {
+        setProduct(res.data);
+        getRelated(res.data._id).then((res) => setRelated(res.data));
+      });
+    };
     loadSingleProduct();
   }, [slug]);
 
@@ -25,12 +31,12 @@ const Product = ({ match }) => {
       );
       existingRatingObject && setStar(existingRatingObject.star);
     }
-  });
+  }, [product.ratings, user]);
 
-  const loadSingleProduct = () => {
+  // Move to new component
+  const loadProduct = () => {
     getProduct(slug).then((res) => {
       setProduct(res.data);
-
       getRelated(res.data._id).then((res) => setRelated(res.data));
     });
   };
@@ -40,7 +46,7 @@ const Product = ({ match }) => {
     console.table(newRating, name);
     productStar(name, newRating, user.token).then((res) => {
       console.log("rating clicked", res.data);
-      loadSingleProduct();
+      loadProduct();
     });
   };
 

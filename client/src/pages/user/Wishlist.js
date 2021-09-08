@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserNav from "../../components/nav/UserNav";
 import { getWishlist, removeWishlist } from "../../functions/user";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { DeleteOutlined } from "@ant-design/icons";
 
@@ -10,9 +10,14 @@ const Wishlist = () => {
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
-    loadWishlist();
-  }, []);
+    const loadSingleWishlist = () =>
+      getWishlist(user.token).then((res) => {
+        setWishlist(res.data.wishlist);
+      });
+    loadSingleWishlist();
+  }, [user.token]);
 
+  // Move to new Component
   const loadWishlist = () =>
     getWishlist(user.token).then((res) => {
       setWishlist(res.data.wishlist);

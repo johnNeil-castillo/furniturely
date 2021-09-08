@@ -11,12 +11,11 @@ const CategoryUpdate = ({ history, match }) => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const loadCategory = () =>
-    getCategory(match.params.slug).then((c) => setName(c.data.name));
-
   useEffect(() => {
+    const loadCategory = () =>
+      getCategory(match.params.slug).then((c) => setName(c.data.name));
     loadCategory();
-  }, []);
+  }, [match.params.slug]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

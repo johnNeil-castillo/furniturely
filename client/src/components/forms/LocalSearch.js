@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const LocalSearch = ({ keyword, setKeyword }) => {
   const handleSearchChange = (e) => {

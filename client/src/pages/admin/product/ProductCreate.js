@@ -58,12 +58,11 @@ const ProductCreate = () => {
 
   const { user } = useSelector((state) => ({ ...state }));
 
-  const loadCategories = () =>
-    getCategories().then((c) => setValues({ ...values, categories: c.data }));
-
   useEffect(() => {
+    const loadCategories = () =>
+      getCategories().then((c) => setValues({ ...values, categories: c.data }));
     loadCategories();
-  }, []);
+  }, [values]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,7 +74,7 @@ const ProductCreate = () => {
       })
       .catch((err) => {
         console.log(err);
-        // if (err.response.status === 400) toast.error(err.response.data);
+        if (err.response.status === 400) toast.error(err.response.data);
         toast.error(err.response.data.err);
       });
   };

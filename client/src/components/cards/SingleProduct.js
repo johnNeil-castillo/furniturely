@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Card, Tabs, Tooltip } from "antd";
-import { Link } from "react-router-dom";
 import { HeartOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import Product from "../../pages/Product";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import sampleImage from "../../images/SampleImage.png";
@@ -24,7 +22,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 
   let history = useHistory();
 
-  const { user, cart } = useSelector((state) => ({ ...state }));
+  const { user } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
   const { title, images, description, _id } = product;
@@ -75,11 +73,16 @@ const SingleProduct = ({ product, onStarClick, star }) => {
       <div className="col-md-7">
         {images && images.length ? (
           <Carousel showArrows={true} infiniteLoop>
-            {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
+            {images &&
+              images.map((i) => (
+                <img alt="sample" src={i.url} key={i.public_id} />
+              ))}
           </Carousel>
         ) : (
           <Card
-            cover={<img src={sampleImage} className="mb-2 card-image" />}
+            cover={
+              <img alt="sample" src={sampleImage} className="mb-2 card-image" />
+            }
           ></Card>
         )}
 
@@ -105,16 +108,16 @@ const SingleProduct = ({ product, onStarClick, star }) => {
         <Card
           actions={[
             <Tooltip title={tooltip}>
-              <a onClick={handleAddToCart} disabled={product.quantity < 1}>
+              <p onClick={handleAddToCart} disabled={product.quantity < 1}>
                 <ShoppingCartOutlined className="text-danger" /> <br />
                 {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
-              </a>
+              </p>
             </Tooltip>,
-            <a onClick={handleAddToWishList}>
+            <p onClick={handleAddToWishList}>
               <HeartOutlined className="text-info" />
               <br />
               Add to WishList
-            </a>,
+            </p>,
             <RatingModal>
               <StarRating
                 name={_id}

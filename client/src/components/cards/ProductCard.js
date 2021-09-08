@@ -5,14 +5,13 @@ import sampleImage from "../../images/SampleImage.png";
 import { Link } from "react-router-dom";
 import { showAverage } from "../../functions/rating";
 import _ from "lodash";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const ProductCard = ({ product }) => {
   const [tooltip, setTooltip] = useState("Click to add");
 
   const { images, title, description, slug, price } = product;
 
-  const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -58,6 +57,7 @@ const ProductCard = ({ product }) => {
       <Card
         cover={
           <img
+            alt="sample"
             src={images && images.length ? images[0].url : sampleImage}
             style={{ height: "150px", objectFit: "cover" }}
             className="p-2"
@@ -69,10 +69,10 @@ const ProductCard = ({ product }) => {
             <br /> View Product
           </Link>,
           <Tooltip title={tooltip}>
-            <a onClick={handleAddToCart} disabled={product.quantity < 1}>
+            <p onClick={handleAddToCart} disabled={product.quantity < 1}>
               <ShoppingCartOutlined className="text-danger" /> <br />
               {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
-            </a>
+            </p>
           </Tooltip>,
         ]}
       >
