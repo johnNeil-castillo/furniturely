@@ -4,10 +4,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { currentUser } from "./functions/auth";
-import { toast } from "react-toastify";
 import { LoadingOutlined } from "@ant-design/icons";
 
 // protect routes

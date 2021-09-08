@@ -25,7 +25,7 @@ const Login = ({ history }) => {
       if (res.data.role === "admin") {
         history.push("/admin/dashboard");
       } else {
-        history.push("/user/history");
+        history.push("/");
       }
     }
   };
