@@ -45,11 +45,9 @@ const Login = ({ history }) => {
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    // console.table(email, password);
 
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      // console.log(result);
 
       const { user } = result;
       const idTokenResult = await user.getIdTokenResult();

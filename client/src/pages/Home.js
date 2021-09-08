@@ -1,7 +1,5 @@
 import React from "react";
-import { getProducts } from "../functions/product";
-import ProductCard from "../components/cards/ProductCard";
-import LoadingCard from "../components/cards/LoadingCard";
+
 import NewArrivals from "../components/home/NewArrivals";
 import BestSellers from "../components/home/BestSellers";
 import CategoryList from "../components/category/CategoryList";

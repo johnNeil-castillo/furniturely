@@ -18,12 +18,11 @@ import Search from "../forms/Search";
 
 const { SubMenu, Item } = Menu;
 
-// Replace Antd Header into Semantic UI Menu
 const Header = () => {
   const [current, setCurrent] = useState("home");
 
   let dispatch = useDispatch();
-  // picking userReducer in redux state
+
   let { user, cart } = useSelector((state) => ({ ...state }));
   let history = useHistory();
 
@@ -72,13 +71,13 @@ const Header = () => {
           title={user.email && user.email.split("@")[0]}
         >
           {user && user.role === "subscriber" && (
-            <Item>
+            <Item key="Dashboard">
               <Link to="/user/history">Dashboard</Link>
             </Item>
           )}
 
           {user && user.role === "admin" && (
-            <Item>
+            <Item key="Dashboard">
               <Link to="/admin/dashboard">Dashboard</Link>
             </Item>
           )}

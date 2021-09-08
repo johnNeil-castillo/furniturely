@@ -38,16 +38,13 @@ const RegisterComplete = ({ history }) => {
       );
 
       if (result.user.emailVerified) {
-        // remove user email from local storage
         window.localStorage.removeItem("emailForRegistration");
-        // get user id token
+
         let user = auth.currentUser;
         await updatePassword(user, password);
         const idTokenResult = await user.getIdTokenResult();
-        //redux store
-        console.log("user", user, "idTokenResult", idTokenResult);
 
-        //redirect
+        console.log("user", user, "idTokenResult", idTokenResult);
 
         createOrUpdateUser(idTokenResult.token)
           .then((res) => {

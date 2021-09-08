@@ -52,31 +52,27 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         const idTokenResult = await user.getIdTokenResult();
-        console.log("user", user);
 
         currentUser(idTokenResult.token)
           .then((res) => {
-            console.log(res);
             dispatch({
               type: "LOGGED_IN_USER",
               payload: {
-                email: res.email,
-                name: res.name,
+                name: res.data.name,
+                email: res.data.email,
                 token: idTokenResult.token,
-                role: res.role,
-                _id: res._id,
+                role: res.data.role,
+                _id: res.data._id,
               },
             });
           })
-          .catch((err) => {
-            console.log(err);
-            toast.error(err.message);
-          });
+          .catch((err) => console.log(err));
       }
     });
+
     return () => unsubscribe();
   }, [dispatch]);
 
