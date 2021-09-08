@@ -10,40 +10,10 @@ import { currentUser } from "./functions/auth";
 import { toast } from "react-toastify";
 import { LoadingOutlined } from "@ant-design/icons";
 
-// // protect routes
-// import UserRoute from "./components/routes/UserRoute";
-// import AdminRoute from "./components/routes/AdminRoute";
-// // Components
-// import Login from "./pages/auth/Login";
-// import Register from "./pages/auth/Register";
-// import Home from "./pages/Home";
-// import Header from "./components/nav/Header";
-// import SideDrawer from "./components/drawer/SideDrawer";
-// import RegisterComplete from "./pages/auth/RegisterComplete";
-// import ForgotPassowrd from "./pages/auth/ForgotPassword";
-// import History from "./pages/user/History";
-// import Password from "./pages/user/Password";
-// import Wishlist from "./pages/user/Wishlist";
-// import AdminDashboard from "./pages/admin/AdminDashboard";
-// import CategoryCreate from "./pages/admin/category/CategoryCreate";
-// import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
-// import SubCreate from "./pages/admin/sub/SubCreate";
-// import SubUpdate from "./pages/admin/sub/SubUpdate";
-// import ProductCreate from "./pages/admin/product/ProductCreate";
-// import AllProducts from "./pages/admin/product/AllProducts";
-// import ProductUpdate from "./pages/admin/product/ProductUpdate";
-// import Product from "./pages/Product";
-// import CategoryHome from "./pages/category/CategoryHome";
-// import SubHome from "./pages/sub/SubHome";
-// import Shop from "./pages/Shop";
-// import Cart from "./pages/Cart";
-// import Checkout from "./pages/Checkout";
-// import CreateCouponPage from "./pages/admin/coupon/CreateCouponPage";
-// import Payment from "./pages/Payment";
-
 // protect routes
 const UserRoute = lazy(() => import("./components/routes/UserRoute"));
 const AdminRoute = lazy(() => import("./components/routes/AdminRoute"));
+
 // Components
 const Login = lazy(() => import("./pages/auth/Login"));
 const Register = lazy(() => import("./pages/auth/Register"));

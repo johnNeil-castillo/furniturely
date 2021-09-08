@@ -1,6 +1,5 @@
 const User = require("../models/user");
 
-// Connected in auth.js routes
 exports.createOrUpdateUser = async (req, res) => {
   const { name, picture, email } = req.user;
 
