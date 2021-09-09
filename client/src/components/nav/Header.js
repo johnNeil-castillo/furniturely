@@ -47,11 +47,9 @@ const Header = () => {
       </Item>
 
       <Item key="cart" icon={<ShoppingCartOutlined />}>
-        <Link to="/cart">
-          <Badge count={cart.length} offset={[9, 0]}>
-            Cart
-          </Badge>
-        </Link>
+        <Badge count={cart.length} offset={[9, 0]}>
+          <Link to="/cart">Cart </Link>
+        </Badge>
       </Item>
 
       {!user && (
