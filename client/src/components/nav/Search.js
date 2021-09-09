@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Search = () => {
   const dispatch = useDispatch();
-  const { text } = useSelector((state) => ({ ...state }));
+  const { search } = useSelector((state) => ({ ...state }));
+  const { text } = search;
 
   const history = useHistory();
 
