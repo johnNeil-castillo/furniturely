@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getProducts, getProductsCount } from "../../functions/product";
-import ProductCard from "../cards/ProductCard";
-import LoadingCard from "../cards/LoadingCard";
+import ProductCard from "../product/cards/ProductCard";
+import LoadingCard from "../product/cards/LoadingCard";
 import { Pagination } from "antd";
 
 const BestSellers = () => {

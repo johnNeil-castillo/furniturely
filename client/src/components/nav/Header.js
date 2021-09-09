@@ -14,7 +14,7 @@ import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Search from "../forms/Search";
+import Search from "./Search";
 
 const { SubMenu, Item } = Menu;
 
