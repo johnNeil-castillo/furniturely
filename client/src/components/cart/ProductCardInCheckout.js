@@ -1,6 +1,6 @@
 import React from "react";
 import ModalImage from "react-modal-image";
-import sampleImage from "../../../images/SampleImage.png";
+import sampleImage from "../../images/SampleImage.png";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import {
