@@ -45,6 +45,9 @@ const AllProducts = lazy(() =>
 const ProductUpdate = lazy(() =>
   import("./components/admin/sideNav/ProductUpdate")
 );
+const AdminPassword = lazy(() =>
+  import("./components/admin/sideNav/AdminPassword")
+);
 const Product = lazy(() => import("./components/product/Product"));
 const CategoryHome = lazy(() =>
   import("./components/home/redirect/CategoryHome")
@@ -122,6 +125,7 @@ const App = () => {
           exact
           component={ProductUpdate}
         />
+        <AdminRoute path="/admin/password" exact component={AdminPassword} />
         <Route path="/product/:slug" exact component={Product} />
         <Route path="/category/:slug" exact component={CategoryHome} />
         <Route path="/sub/:slug" exact component={SubHome} />
