@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Menu, Badge } from "antd";
+
+import { Menu, Badge, Row, Col } from "antd";
 import {
   AppstoreOutlined,
   SettingOutlined,
@@ -38,20 +39,20 @@ const Header = () => {
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-      <Item key="home" icon={<AppstoreOutlined />}>
-        <Link to="/">Home</Link>
-      </Item>
+      <Col flex={1}>
+        <Item key="home" icon={<AppstoreOutlined />}>
+          <Link to="/">Home</Link>
+        </Item>
+      </Col>
 
       <Item key="shop" icon={<ShoppingOutlined />}>
         <Link to="/shop">Shop</Link>
       </Item>
-
       <Item key="cart" icon={<ShoppingCartOutlined />}>
         <Badge count={cart.length} offset={[9, 0]}>
           <Link to="/cart">Cart </Link>
         </Badge>
       </Item>
-
       {!user && (
         <Item key="register" icon={<UserAddOutlined />}>
           <Link to="/register">Register</Link>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getCategory } from "../../../functions/category";
-
+import LoadingCard from "../../product/cards/LoadingCard";
 import ProductCard from "../../product/cards/ProductCard";
+import { Spin } from "antd";
 
 const CategoryHome = ({ match }) => {
   const [category, setCategory] = useState({});
@@ -25,7 +26,9 @@ const CategoryHome = ({ match }) => {
       <div className="row">
         <div className="col">
           {loading ? (
-            <h4 className="text-center p-3 mt-5 mb-5">Loading ....</h4>
+            <h4 className="text-center p-3 mt-5 mb-5">
+              <Spin />
+            </h4>
           ) : (
             <h4 className="text-center p-3 mt-5 mb-5">
               {products.length} Products in "{category.name}" category
@@ -36,7 +39,7 @@ const CategoryHome = ({ match }) => {
 
       <div className="row">
         {products.map((p) => (
-          <div className="col" key={p._id}>
+          <div className="col-md-3" key={p._id}>
             <ProductCard product={p} />
           </div>
         ))}

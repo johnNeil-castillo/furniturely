@@ -8,21 +8,37 @@ import SubList from "./SubList";
 const Home = () => {
   return (
     <>
-      <div>
+      <div className="text-center">
         <h4>All Products</h4>
       </div>
 
-      <h4 className="text-center p-3 mt-5 mb-5 display-5 ">New Arrivals</h4>
-      <NewArrivals />
+      <div className="container mb-5">
+        <p className="m-3">
+          Shop by <b>Categories</b>
+        </p>
+        <CategoryList />
+      </div>
 
-      <h4 className="text-center p-3 mt-5 mb-5 display-5 ">Best Sellers</h4>
-      <BestSellers />
+      <div className="container mb-5">
+        <p className="m-3">
+          Shop by <b>Sub Categories</b>
+        </p>
+        <SubList />
+      </div>
 
-      <h4 className="text-center p-3 mt-5 mb-5 display-5 ">Categories</h4>
-      <CategoryList />
+      <div className="container">
+        <p className="m-3">
+          Check our <b>New Arrivals</b>
+        </p>
+        <NewArrivals />
+      </div>
 
-      <h4 className="text-center p-3 mt-5 mb-5 display-5 ">Sub Categories</h4>
-      <SubList />
+      <div className="container ">
+        <p className="m-3">
+          Buy our <b>Best Sellers</b>
+        </p>
+        <BestSellers />
+      </div>
     </>
   );
 };

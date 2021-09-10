@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../../functions/category";
+import { Button } from "antd";
+import LoadingButton from "../product/cards/LoadingButton";
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
@@ -16,18 +18,19 @@ const CategoryList = () => {
 
   const showCategories = () =>
     categories.map((c) => (
-      <div
-        key={c._id}
-        className=" col btn btn-outlined-primary btn-lg btn-block m-3"
-      >
-        <Link to={`/category/${c.slug}`}> {c.name}</Link>
+      <div key={c._id} className=" col text-center">
+        <Link to={`/category/${c.slug}`}>
+          <Button type="dashed" size="large" block>
+            {c.name}
+          </Button>
+        </Link>
       </div>
     ));
 
   return (
     <div className="container">
       <div className="row">
-        {loading ? <h4>Loading...</h4> : showCategories()}
+        {loading ? <LoadingButton count={4} /> : showCategories()}
       </div>
     </div>
   );

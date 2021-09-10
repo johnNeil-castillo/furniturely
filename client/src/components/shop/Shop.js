@@ -7,7 +7,7 @@ import { getCategories } from "../../functions/category";
 import { getSubs } from "../../functions/sub";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../product/cards/ProductCard";
-import { Menu, Slider, Checkbox, Radio } from "antd";
+import { Menu, Slider, Checkbox, Radio, Col } from "antd";
 import Star from "./Star";
 
 const { SubMenu } = Menu;
@@ -146,7 +146,7 @@ const Shop = () => {
       <div key={c._id}>
         <Checkbox
           onChange={handleCheck}
-          className="pb-2 pl-4 pr-4"
+          className="p-2 mb-2"
           value={c._id}
           name="category"
           checked={categoryIds.includes(c._id)}
@@ -173,12 +173,22 @@ const Shop = () => {
   };
 
   const showStars = () => (
-    <div className="pr-4 pl-4 pb-2">
-      <Star starClick={handleStarClick} numberOfStars={5} />
-      <Star starClick={handleStarClick} numberOfStars={4} />
-      <Star starClick={handleStarClick} numberOfStars={3} />
-      <Star starClick={handleStarClick} numberOfStars={2} />
-      <Star starClick={handleStarClick} numberOfStars={1} />
+    <div>
+      <div className="p-1 m-1">
+        <Star starClick={handleStarClick} numberOfStars={5} />
+      </div>
+      <div className="p-1 m-1">
+        <Star starClick={handleStarClick} numberOfStars={4} />
+      </div>
+      <div className="p-1 m-1">
+        <Star starClick={handleStarClick} numberOfStars={3} />
+      </div>
+      <div className="p-1 m-1">
+        <Star starClick={handleStarClick} numberOfStars={2} />
+      </div>
+      <div className="p-1 m-1">
+        <Star starClick={handleStarClick} numberOfStars={1} />
+      </div>
     </div>
   );
 
@@ -186,7 +196,7 @@ const Shop = () => {
     return subs.map((s) => (
       <div
         key={s._id}
-        className="p-1 m-1 badge bg-secondary"
+        className="p-1 m-1 badge bg-secondary "
         onClick={() => handleSub(s)}
         style={{ cursor: "pointer" }}
       >
@@ -212,16 +222,18 @@ const Shop = () => {
 
   const showBrands = () =>
     brands.map((b) => (
-      <Radio
-        key={b}
-        value={b}
-        name={b}
-        checked={b === brand}
-        onChange={handleBrand}
-        className="pb-1 pl-4 pr-4"
-      >
-        {b}
-      </Radio>
+      <Col>
+        <Radio
+          key={b}
+          value={b}
+          name={b}
+          checked={b === brand}
+          onChange={handleBrand}
+          className="p-2"
+        >
+          {b}
+        </Radio>
+      </Col>
     ));
 
   const handleBrand = (e) => {
@@ -241,16 +253,18 @@ const Shop = () => {
 
   const showColors = () =>
     colors.map((c) => (
-      <Radio
-        key={c}
-        value={c}
-        name={c}
-        checked={c === color}
-        onChange={handleColor}
-        className="pb-1 pl-4 pr-4"
-      >
-        {c}
-      </Radio>
+      <Col>
+        <Radio
+          key={c}
+          value={c}
+          name={c}
+          checked={c === color}
+          onChange={handleColor}
+          className="p-2"
+        >
+          {c}
+        </Radio>
+      </Col>
     ));
 
   const handleColor = (e) => {
@@ -271,23 +285,24 @@ const Shop = () => {
   const showShipping = () => {
     return (
       <>
-        <Checkbox
-          className="pb-2 pl-4 pr-4"
-          onChange={handleShippingChange}
-          value="Yes"
-          checked={shipping === "Yes"}
-        >
-          Yes
-        </Checkbox>
-
-        <Checkbox
-          className="pb-2 pl-4 pr-4"
-          onChange={handleShippingChange}
-          value="No"
-          checked={shipping === "No"}
-        >
-          No
-        </Checkbox>
+        <div className="text-center">
+          <Checkbox
+            className="pb-2 pl-4 pr-4"
+            onChange={handleShippingChange}
+            value="Yes"
+            checked={shipping === "Yes"}
+          >
+            Yes
+          </Checkbox>
+          <Checkbox
+            className="pb-2 pl-4 pr-4"
+            onChange={handleShippingChange}
+            value="No"
+            checked={shipping === "No"}
+          >
+            No
+          </Checkbox>
+        </div>
       </>
     );
   };
@@ -310,20 +325,18 @@ const Shop = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-md-3 pt-2">
-          <h4>Search/Filter</h4>
+        <div className="col-lg-2 pt-2">
+          <h6>Filter</h6>
           <Menu mode="inline">
             <SubMenu key="1" title={<span className="h6">Price</span>}>
-              <div>
-                <Slider
-                  className="ml-4 mr-4"
-                  tipFormatter={(v) => `$${v}`}
-                  range
-                  value={price}
-                  onChange={handleSlider}
-                  max="4999"
-                />
-              </div>
+              <Slider
+                step={100}
+                tipFormatter={(v) => `$${v}`}
+                range
+                value={price}
+                onChange={handleSlider}
+                max="4999"
+              />
             </SubMenu>
 
             <SubMenu key="2" title={<span className="h6">Categories</span>}>
@@ -340,8 +353,8 @@ const Shop = () => {
               </div>
             </SubMenu>
 
-            <SubMenu key="5" title={<span className="h6">Brands</span>}>
-              <div style={{ maringTop: "-10px" }} className="pr-4">
+            <SubMenu key="5" title={<span className="h6 ">Brands</span>}>
+              <div style={{ maringTop: "-10px" }} className="pr-4 float-start">
                 {showBrands()}
               </div>
             </SubMenu>
@@ -360,11 +373,11 @@ const Shop = () => {
           </Menu>
         </div>
 
-        <div className="col-md-9 pt-2">
+        <div className="col-lg-10 pt-2">
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
           ) : (
-            <h4 className="text-danger">Products</h4>
+            <h5 className="text-danger">Products</h5>
           )}
           {products.length < 1 && <p>No Products found</p>}
           <div className="row pb-5">

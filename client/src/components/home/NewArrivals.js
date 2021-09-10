@@ -31,11 +31,11 @@ const NewArrivals = () => {
     <>
       <div className="container">
         {loading ? (
-          <LoadingCard count={3} />
+          <LoadingCard count={4} />
         ) : (
           <div className="row">
             {products.map((product) => (
-              <div key={product._id} className="col-md-4">
+              <div key={product._id} className="col-md-3">
                 <ProductCard product={product} />
               </div>
             ))}
@@ -43,9 +43,10 @@ const NewArrivals = () => {
         )}
       </div>
 
-      <div className="row">
-        <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
+      <div>
+        <nav className="align-middle col-md-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
+            size="small"
             current={page}
             total={(productsCount / 3) * 10}
             onChange={(value) => setPage(value)}

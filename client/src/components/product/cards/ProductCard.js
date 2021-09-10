@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Tooltip } from "antd";
+import { Card, Tooltip, Row, Col } from "antd";
 import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import sampleImage from "../../../images/SampleImage.png";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 const ProductCard = ({ product }) => {
   const [tooltip, setTooltip] = useState("Click to add");
 
-  const { images, title, description, slug, price } = product;
+  const { images, title, description, slug, price, brand } = product;
 
   const dispatch = useDispatch();
 
@@ -49,38 +49,22 @@ const ProductCard = ({ product }) => {
 
   return (
     <>
-      {product && product.ratings && product.ratings.length > 0 ? (
-        showAverage(product)
-      ) : (
-        <div className="text-center pt-1 pb-3">No rating yet</div>
-      )}
-      <Card
-        cover={
-          <img
-            alt="sample"
-            src={images && images.length ? images[0].url : sampleImage}
-            style={{ height: "150px", objectFit: "cover" }}
-            className="p-2"
-          />
-        }
-        actions={[
-          <Link to={`/product/${slug}`}>
-            <EyeOutlined className="text-warning" />
-            <br /> View Product
-          </Link>,
-          <Tooltip title={tooltip}>
-            <p onClick={handleAddToCart} disabled={product.quantity < 1}>
-              <ShoppingCartOutlined className="text-danger" /> <br />
-              {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
-            </p>
-          </Tooltip>,
-        ]}
-      >
-        <Card.Meta
-          title={`${title} - $${price}`}
-          description={`${description && description.substring(0, 20)}...`}
-        />
-      </Card>
+      <Link to={`/product/${slug}`}>
+        <Card
+          hoverable
+          cover={
+            <img
+              alt="sample"
+              src={images && images.length ? images[0].url : sampleImage}
+              style={{ height: "200px", objectFit: "cover" }}
+            />
+          }
+        >
+          <Card.Meta title={`${title}`} />
+          <div>{brand}</div>
+          <h5 className="mt-3"> {`$${price}`}</h5>
+        </Card>
+      </Link>
     </>
   );
 };

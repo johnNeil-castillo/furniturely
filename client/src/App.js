@@ -7,6 +7,7 @@ import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { currentUser } from "./functions/auth";
 import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 
 // protect routes
 const UserRoute = lazy(() => import("./routes/UserRoute"));
@@ -93,7 +94,7 @@ const App = () => {
     <Suspense
       fallback={
         <div className="col text-center p-5">
-          __ Furniturely <LoadingOutlined /> __
+          <Spin />
         </div>
       }
     >
