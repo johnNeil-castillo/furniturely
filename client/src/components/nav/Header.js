@@ -49,9 +49,8 @@ const Header = () => {
         <Link to="/shop">Shop</Link>
       </Item>
       <Item key="cart" icon={<ShoppingCartOutlined />}>
-        <Badge count={cart.length} offset={[9, 0]}>
-          <Link to="/cart">Cart </Link>
-        </Badge>
+        <Link to="/cart">Cart </Link>
+        <Badge count={cart.length} offset={[0, -15]}></Badge>
       </Item>
       {!user && (
         <Item key="register" icon={<UserAddOutlined />}>

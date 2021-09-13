@@ -126,12 +126,14 @@ const StripeCheckout = () => {
           }
           actions={[
             <>
-              <DollarOutlined className="text-info" /> <br /> Total: $
-              {cartTotal}
+              <DollarOutlined className="text-info" /> <br />
+              <h5 className="mt-2">Total: ${cartTotal}</h5>
             </>,
             <>
-              <CheckOutlined className="text-info" /> <br /> Total payable : $
-              {(payable / 100).toFixed(2)}
+              <CheckOutlined className="text-info" /> <br />{" "}
+              <h5 className="mt-2">
+                Total payable : ${(payable / 100).toFixed(2)}
+              </h5>
             </>,
           ]}
         />

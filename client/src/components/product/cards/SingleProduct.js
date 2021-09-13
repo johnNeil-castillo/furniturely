@@ -78,7 +78,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                     <div className="col-md-6 mb-3">
                       <Image alt="sample" src={i.url} key={i.public_id} />
                     </div>
-                  ))}{" "}
+                  ))}
               </Image.PreviewGroup>
             </div>
           </>
