@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { Card, Tooltip, Row, Col } from "antd";
-import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { Card } from "antd";
 import sampleImage from "../../../images/SampleImage.png";
 import { Link } from "react-router-dom";
-import { showAverage } from "../../../functions/rating";
 import _ from "lodash";
 import { useDispatch } from "react-redux";
 
 const ProductCard = ({ product }) => {
-  const [tooltip, setTooltip] = useState("Click to add");
+  const [setTooltip] = useState("Click to add");
 
-  const { images, title, description, slug, price, brand } = product;
+  const { images, title, slug, price, brand } = product;
 
   const dispatch = useDispatch();
 

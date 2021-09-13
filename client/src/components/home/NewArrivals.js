@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProducts, getProductsCount } from "../../functions/product";
 import ProductCard from "../product/cards/ProductCard";
 import LoadingCard from "../product/cards/LoadingCard";
-import { Pagination } from "antd";
+import { Pagination, Card } from "antd";
 
 const NewArrivals = () => {
   const [products, setProducts] = useState([]);
@@ -29,7 +29,7 @@ const NewArrivals = () => {
 
   return (
     <>
-      <div className="container">
+      <div>
         {loading ? (
           <LoadingCard count={4} />
         ) : (
@@ -48,7 +48,7 @@ const NewArrivals = () => {
           <Pagination
             size="small"
             current={page}
-            total={(productsCount / 3) * 10}
+            total={(productsCount / 4) * 10}
             onChange={(value) => setPage(value)}
           />
         </nav>

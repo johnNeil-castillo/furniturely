@@ -47,7 +47,7 @@ const BestSellers = () => {
             className="p-5"
             size="small"
             current={page}
-            total={(productsCount / 3) * 10}
+            total={(productsCount / 4) * 10}
             onChange={(value) => setPage(value)}
           />
         </nav>

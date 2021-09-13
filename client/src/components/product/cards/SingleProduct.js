@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { Card, Tabs, Tooltip } from "antd";
+import { Card, Tabs, Tooltip, Image } from "antd";
 import { HeartOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 import sampleImage from "../../../images/SampleImage.png";
 import ProductListItems from "./ProductListItems";
 import StarRating from "react-star-ratings";
 import RatingModal from "../../modal/RatingModal";
-import { showAverage } from "../../../functions/rating";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
-
 import { addToWishlist } from "../../../functions/user";
 
 const { TabPane } = Tabs;
@@ -68,43 +65,30 @@ const SingleProduct = ({ product, onStarClick, star }) => {
       history.push("/user/wishlist");
     });
   };
+
   return (
     <>
-      <div className="col-md-7">
+      <div className="col-md-8">
         {images && images.length ? (
-          <Carousel showArrows={true} infiniteLoop>
-            {images &&
-              images.map((i) => (
-                <img alt="sample" src={i.url} key={i.public_id} />
-              ))}
-          </Carousel>
+          <>
+            <div className="row">
+              {images &&
+                images.map((i) => (
+                  <div className="col-md-6 mb-3">
+                    <Image.PreviewGroup>
+                      <Image alt="sample" src={i.url} key={i.public_id} />
+                    </Image.PreviewGroup>
+                  </div>
+                ))}
+            </div>
+          </>
         ) : (
-          <Card
-            cover={
-              <img alt="sample" src={sampleImage} className="mb-2 card-image" />
-            }
-          ></Card>
+          <Card cover={<img alt="sample" src={sampleImage} />}></Card>
         )}
-
-        <Tabs type="card">
-          <TabPane tab="Description" key="1">
-            {description && description}
-          </TabPane>
-          <TabPane tab="More" key="2">
-            Call us on to learn more about this product
-          </TabPane>
-        </Tabs>
       </div>
 
-      <div className="col-md-5">
-        <h1 className="bg-info p-3">{title}</h1>
-
-        {product && product.ratings && product.ratings.length > 0 ? (
-          showAverage(product)
-        ) : (
-          <div className="text-center pt-1 pb-3">No rating yet</div>
-        )}
-
+      <div className="col-md-4">
+        <Card className="mb-2 fs-3">{title}</Card>
         <Card
           actions={[
             <Tooltip title={tooltip}>
@@ -132,6 +116,18 @@ const SingleProduct = ({ product, onStarClick, star }) => {
         >
           <ProductListItems product={product} />
         </Card>
+      </div>
+
+      <div className="col-md-4"></div>
+      <div className="mt-3">
+        <Tabs type="card">
+          <TabPane tab="Description" key="1">
+            {description && description}
+          </TabPane>
+          <TabPane tab="More" key="2">
+            Call us on to learn more about this product
+          </TabPane>
+        </Tabs>
       </div>
     </>
   );

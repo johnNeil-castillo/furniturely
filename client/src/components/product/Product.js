@@ -4,11 +4,15 @@ import SingleProduct from "./cards/SingleProduct";
 import { useSelector } from "react-redux";
 import { getRelated } from "../../functions/product";
 import ProductCard from "../product/cards/ProductCard";
+import LoadingCard from "../product/cards/LoadingCard";
+
+import { Skeleton } from "antd";
 
 const Product = ({ match }) => {
   const [product, setProduct] = useState({});
   const [related, setRelated] = useState([]);
   const [star, setStar] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -16,9 +20,11 @@ const Product = ({ match }) => {
 
   useEffect(() => {
     const loadSingleProduct = () => {
+      setLoading(true);
       getProduct(slug).then((res) => {
         setProduct(res.data);
         getRelated(res.data._id).then((res) => setRelated(res.data));
+        setLoading(false);
       });
     };
     loadSingleProduct();
@@ -53,32 +59,52 @@ const Product = ({ match }) => {
   return (
     <>
       <div className="container-fluid">
-        <div className="row pt-4">
-          <SingleProduct
-            product={product}
-            onStarClick={onStarClick}
-            star={star}
-          />
-        </div>
-
-        <div className="row ">
-          <div className="col text-center pt-5 pb-5">
-            <hr />
-            <h4>Related Products</h4>
-            <hr />
-          </div>
-        </div>
-        <div className="row pb-5">
-          {related.length ? (
-            related.map((r) => (
-              <div key={r._id} className="col-md-4">
-                <ProductCard product={r} />
+        {loading ? (
+          <>
+            <div className="row">
+              <div className="col-md-8">
+                <Skeleton active className="p-5 " />
               </div>
-            ))
-          ) : (
-            <div className="text-center">No products found</div>
-          )}
-        </div>
+              <div className="col-md-4">
+                <Skeleton active className="p-5 " />
+              </div>
+            </div>
+            <div className="row">
+              <Skeleton active className="p-5 " />
+            </div>
+            <div className="row">
+              <LoadingCard count={4} />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="row pt-4">
+              <SingleProduct
+                product={product}
+                onStarClick={onStarClick}
+                star={star}
+              />
+            </div>{" "}
+            <div className="row ">
+              <div className="col text-center pt-5 pb-5">
+                <hr />
+                <h4>Related Products</h4>
+                <hr />
+              </div>
+            </div>
+            <div className="row pb-5">
+              {related.length ? (
+                related.map((r) => (
+                  <div key={r._id} className="col-md-3">
+                    <ProductCard product={r} />
+                  </div>
+                ))
+              ) : (
+                <div className="text-center">No products found</div>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </>
   );

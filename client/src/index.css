@@ -6,3 +6,10 @@
 .pointer {
   cursor: pointer;
 }
+.ant-carousel,
+.slick-prev,
+.ant-carousel,
+.slick-next {
+  display: block !important;
+  background: white !important;
+}
