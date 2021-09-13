@@ -44,7 +44,7 @@ const NewArrivals = () => {
       </div>
 
       <div>
-        <nav className="align-middle col-md-4 offset-md-4 text-center pt-5 p-3">
+        <nav className="col-md-4 offset-md-4 text-center pt-3">
           <Pagination
             size="small"
             current={page}

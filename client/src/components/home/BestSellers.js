@@ -27,7 +27,7 @@ const BestSellers = () => {
 
   return (
     <>
-      <div className="container">
+      <div>
         {loading ? (
           <LoadingCard count={4} />
         ) : (
@@ -42,9 +42,8 @@ const BestSellers = () => {
       </div>
 
       <div>
-        <nav className="align-middle col-md-4 offset-md-4 text-center ">
+        <nav className="col-md-4 offset-md-4 text-center pt-3 pb-5">
           <Pagination
-            className="p-5"
             size="small"
             current={page}
             total={(productsCount / 4) * 10}

@@ -72,14 +72,14 @@ const SingleProduct = ({ product, onStarClick, star }) => {
         {images && images.length ? (
           <>
             <div className="row">
-              {images &&
-                images.map((i) => (
-                  <div className="col-md-6 mb-3">
-                    <Image.PreviewGroup>
+              <Image.PreviewGroup>
+                {images &&
+                  images.map((i) => (
+                    <div className="col-md-6 mb-3">
                       <Image alt="sample" src={i.url} key={i.public_id} />
-                    </Image.PreviewGroup>
-                  </div>
-                ))}
+                    </div>
+                  ))}{" "}
+              </Image.PreviewGroup>
             </div>
           </>
         ) : (

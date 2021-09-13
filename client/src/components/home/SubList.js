@@ -28,7 +28,7 @@ const SubList = () => {
     ));
 
   return (
-    <div className="container">
+    <div>
       <div className="row">
         {loading ? <LoadingButton count={4} /> : showSubs()}
       </div>

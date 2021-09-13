@@ -84,7 +84,7 @@ const Product = ({ match }) => {
                 onStarClick={onStarClick}
                 star={star}
               />
-            </div>{" "}
+            </div>
             <div className="row ">
               <div className="col text-center pt-5 pb-5">
                 <hr />

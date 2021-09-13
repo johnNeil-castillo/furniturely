@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ProductCardInCheckout from "./ProductCardInCheckout";
 import { userCart } from "../../functions/user";
+import { Card } from "antd";
 
 const Cart = ({ history }) => {
   const { cart, user } = useSelector((state) => ({ ...state }));
@@ -16,8 +17,8 @@ const Cart = ({ history }) => {
 
   const showCartItems = () => {
     return (
-      <table className="table table-bordered">
-        <thead className="thead-light">
+      <table className="table mt-3 ">
+        <thead className="thead-light text-center">
           <tr>
             <th scope="col">Image</th>
             <th scope="col">Title</th>
@@ -67,8 +68,12 @@ const Cart = ({ history }) => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-md-8">
-          <h4>Cart / {cart.length} Product</h4>
+        <div className="col-md-8 mt-4 text-center">
+          <Card className="pt-2">
+            <h4>
+              Added {cart.length} Product{cart.length > 1 ? "s" : ""} To Cart
+            </h4>
+          </Card>
 
           {!cart.length ? (
             <p>
@@ -78,45 +83,47 @@ const Cart = ({ history }) => {
             showCartItems()
           )}
         </div>
-        <div className="col-md-4">
-          <h4>OrderSummary</h4>
-          <hr />
-          <p>Products</p>
-          {cart.map((c, i) => (
-            <div key={i}>
-              <p>
-                {c.title} x {c.count} = ${c.price * c.count}
-              </p>
-            </div>
-          ))}
-          <hr />
-          Total: <b>${getTotal()}</b>
-          <hr />
-          {user ? (
-            <>
-              <button
-                onClick={saveOrderToDb}
-                className="btn btn-sm btn-primary mt-2"
-                disabled={!cart.length}
-              >
-                Proceed to Checkout
+        <div className="col-md-4 mt-4 ">
+          <Card>
+            <h4>OrderSummary</h4>
+            <hr />
+            <p>Products</p>
+            {cart.map((c, i) => (
+              <div key={i}>
+                <p>
+                  {c.title} x {c.count} = ${c.price * c.count}
+                </p>
+              </div>
+            ))}
+            <hr />
+            Total: <b>${getTotal()}</b>
+            <hr />
+            {user ? (
+              <>
+                <button
+                  onClick={saveOrderToDb}
+                  className="btn btn-sm btn-primary mt-2"
+                  disabled={!cart.length}
+                >
+                  Proceed to Checkout
+                </button>
+
+                <button
+                  onClick={saveCashOrderToDb}
+                  className="btn btn-sm btn-warning mt-2 float-end"
+                  disabled={!cart.length}
+                >
+                  Pay Cash on Delivery
+                </button>
+              </>
+            ) : (
+              <button className="btn btn-sm btn-primary mt-2">
+                <Link to={{ pathname: "/login", state: { from: "cart" } }}>
+                  Login to Checkout
+                </Link>
               </button>
-              <br />
-              <button
-                onClick={saveCashOrderToDb}
-                className="btn btn-sm btn-warning mt-2"
-                disabled={!cart.length}
-              >
-                Pay Cash on Delivery
-              </button>
-            </>
-          ) : (
-            <button className="btn btn-sm btn-primary mt-2">
-              <Link to={{ pathname: "/login", state: { from: "cart" } }}>
-                Login to Checkout
-              </Link>
-            </button>
-          )}
+            )}
+          </Card>
         </div>
       </div>
     </div>
