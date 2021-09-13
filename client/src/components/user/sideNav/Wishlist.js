@@ -35,7 +35,7 @@ const Wishlist = () => {
           <UserNav />
         </div>
         <div className="col">
-          <h4>Wishlist</h4>
+          <h4 className="text-center my-4">Wishlist</h4>
 
           {wishlist.map((p) => (
             <div key={p._id} className="alert alert-secondary">

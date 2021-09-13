@@ -60,7 +60,7 @@ const Password = () => {
           {loading ? (
             <h4 className="text-danger">Loading..</h4>
           ) : (
-            <h4>Password Update</h4>
+            <h4 className="text-center my-4">Password Update</h4>
           )}
           {passwordUpdateForm()}
         </div>
