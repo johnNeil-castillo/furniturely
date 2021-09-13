@@ -87,7 +87,7 @@ const ProductCardInCheckout = ({ p }) => {
             )}
           </div>
         </td>
-        <td className="text-center py-4">{p.title}</td>
+        <td className="text-center py-4 ">{p.title}</td>
         <td className="text-center py-4">
           <b>${p.price}</b>
         </td>

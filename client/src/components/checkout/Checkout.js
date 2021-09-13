@@ -10,6 +10,7 @@ import {
 import { toast } from "react-toastify";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { Card, Input } from "antd";
 
 const Checkout = ({ history }) => {
   const [products, setProducts] = useState([]);
@@ -82,8 +83,14 @@ const Checkout = ({ history }) => {
 
   const showAddress = () => (
     <>
-      <ReactQuill theme="snow" value={address} onChange={setAddress} />
-      <button className="btn btn-primary mt-2" onClick={saveAddressToDb}>
+      <ReactQuill
+        style={{ height: "100px" }}
+        theme="snow"
+        value={address}
+        onChange={setAddress}
+        className="mb-2 "
+      />
+      <button className="btn btn-primary mt-5" onClick={saveAddressToDb}>
         Save
       </button>
     </>
@@ -91,7 +98,7 @@ const Checkout = ({ history }) => {
 
   const showProductSummary = () => {
     return products.map((p, i) => (
-      <div key={i}>
+      <div key={i} className="mt-4">
         <p>
           {p.product.title} ({p.color}) x {p.count} ={" "}
           {p.product.price * p.count}
@@ -103,16 +110,16 @@ const Checkout = ({ history }) => {
   const showApplyCoupon = () => {
     return (
       <>
-        <input
+        <Input
           type="text"
-          className="form-control"
+          className="form-control "
           onChange={(e) => {
             setCoupon(e.target.value);
             setDiscountError("");
           }}
           value={coupon}
         />
-        <button onClick={applyDiscountCoupon} className="btn btn-primary mt-2">
+        <button onClick={applyDiscountCoupon} className="btn btn-primary mt-3">
           Apply
         </button>
       </>
@@ -144,66 +151,71 @@ const Checkout = ({ history }) => {
   };
 
   return (
-    <div className="row">
-      <div className="col-md-6">
-        <h4>Delivery Address</h4>
-        <br />
-        <br />
-        {showAddress()}
-        <hr />
-        <h4>Got Coupon?</h4>
-        <br />
-        {showApplyCoupon()}
-        <br />
-        {discountError && <p className="text-danger p-2">{discountError}</p>}
+    <div className="row container-fluid">
+      <div className="col-md-7 mt-3">
+        <Card bordered={false}>
+          <h4 className="mb-3">Delivery Address</h4>
+
+          {showAddress()}
+        </Card>
+
+        <Card bordered={false}>
+          <h4 className="mb-3">Got Coupon?</h4>
+
+          {showApplyCoupon()}
+          <br />
+          {discountError && <p className="text-danger mt-2">{discountError}</p>}
+        </Card>
       </div>
 
-      <div className="col-md-6">
-        <h4>Order Summary</h4>
-        <hr />
-        <p>Products {products.length}</p>
-        <hr />
-        {showProductSummary()}
-        <hr />
-        <p>Cart Total: {total}</p>
+      <div className="col-md-5 mt-5">
+        <Card>
+          <h4>Order Summary</h4>
+          <hr />
+          <b>
+            Total Product{products.length > 1 ? "s" : ""}: {products.length}
+          </b>
 
-        {totalAfterDiscount > 0 && (
-          <p className="bg-success p-2">
-            Discount Applied: Total Payable: ${totalAfterDiscount}
-          </p>
-        )}
+          {showProductSummary()}
+          <hr />
+          <h5>Cart Total: $ {total}</h5>
+          {totalAfterDiscount > 0 && (
+            <h5 className="bg-success p-2 text-center">
+              Discount Applied: Total Payable: ${totalAfterDiscount}
+            </h5>
+          )}
+          <div className="row text-center container-fluid">
+            <div className="col-md-6">
+              {COD ? (
+                <button
+                  className="btn btn-primary"
+                  disabled={!addressSaved || !products.length}
+                  onClick={createCashOrder}
+                >
+                  Place Order
+                </button>
+              ) : (
+                <button
+                  className="btn btn-primary"
+                  disabled={!addressSaved || !products.length}
+                  onClick={() => history.push("/payment")}
+                >
+                  Place Order
+                </button>
+              )}
+            </div>
 
-        <div className="row">
-          <div className="col-md-6">
-            {COD ? (
+            <div className="col-md-6">
               <button
+                disabled={!products.length}
+                onClick={emptyCart}
                 className="btn btn-primary"
-                disabled={!addressSaved || !products.length}
-                onClick={createCashOrder}
               >
-                Place Order
+                Empty Cart
               </button>
-            ) : (
-              <button
-                className="btn btn-primary"
-                disabled={!addressSaved || !products.length}
-                onClick={() => history.push("/payment")}
-              >
-                Place Order
-              </button>
-            )}
+            </div>
           </div>
-
-          <div className="col-md-6">
-            <button
-              disabled={!products.length}
-              onClick={emptyCart}
-              className="btn btn-primary"
-            >
-              Empty Cart
-            </button>
-          </div>
-        </div>
+        </Card>
       </div>
     </div>
   );

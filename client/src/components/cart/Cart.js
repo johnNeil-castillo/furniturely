@@ -76,9 +76,9 @@ const Cart = ({ history }) => {
           </Card>
 
           {!cart.length ? (
-            <p>
+            <h5 className="mt-5">
               No products in cart. <Link to="/shop">Continue Shopping</Link>
-            </p>
+            </h5>
           ) : (
             showCartItems()
           )}
