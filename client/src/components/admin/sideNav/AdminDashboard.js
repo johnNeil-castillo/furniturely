@@ -4,6 +4,7 @@ import { getOrders, changeStatus } from "../../../functions/admin";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Orders from "../Orders";
+import { Card } from "antd";
 
 const AdminDashboard = () => {
   const [orders, setOrders] = useState([]);
@@ -39,7 +40,8 @@ const AdminDashboard = () => {
         </div>
 
         <div className="col">
-          <h4>Admin Dashboard</h4>
+          <h4 className="text-center my-4 ">Admin Dashboard</h4>
+
           <Orders orders={orders} handleStatusChange={handleStatusChange} />
         </div>
       </div>
