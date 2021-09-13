@@ -154,7 +154,10 @@ const ProductUpdate = ({ match, history }) => {
           {loading ? (
             <LoadingOutlined className="text-danger h1" />
           ) : (
-            <h4>Product Create</h4>
+            <>
+              <h4 className="text-center my-4">Product Create</h4>
+              <hr />
+            </>
           )}
 
           <div className="p-3">

@@ -121,7 +121,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
       <div className="col-md-4"></div>
       <div className="mt-3">
         <Tabs type="card">
-          <TabPane tab="Description" key="1">
+          <TabPane style={{ whiteSpace: "pre-wrap" }} tab="Description" key="1">
             {description && description}
           </TabPane>
           <TabPane tab="More" key="2">

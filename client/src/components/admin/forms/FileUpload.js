@@ -75,11 +75,11 @@ const FileUpload = ({ values, setValues, setLoading }) => {
 
   return (
     <>
-      <div className="row" style={{ width: "auto" }}>
+      <div>
         {values.images &&
           values.images.map((image) => {
             return (
-              <span className="avatar-item col-md-2" key={image.public_id}>
+              <span className="avatar-item mx-2  " key={image.public_id}>
                 <Badge
                   count="X"
                   onClick={() => handleImageRemove(image.public_id)}
@@ -97,7 +97,7 @@ const FileUpload = ({ values, setValues, setLoading }) => {
           })}
       </div>
       <div className="row">
-        <label className="btn btn-primary">
+        <label className="btn btn-primary mt-4">
           Choose File
           <input
             type="file"

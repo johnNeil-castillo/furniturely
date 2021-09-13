@@ -38,7 +38,8 @@ const ProductCreateForm = ({
 
       <div className="form-group">
         <label>Description</label>
-        <input
+        <textarea
+          style={{ height: "100px", whiteSpace: "pre-wrap" }}
           type="text"
           name="description"
           className="form-control"

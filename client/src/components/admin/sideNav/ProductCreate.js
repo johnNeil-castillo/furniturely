@@ -9,9 +9,9 @@ import FileUpload from "../forms/FileUpload";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const initialState = {
-  title: "Test Product1",
-  description: "Test Product",
-  price: "1000",
+  title: "",
+  description: "",
+  price: "",
   categories: [],
   category: "",
   subs: [],
@@ -107,17 +107,18 @@ const ProductCreate = () => {
           {loading ? (
             <LoadingOutlined className="text-danger h1" />
           ) : (
-            <h4>Product Create</h4>
+            <>
+              <h4 className="mt-4 mb-4 text-center">Product Create</h4>
+              <hr />
+              <div className="p-3">
+                <FileUpload
+                  values={values}
+                  setValues={setValues}
+                  setLoading={setLoading}
+                />
+              </div>
+            </>
           )}
-          <hr />
-          {JSON.stringify(values.images)}
-          <div className="p-3">
-            <FileUpload
-              values={values}
-              setValues={setValues}
-              setLoading={setLoading}
-            />
-          </div>
 
           <ProductCreateForm
             handleSubmit={handleSubmit}
