@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import CategoryForm from "../../../components/admin/forms/CategoryForm";
 import LocalSearch from "../forms/LocalSearch";
+import { Card } from "antd";
 
 const SubCreate = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -79,7 +80,7 @@ const SubCreate = () => {
           {loading ? (
             <h4 className="text-danger">Loading..</h4>
           ) : (
-            <h4>Create sub category</h4>
+            <h4 className="text-center my-4">Create sub category</h4>
           )}
 
           <div className="form-group">
@@ -105,25 +106,27 @@ const SubCreate = () => {
             name={name}
           />
 
-          <LocalSearch keyword={keyword} setKeyword={setKeyword} />
+          <Card className="mt-4">
+            <LocalSearch keyword={keyword} setKeyword={setKeyword} />
 
-          {subs.filter(searched(keyword)).map((s) => (
-            <div className="alert alert-secondary" key={s._id}>
-              {s.name}
-              <span
-                onClick={() => handleRemove(s.slug)}
-                className="btn btn-sm float-end"
-              >
-                <DeleteOutlined className="text-danger" />
-              </span>
-
-              <Link to={`/admin/sub/${s.slug}`}>
-                <span className="btn btn-sm float-end  ">
-                  <EditOutlined className="text-warning" />
+            {subs.filter(searched(keyword)).map((s) => (
+              <Card size="small" key={s._id} className="mb-3">
+                {s.name}
+                <span
+                  onClick={() => handleRemove(s.slug)}
+                  className="btn btn-sm float-end"
+                >
+                  <DeleteOutlined className="text-danger" />
                 </span>
-              </Link>
-            </div>
-          ))}
+
+                <Link to={`/admin/sub/${s.slug}`}>
+                  <span className="btn btn-sm float-end  ">
+                    <EditOutlined className="text-warning" />
+                  </span>
+                </Link>
+              </Card>
+            ))}
+          </Card>
         </div>
       </div>
     </div>

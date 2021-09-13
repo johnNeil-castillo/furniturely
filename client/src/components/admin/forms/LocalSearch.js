@@ -7,7 +7,7 @@ const LocalSearch = ({ keyword, setKeyword }) => {
   };
 
   return (
-    <div className=" pt-4 pb-4">
+    <div>
       <input
         type="search"
         placeholder="Filter"

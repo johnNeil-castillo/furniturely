@@ -2,7 +2,7 @@ import React from "react";
 
 const CategoryForm = ({ handleSubmit, setName, name }) => (
   <form onSubmit={handleSubmit}>
-    <div className="form-group">
+    <div className="form-group mt-3">
       <label>Name</label>
       <input
         type="text"
@@ -13,7 +13,7 @@ const CategoryForm = ({ handleSubmit, setName, name }) => (
         required
       />
       <br />
-      <button className="btn btn-light">Save</button>
+      <button className="btn btn-primary">Save</button>
     </div>
   </form>
 );

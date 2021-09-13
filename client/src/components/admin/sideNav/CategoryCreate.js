@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import CategoryForm from "../forms/CategoryForm";
 import LocalSearch from "../forms/LocalSearch";
+import { Card } from "antd";
 
 const CategoryCreate = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -31,7 +32,7 @@ const CategoryCreate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(name);
+
     setLoading(true);
     createCategory({ name }, user.token)
       .then((res) => {
@@ -77,33 +78,37 @@ const CategoryCreate = () => {
           {loading ? (
             <h4 className="text-danger">Loading..</h4>
           ) : (
-            <h4>Create category</h4>
+            <>
+              <h4 className="text-center my-4">Create category</h4>{" "}
+              <CategoryForm
+                handleSubmit={handleSubmit}
+                setName={setName}
+                name={name}
+              />
+            </>
           )}
-          <CategoryForm
-            handleSubmit={handleSubmit}
-            setName={setName}
-            name={name}
-          />
 
-          <LocalSearch keyword={keyword} setKeyword={setKeyword} />
+          <Card className="mt-4">
+            <LocalSearch keyword={keyword} setKeyword={setKeyword} />
 
-          {categories.filter(searched(keyword)).map((c) => (
-            <div className="alert alert-secondary" key={c._id}>
-              {c.name}
-              <span
-                onClick={() => handleRemove(c.slug)}
-                className="btn btn-sm float-end  "
-              >
-                <DeleteOutlined className="text-danger" />
-              </span>
-
-              <Link to={`/admin/category/${c.slug}`}>
-                <span className="btn btn-sm float-end  ">
-                  <EditOutlined className="text-warning" />
+            {categories.filter(searched(keyword)).map((c) => (
+              <Card size="small" key={c._id} className="mb-3">
+                <b>{c.name}</b>
+                <span
+                  onClick={() => handleRemove(c.slug)}
+                  className="btn btn-sm float-end  "
+                >
+                  <DeleteOutlined className="text-danger" />
                 </span>
-              </Link>
-            </div>
-          ))}
+
+                <Link to={`/admin/category/${c.slug}`}>
+                  <span className="btn btn-sm float-end  ">
+                    <EditOutlined className="text-warning" />
+                  </span>
+                </Link>
+              </Card>
+            ))}
+          </Card>
         </div>
       </div>
     </div>

@@ -40,7 +40,7 @@ const AdminDashboard = () => {
         </div>
 
         <div className="col">
-          <h4 className="text-center my-4 ">Admin Dashboard</h4>
+          <h4 className="text-center my-4">Admin Dashboard</h4>
 
           <Orders orders={orders} handleStatusChange={handleStatusChange} />
         </div>
