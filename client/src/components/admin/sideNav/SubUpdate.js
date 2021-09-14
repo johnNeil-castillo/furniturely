@@ -61,7 +61,6 @@ const SubUpdate = ({ match, history }) => {
           <div className="form-group">
             <label>Parent</label>
             <select
-              disabled
               name="category"
               className="form-control"
               onChange={(e) => setParent(e.target.value)}

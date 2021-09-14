@@ -28,7 +28,7 @@ const AllProducts = () => {
   };
 
   const handleRemove = (slug) => {
-    let answer = window.confirm("Delete");
+    let answer = window.confirm(`Are you sure you want to delete ${slug}`);
     if (answer) {
       removeProduct(slug, user.token)
         .then((res) => {

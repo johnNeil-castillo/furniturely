@@ -18,7 +18,7 @@ const CategoryList = () => {
 
   const showCategories = () =>
     categories.map((c) => (
-      <div key={c._id} className=" col text-center">
+      <div key={c._id} className=" col text-center mb-2">
         <Link to={`/category/${c.slug}`}>
           <Button type="dashed" size="large" block>
             {c.name}

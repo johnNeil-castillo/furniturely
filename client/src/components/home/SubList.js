@@ -18,7 +18,7 @@ const SubList = () => {
 
   const showSubs = () =>
     subs.map((s) => (
-      <div key={s._id} className=" col text-center">
+      <div key={s._id} className="col text-center mb-3">
         <Link to={`/sub/${s.slug}`}>
           <Button type="dashed" size="large" block>
             {s.name}

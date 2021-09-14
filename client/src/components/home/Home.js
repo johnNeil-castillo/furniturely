@@ -4,26 +4,45 @@ import NewArrivals from "./NewArrivals";
 import BestSellers from "./BestSellers";
 import CategoryList from "./CategoryList";
 import SubList from "./SubList";
+import { Carousel, Row, Col } from "antd";
 
 const Home = () => {
   return (
     <>
-      <div className="text-center">
-        <h4>All Products</h4>
-      </div>
+      <Carousel autoplay>
+        <div>
+          <h3
+            style={{
+              height: "500px",
+              color: "#fff",
+              lineHeight: "160px",
+              textAlign: "center",
+              background: "#364d79",
+            }}
+          >
+            asdasd
+          </h3>
+        </div>
+        <div>
+          <h3
+            style={{
+              height: "500px",
+              color: "#fff",
+              lineHeight: "160px",
+              textAlign: "center",
+              background: "#364d79",
+            }}
+          >
+            asdasd
+          </h3>
+        </div>
+      </Carousel>
 
       <div className="container mb-5">
         <p className="m-3">
           Shop by <b>Categories</b>
         </p>
         <CategoryList />
-      </div>
-
-      <div className="container mb-5">
-        <p className="m-3">
-          Shop by <b>Sub Categories</b>
-        </p>
-        <SubList />
       </div>
 
       <div className="container">
@@ -38,6 +57,13 @@ const Home = () => {
           Buy our <b>Best Sellers</b>
         </p>
         <BestSellers />
+      </div>
+
+      <div className="container mb-5">
+        <p className="m-3">
+          Shop by <b>Sub Categories</b>
+        </p>
+        <SubList />
       </div>
     </>
   );

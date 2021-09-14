@@ -49,7 +49,7 @@ const CategoryCreate = () => {
   };
 
   const handleRemove = async (slug) => {
-    if (window.confirm("Delete?")) {
+    if (window.confirm(`Are you sure you want to delete ${slug}?`)) {
       setLoading(true);
       removeCategory(slug, user.token)
         .then((res) => {

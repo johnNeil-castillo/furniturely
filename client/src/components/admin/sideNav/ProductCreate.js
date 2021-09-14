@@ -28,18 +28,13 @@ const initialState = {
     "Green",
     "Orange",
     "Cyan",
-    "Yellow Green",
+    "Peach",
+    "Violet",
+    "Nude",
   ],
   brands: [
-    "Restoration Hardware",
     "Roche Bobois",
     "Edra",
-    "Poliform",
-    "Christopher Guy",
-    "Kartell",
-    "Baker",
-    "BRABBU",
-    "Boca do Lobo",
     "FENDI CASA",
     "Joybird",
     "IKEA",
@@ -78,7 +73,7 @@ const ProductCreate = () => {
       .catch((err) => {
         console.log(err);
         if (err.response.status === 400) toast.error(err.response.data);
-        toast.error(err.response.data.err);
+        toast.error("All input fields are required!");
       });
   };
 

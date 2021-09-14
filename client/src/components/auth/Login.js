@@ -72,7 +72,7 @@ const Login = ({ history }) => {
         });
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error("Check your Email and Password");
       setLoading(false);
     }
   };
