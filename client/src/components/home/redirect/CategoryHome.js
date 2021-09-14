@@ -13,13 +13,14 @@ const CategoryHome = ({ match }) => {
 
   useEffect(() => {
     setLoading(true);
+
     getCategory(slug).then((res) => {
       console.log(JSON.stringify(res.data, null, 4));
       setCategory(res.data.category);
       setProducts(res.data.products);
       setLoading(false);
     });
-  }, [slug]);
+  }, []);
 
   return (
     <div className="container">

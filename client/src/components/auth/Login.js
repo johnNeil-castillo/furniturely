@@ -6,6 +6,7 @@ import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { createOrUpdateUser } from "../../functions/auth";
+import { Card, Spin } from "antd";
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -131,7 +132,6 @@ const Login = ({ history }) => {
           type="primary"
           className="mb-3"
           block
-          shape="round"
           size="large"
           disabled={!email || password.length < 6}
         >
@@ -142,30 +142,44 @@ const Login = ({ history }) => {
   };
 
   return (
-    <div className="container p-5">
+    <div className="container">
       <div className="row">
-        <div className="col-md-6 offset-md-3">
-          {loading ? (
-            <h4 className="text-danger">Loading...</h4>
-          ) : (
-            <h4>Login</h4>
-          )}
+        <div className="col-md-6 offset-md-3 mt-5 pt-3">
+          <Card bordered={false} className="p-3">
+            {loading ? (
+              <h4 className="text-center ">
+                <Spin />
+              </h4>
+            ) : (
+              <>
+                <h4 className="text-center mb-3">
+                  <Link to="/">Logo</Link>
+                </h4>
+                <h5 className="text-center mb-5">Login</h5>
 
-          {loginForm()}
+                {loginForm()}
 
-          <Button
-            onClick={googleLogin}
-            type="danger"
-            className="mb-3"
-            block
-            shape="round"
-            size="large"
-          >
-            Login with Google
-          </Button>
-          <Link to="/forgot/password" className="float-end text-danger">
-            Forgot Password
-          </Link>
+                <Button
+                  onClick={googleLogin}
+                  type="danger"
+                  className="mb-3"
+                  block
+                  size="large"
+                >
+                  Login with Google
+                </Button>
+                <Link to="/register" className="float-start text-danger mt-4">
+                  Create Account
+                </Link>
+                <Link
+                  to="/forgot/password"
+                  className="float-end text-danger mt-4"
+                >
+                  Forgot Password
+                </Link>
+              </>
+            )}
+          </Card>
         </div>
       </div>
     </div>

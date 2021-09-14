@@ -3,6 +3,8 @@ import { auth } from "../../firebase";
 import { sendSignInLinkToEmail } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { Card, Spin } from "antd";
+import { Link } from "react-router-dom";
 
 const Register = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -51,7 +53,10 @@ const Register = ({ history }) => {
           placeholder="Enter Email"
         />
         <br />
-        <button className="btn btn-light" type="submit">
+        <button
+          className="btn btn-light d-grid gap-2 col-6 mx-auto"
+          type="submit"
+        >
           Register
         </button>
       </form>
@@ -59,12 +64,22 @@ const Register = ({ history }) => {
   };
 
   return (
-    <div className="container p-5">
+    <div className="container ">
       <div className="row">
-        <div className="col-md-6 offset-md-3">
-          <h4>Register</h4>
-
-          {registerForm()}
+        <div className="col-md-6 offset-md-3 mt-5 pt-3">
+          <Card bordered={false} className="p-3">
+            <h4 className="mb-3 text-center">
+              <Link to="/">Logo</Link>
+            </h4>
+            <h5 className="mb-5 text-center">Register</h5>
+            {registerForm()}
+            <Link to="/login">
+              <Card.Meta
+                className="mt-4 text-center"
+                description="Already have an account? Click here!"
+              />
+            </Link>
+          </Card>
         </div>
       </div>
     </div>

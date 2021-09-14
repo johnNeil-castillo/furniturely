@@ -34,12 +34,12 @@ const Header = () => {
   return (
     <>
       <Card bodyStyle={{ background: "#fefae0" }} bordered={false}>
-        <Row align="top">
-          <Col span={5}>
+        <Row align="top" className="container">
+          <Col className="text-center" span={4}>
             <Link>Links</Link>
           </Col>
           {!user && (
-            <Col offset={19}>
+            <Col offset={16}>
               <Link to="/register">Register</Link>
             </Col>
           )}
@@ -51,7 +51,7 @@ const Header = () => {
 
           {user && user.role === "subscriber" && (
             <>
-              <Col offset={19}>
+              <Col offset={16}>
                 <Link to="/user/history">Dashboard</Link>
               </Col>
             </>
@@ -67,7 +67,7 @@ const Header = () => {
 
           {user && user.role === "admin" && (
             <>
-              <Col offset={19}>
+              <Col offset={16}>
                 <Link to="/admin/dashboard">Dashboard</Link>
               </Col>
             </>

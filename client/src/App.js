@@ -18,6 +18,7 @@ const Login = lazy(() => import("./components/auth/Login"));
 const Register = lazy(() => import("./components/auth/Register"));
 const Home = lazy(() => import("./components/home/Home"));
 const Header = lazy(() => import("./components/nav/Header"));
+const HeaderSmall = lazy(() => import("./components/nav/HeaderSmall"));
 const SideDrawer = lazy(() => import("./components/drawer/SideDrawer"));
 const RegisterComplete = lazy(() =>
   import("./components/auth/RegisterComplete")
@@ -98,44 +99,239 @@ const App = () => {
         </div>
       }
     >
-      <Header />
       <SideDrawer />
       <ToastContainer />
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route
+          path="/"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <Header /> <Home {...props} />
+              </>
+            );
+          }}
+        ></Route>
         <Route path="/login" exact component={Login} />
         <Route path="/register" exact component={Register} />
         <Route path="/register/complete" exact component={RegisterComplete} />
         <Route path="/forgot/password" exact component={ForgotPassowrd} />
-        <UserRoute path="/user/history" exact component={History} />
-        <UserRoute path="/user/password" exact component={Password} />
-        <UserRoute path="/user/wishlist" exact component={Wishlist} />
-        <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
-        <AdminRoute path="/admin/category" exact component={CategoryCreate} />
+        <Route path="/product/:slug" exact>
+          <Header />
+          <Product />
+        </Route>
+        <Route
+          path="/category/:slug"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <Header /> <CategoryHome {...props} />
+              </>
+            );
+          }}
+        />
+        <Route
+          path="/sub/:slug"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <Header /> <SubHome {...props} />
+              </>
+            );
+          }}
+        />
+        <Route
+          path="/shop"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <Header /> <Shop {...props} />
+              </>
+            );
+          }}
+        />
+        <Route
+          path="/cart"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <Cart {...props} />
+              </>
+            );
+          }}
+        />
+
+        <UserRoute
+          path="/user/history"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <History {...props} />
+              </>
+            );
+          }}
+        />
+        <UserRoute
+          path="/user/password"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <Password {...props} />
+              </>
+            );
+          }}
+        />
+        <UserRoute
+          path="/user/wishlist"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <Wishlist {...props} />
+              </>
+            );
+          }}
+        />
+        <UserRoute
+          path="/payment"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <Payment {...props} />
+              </>
+            );
+          }}
+        />
+        <UserRoute
+          path="/checkout"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <Checkout {...props} />
+              </>
+            );
+          }}
+        />
+
+        <AdminRoute
+          path="/admin/dashboard"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <AdminDashboard {...props} />
+              </>
+            );
+          }}
+        />
+        <AdminRoute
+          path="/admin/category"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <CategoryCreate {...props} />
+              </>
+            );
+          }}
+        />
         <AdminRoute
           path="/admin/category/:slug"
           exact
-          component={CategoryUpdate}
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <CategoryUpdate {...props} />
+              </>
+            );
+          }}
         />
-        <AdminRoute path="/admin/sub" exact component={SubCreate} />
-        <AdminRoute path="/admin/sub/:slug" exact component={SubUpdate} />
-        <AdminRoute path="/admin/product" exact component={ProductCreate} />
-        <AdminRoute path="/admin/products" exact component={AllProducts} />
+        <AdminRoute
+          path="/admin/sub"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <SubCreate {...props} />
+              </>
+            );
+          }}
+        />
+        <AdminRoute
+          path="/admin/sub/:slug"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <SubUpdate {...props} />
+              </>
+            );
+          }}
+        />
+        <AdminRoute
+          path="/admin/product"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <ProductCreate {...props} />
+              </>
+            );
+          }}
+        />
+        <AdminRoute
+          path="/admin/products"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <AllProducts {...props} />
+              </>
+            );
+          }}
+        />
         <AdminRoute
           path="/admin/product/:slug"
           exact
-          component={ProductUpdate}
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <ProductUpdate {...props} />
+              </>
+            );
+          }}
         />
-        <AdminRoute path="/admin/password" exact component={AdminPassword} />
-        <Route path="/product/:slug" exact component={Product} />
-        <Route path="/category/:slug" exact component={CategoryHome} />
-        <Route path="/sub/:slug" exact component={SubHome} />
-        <Route path="/shop" exact component={Shop} />
-        <Route path="/cart" exact component={Cart} />
-
-        <UserRoute path="/checkout" exact component={Checkout} />
-        <AdminRoute path="/admin/coupon" exact component={CreateCouponPage} />
-        <UserRoute path="/payment" exact component={Payment} />
+        <AdminRoute
+          path="/admin/password"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <AdminPassword {...props} />
+              </>
+            );
+          }}
+        />
+        <AdminRoute
+          path="/admin/coupon"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <HeaderSmall /> <CreateCouponPage {...props} />
+              </>
+            );
+          }}
+        />
       </Switch>
     </Suspense>
   );
