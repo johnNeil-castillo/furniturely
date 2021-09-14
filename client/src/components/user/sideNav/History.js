@@ -83,7 +83,7 @@ const History = () => {
         <div className="col-md-2">
           <UserNav />
         </div>
-        <div className="col text-center">
+        <div className="col text-center mb-4">
           <h4 className="mt-3">
             {orders.length > 0 ? "User purchase orders" : "No purchase orders"}
           </h4>

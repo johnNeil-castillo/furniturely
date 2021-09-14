@@ -84,7 +84,7 @@ const SubCreate = () => {
           )}
 
           <div className="form-group">
-            <label>Parent</label>
+            <label className="my-2">Parent</label>
             <select
               name="category"
               className="form-control"

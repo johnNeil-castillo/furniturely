@@ -155,7 +155,7 @@ const ProductUpdate = ({ match, history }) => {
             <LoadingOutlined className="text-danger h1" />
           ) : (
             <>
-              <h4 className="text-center my-4">Product Create</h4>
+              <h4 className="text-center my-4">Product Update</h4>
               <hr />
             </>
           )}

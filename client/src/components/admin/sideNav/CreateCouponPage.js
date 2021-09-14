@@ -70,7 +70,7 @@ const CreateCouponPage = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="form-group mt-3">
-              <label className="text-muted">Name</label>
+              <label className="text-muted my-2">Name</label>
               <input
                 type="text"
                 className="form-control"
@@ -82,7 +82,7 @@ const CreateCouponPage = () => {
             </div>
 
             <div className="form-group mt-3">
-              <label className="text-muted">Discount %</label>
+              <label className="text-muted mb-2">Discount %</label>
               <input
                 type="text"
                 className="form-control"
@@ -93,7 +93,7 @@ const CreateCouponPage = () => {
             </div>
 
             <div className="form-group mt-3">
-              <label className="text-muted">Expiry</label>
+              <label className="text-muted mb-2">Expiry</label>
               <br />
               <DatePicker
                 className="form-control"
