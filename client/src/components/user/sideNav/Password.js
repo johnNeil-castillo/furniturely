@@ -29,7 +29,7 @@ const Password = () => {
     return (
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Your Password</label>
+          <label className="mb-2">Your Password</label>
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}

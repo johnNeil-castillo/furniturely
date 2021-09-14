@@ -9,8 +9,8 @@ const SideDrawer = () => {
   const { drawer, cart } = useSelector((state) => ({ ...state }));
 
   const imageStyle = {
-    width: "100px",
-    height: "50px",
+    width: "200px",
+    height: "100px",
     objectFit: "cover",
   };
 

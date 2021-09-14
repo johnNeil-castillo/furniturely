@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Menu, Badge, Row, Col } from "antd";
+import { Menu, Badge, Layout, Col, Row, Card } from "antd";
 import {
   AppstoreOutlined,
   SettingOutlined,
@@ -8,6 +8,7 @@ import {
   UserAddOutlined,
   LogoutOutlined,
   ShoppingOutlined,
+  HeartOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
@@ -16,8 +17,6 @@ import { signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Search from "./Search";
-
-const { SubMenu, Item } = Menu;
 
 const Header = () => {
   const [current, setCurrent] = useState("home");
@@ -38,57 +37,85 @@ const Header = () => {
   };
 
   return (
-    <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-      <Col flex={1}>
-        <Item key="home" icon={<AppstoreOutlined />}>
-          <Link to="/">Home</Link>
-        </Item>
-      </Col>
+    <>
+      <Card>
+        <Row align="top">
+          <Col span={5}>
+            <Link>Links</Link>
+          </Col>
 
-      <Item key="shop" icon={<ShoppingOutlined />}>
-        <Link to="/shop">Shop</Link>
-      </Item>
-      <Item key="cart" icon={<ShoppingCartOutlined />}>
-        <Link to="/cart">Cart </Link>
-        <Badge count={cart.length} offset={[0, -15]}></Badge>
-      </Item>
-      {!user && (
-        <Item key="register" icon={<UserAddOutlined />}>
-          <Link to="/register">Register</Link>
-        </Item>
-      )}
-      {!user && (
-        <Item key="login" icon={<UserOutlined />}>
-          <Link to="/login">Login</Link>
-        </Item>
-      )}
-      {user && (
-        <SubMenu
-          key="SubMenu"
-          icon={<SettingOutlined />}
-          title={user.email && user.email.split("@")[0]}
-        >
-          {user && user.role === "subscriber" && (
-            <Item key="Dashboard">
-              <Link to="/user/history">Dashboard</Link>
-            </Item>
+          <Col span={4} offset={13}>
+            <>
+              <Row>
+                <Col offset={6}>
+                  {!user && <Link to="/register">Register</Link>}
+                </Col>
+                <Col offset={6}>{!user && <Link to="/login">Login</Link>}</Col>
+              </Row>
+            </>
+
+            {user && user.role === "subscriber" && (
+              <>
+                <Row>
+                  <Link to="/user/history">Dashboard</Link>
+                  <div onClick={logout}>Logout</div>
+                </Row>
+              </>
+            )}
+            {user && user.role === "admin" && (
+              <>
+                <Row>
+                  <Col offset={6}>
+                    <Link to="/admin/dashboard">Dashboard</Link>
+                  </Col>
+                  <Col offset={6}>
+                    <a onClick={logout}>Logout</a>
+                  </Col>
+                </Row>
+              </>
+            )}
+          </Col>
+        </Row>
+        <Row align="middle">
+          <Col span={4}>
+            <Card bordered={false} className="text-center">
+              <Link className="fs-4" to="/">
+                Logo
+              </Link>
+            </Card>
+          </Col>
+          <Col span={14} offset={1}>
+            <Card bordered={false}>
+              <Search />
+            </Card>
+          </Col>
+          <Col span={1} className="text-center">
+            <Card bordered={false}>
+              <Link to="/shop">
+                <ShoppingOutlined className="fs-5" />
+              </Link>
+            </Card>
+          </Col>
+          <Col span={2} className="text-center">
+            <Card bordered={false}>
+              <Link to="/cart">
+                <ShoppingCartOutlined className="fs-5" />
+              </Link>
+              <Badge count={cart.length} offset={[0, -15]}></Badge>
+            </Card>
+          </Col>
+          {user && (
+            <Col span={1} className="text-center">
+              <Card bordered={false}>
+                <Link to="/user/wishlist">
+                  <HeartOutlined className="fs-5" />
+                </Link>
+              </Card>
+            </Col>
           )}
-
-          {user && user.role === "admin" && (
-            <Item key="Dashboard">
-              <Link to="/admin/dashboard">Dashboard</Link>
-            </Item>
-          )}
-
-          <Item icon={<LogoutOutlined />} onClick={logout}>
-            Logout
-          </Item>
-        </SubMenu>
-      )}
-      <span className="p-1">
-        <Search />
-      </span>
-    </Menu>
+        </Row>
+      </Card>
+    </>
   );
 };
 

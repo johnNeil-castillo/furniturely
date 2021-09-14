@@ -4,6 +4,7 @@ import { getWishlist, removeWishlist } from "../../../functions/user";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { DeleteOutlined } from "@ant-design/icons";
+import { Card } from "antd";
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -38,15 +39,15 @@ const Wishlist = () => {
           <h4 className="text-center my-4">Wishlist</h4>
 
           {wishlist.map((p) => (
-            <div key={p._id} className="alert alert-secondary">
+            <Card key={p._id}>
               <Link to={`/product/${p.slug}`}>{p.title}</Link>
               <span
                 onClick={() => handleRemove(p._id)}
-                className="btn btn-sm float-right"
+                className="btn btn-sm float-end"
               >
                 <DeleteOutlined className="text-danger" />
               </span>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
