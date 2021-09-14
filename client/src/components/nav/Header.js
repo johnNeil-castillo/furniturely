@@ -1,12 +1,7 @@
 import { useState } from "react";
 
-import { Menu, Badge, Layout, Col, Row, Card } from "antd";
+import { Badge, Col, Row, Card } from "antd";
 import {
-  AppstoreOutlined,
-  SettingOutlined,
-  UserOutlined,
-  UserAddOutlined,
-  LogoutOutlined,
   ShoppingOutlined,
   HeartOutlined,
   ShoppingCartOutlined,
@@ -76,6 +71,7 @@ const Header = () => {
             )}
           </Col>
         </Row>
+
         <Row align="middle">
           <Col span={4}>
             <Card bordered={false} className="text-center">
