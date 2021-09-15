@@ -36,7 +36,7 @@ const CategoryUpdate = ({ history, match }) => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-2">
           <AdminNav />
@@ -45,14 +45,13 @@ const CategoryUpdate = ({ history, match }) => {
           {loading ? (
             <h4 className="text-danger">Loading..</h4>
           ) : (
-            <h4>Update category</h4>
+            <h4 className="text-center my-2">Update category</h4>
           )}
           <CategoryForm
             handleSubmit={handleSubmit}
             setName={setName}
             name={name}
           />
-          <hr />
         </div>
       </div>
     </div>

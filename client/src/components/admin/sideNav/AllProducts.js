@@ -43,19 +43,19 @@ const AllProducts = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row ">
         <div className="col col-md-2">
           <AdminNav />
         </div>
         <div className="col col-md-10">
           {loading ? (
-            <h4 className="my-5 text-center text-danger">
+            <h4 className="my-2 text-center text-danger">
               <Spin />
             </h4>
           ) : (
             <>
-              <h4 className="my-5 text-center">All Products</h4>
+              <h4 className="my-2 text-center">All Products</h4>
               <div className="col">
                 <div className="row">
                   {products.map((product) => (

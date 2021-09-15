@@ -49,8 +49,9 @@ const SideDrawer = () => {
 
       <Link to="/cart">
         <button
+          style={{ backgroundColor: "#515af6", color: "white" }}
           onClick={() => dispatch({ type: "SET_VISIBLE", payload: false })}
-          className="text-center btn btn-primary btn-block"
+          className="text-center btn btn-block"
         >
           Go To Cart
         </button>

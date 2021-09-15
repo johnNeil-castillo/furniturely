@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Divider } from "antd";
 
 const AdminNav = () => {
   return (
@@ -47,7 +48,7 @@ const AdminNav = () => {
           </Link>
         </li>
 
-        <hr />
+        <Divider />
         <li className="nav-item">
           <Link to="/user/history" className="nav-link">
             User Dashboard

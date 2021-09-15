@@ -78,13 +78,13 @@ const History = () => {
     ));
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-2">
           <UserNav />
         </div>
-        <div className="col text-center mb-4">
-          <h4 className="mt-3">
+        <div className="col text-center mb-2">
+          <h4 className="mt-2">
             {orders.length > 0 ? "User purchase orders" : "No purchase orders"}
           </h4>
           {showEachOrders()}

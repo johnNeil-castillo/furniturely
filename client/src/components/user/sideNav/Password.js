@@ -51,7 +51,7 @@ const Password = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-2">
           <UserNav />
@@ -60,7 +60,7 @@ const Password = () => {
           {loading ? (
             <h4 className="text-danger">Loading..</h4>
           ) : (
-            <h4 className="text-center my-4">Password Update</h4>
+            <h4 className="text-center my-2">Password Update</h4>
           )}
           {passwordUpdateForm()}
         </div>

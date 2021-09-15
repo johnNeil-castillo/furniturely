@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ProductCardInCheckout from "./ProductCardInCheckout";
 import { userCart } from "../../functions/user";
-import { Card } from "antd";
+import { Card, Divider } from "antd";
 
 const Cart = ({ history }) => {
   const { cart, user } = useSelector((state) => ({ ...state }));
@@ -66,7 +66,7 @@ const Cart = ({ history }) => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-8 mt-4 text-center">
           <Card className="pt-2">
@@ -85,8 +85,8 @@ const Cart = ({ history }) => {
         </div>
         <div className="col-md-4 mt-4 ">
           <Card>
-            <h4>OrderSummary</h4>
-            <hr />
+            <h4>Order Summary</h4>
+            <Divider />
             <p>Products</p>
             {cart.map((c, i) => (
               <div key={i}>
@@ -95,33 +95,38 @@ const Cart = ({ history }) => {
                 </p>
               </div>
             ))}
-            <hr />
+            <Divider />
             Total: <b>${getTotal()}</b>
-            <hr />
+            <Divider />
             {user ? (
               <>
                 <button
                   onClick={saveOrderToDb}
-                  className="btn btn-sm btn-primary mt-2"
+                  className="btn btn-sm  mt-2"
                   disabled={!cart.length}
+                  style={{ backgroundColor: "#515af6", color: "white" }}
                 >
                   Proceed to Checkout
                 </button>
 
                 <button
                   onClick={saveCashOrderToDb}
-                  className="btn btn-sm btn-warning mt-2 float-end"
+                  className="btn btn-sm mt-2 float-end"
                   disabled={!cart.length}
+                  style={{ backgroundColor: "#bc72ad", color: "white" }}
                 >
                   Pay Cash on Delivery
                 </button>
               </>
             ) : (
-              <button className="btn btn-sm btn-primary mt-2">
-                <Link to={{ pathname: "/login", state: { from: "cart" } }}>
+              <Link to={{ pathname: "/login", state: { from: "cart" } }}>
+                <button
+                  className="btn btn-sm btn-primary mt-2"
+                  style={{ backgroundColor: "#515af6", color: "white" }}
+                >
                   Login to Checkout
-                </Link>
-              </button>
+                </button>
+              </Link>
             )}
           </Card>
         </div>

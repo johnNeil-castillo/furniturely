@@ -22,13 +22,14 @@ const ShowPaymentInfo = ({ order, showStatus = true }) => (
       <span>
         <b>Method:</b> {order.paymentIntent.payment_method_types[0]}
       </span>
-      {" / "}
+
+      <br />
       <span>
         <b>Payment:</b> {order.paymentIntent.status.toUpperCase()}
       </span>
       {" / "}
       <span>
-        <b>Orderd on:</b>
+        <b>Ordered on:</b>
         {"  "}
         {new Date(order.paymentIntent.created * 1000).toLocaleString()}
       </span>

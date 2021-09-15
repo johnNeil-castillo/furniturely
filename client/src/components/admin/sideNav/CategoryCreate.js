@@ -69,7 +69,7 @@ const CategoryCreate = () => {
   const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-2">
           <AdminNav />
@@ -79,7 +79,7 @@ const CategoryCreate = () => {
             <h4 className="text-danger">Loading..</h4>
           ) : (
             <>
-              <h4 className="text-center my-4">Create category</h4>{" "}
+              <h4 className="text-center my-2">Create category</h4>{" "}
               <CategoryForm
                 handleSubmit={handleSubmit}
                 setName={setName}
@@ -98,12 +98,12 @@ const CategoryCreate = () => {
                   onClick={() => handleRemove(c.slug)}
                   className="btn btn-sm float-end  "
                 >
-                  <DeleteOutlined className="text-danger" />
+                  <DeleteOutlined className="text-danger fs-6" />
                 </span>
 
                 <Link to={`/admin/category/${c.slug}`}>
                   <span className="btn btn-sm float-end  ">
-                    <EditOutlined className="text-warning" />
+                    <EditOutlined className="text-warning fs-6" />
                   </span>
                 </Link>
               </Card>

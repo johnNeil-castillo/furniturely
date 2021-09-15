@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { Card, Spin } from "antd";
 import { Link } from "react-router-dom";
+import LogoWithText from "../../images/Logo-with-text-01.svg";
 
 const Register = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -54,6 +55,7 @@ const Register = ({ history }) => {
         />
         <br />
         <button
+          style={{ backgroundColor: "#515af6", color: "white" }}
           className="btn btn-light d-grid gap-2 col-6 mx-auto"
           type="submit"
         >
@@ -66,12 +68,20 @@ const Register = ({ history }) => {
   return (
     <div className="container ">
       <div className="row">
-        <div className="col-md-6 offset-md-3 mt-5 pt-3">
+        <div className="col-md-6 offset-md-3 ">
           <Card bordered={false} className="p-3">
             <h4 className="mb-3 text-center">
-              <Link to="/">Logo</Link>
+              <Link to="/">
+                <img
+                  style={{ height: "150px" }}
+                  src={LogoWithText}
+                  alt="sample"
+                />
+              </Link>
             </h4>
-            <h5 className="mb-5 text-center">Register</h5>
+            <h5 className="mb-5 text-center" style={{ color: "#515af6" }}>
+              Register
+            </h5>
             {registerForm()}
             <Link to="/login">
               <Card.Meta

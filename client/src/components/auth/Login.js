@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { createOrUpdateUser } from "../../functions/auth";
 import { Card, Spin } from "antd";
+import LogoWithText from "../../images/Logo-with-text-01.svg";
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -128,6 +129,7 @@ const Login = ({ history }) => {
         />
         <br />
         <Button
+          style={{ backgroundColor: "#515af6", color: "white" }}
           onClick={handleSubmit}
           type="primary"
           className="mb-3"
@@ -144,7 +146,7 @@ const Login = ({ history }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6 offset-md-3 mt-5 pt-3">
+        <div className="col-md-6 offset-md-3 ">
           <Card bordered={false} className="p-3">
             {loading ? (
               <h4 className="text-center ">
@@ -152,10 +154,18 @@ const Login = ({ history }) => {
               </h4>
             ) : (
               <>
-                <h4 className="text-center mb-3">
-                  <Link to="/">Logo</Link>
+                <h4 className="text-center mb-1">
+                  <Link to="/">
+                    <img
+                      style={{ height: "150px" }}
+                      src={LogoWithText}
+                      alt="sample"
+                    />
+                  </Link>
                 </h4>
-                <h5 className="text-center mb-5">Login</h5>
+                <h5 className="text-center mb-4" style={{ color: "#515af6" }}>
+                  Login
+                </h5>
 
                 {loginForm()}
 

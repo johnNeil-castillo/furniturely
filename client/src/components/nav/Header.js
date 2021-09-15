@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Badge, Col, Row, Card } from "antd";
+import { Badge, Col, Row, Card, Divider } from "antd";
 import {
   ShoppingOutlined,
   HeartOutlined,
@@ -12,6 +12,7 @@ import { signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Search from "./Search";
+import Logo from "../../images/Logo-01.svg";
 
 const Header = () => {
   const [current, setCurrent] = useState("home");
@@ -33,8 +34,8 @@ const Header = () => {
 
   return (
     <>
-      <Card bodyStyle={{ background: "#fefae0" }} bordered={false}>
-        <Row align="top" className="container">
+      <Card className="container mx-auto" bordered={false}>
+        <Row align="top">
           <Col className="text-center" span={4}>
             <Link>Links</Link>
           </Col>
@@ -60,7 +61,9 @@ const Header = () => {
           {user && user.role === "subscriber" && (
             <>
               <Col offset={1}>
-                <a onClick={logout}>Logout</a>
+                <a className="primary" onClick={logout}>
+                  Logout
+                </a>
               </Col>
             </>
           )}
@@ -76,26 +79,23 @@ const Header = () => {
           {user && user.role === "admin" && (
             <>
               <Col offset={1}>
-                <a onClick={logout}>Logout</a>
+                <a onClick={logout} className="primary">
+                  Logout
+                </a>
               </Col>
             </>
           )}
         </Row>
-
         <Row align="middle">
           <Col span={4}>
-            <Card
-              bodyStyle={{ background: "#fefae0" }}
-              bordered={false}
-              className="text-center"
-            >
+            <Card bordered={false} className="text-center">
               <Link className="fs-4" to="/">
-                Logo
+                <img style={{ height: "90px" }} src={Logo} alt="" />
               </Link>
             </Card>
           </Col>
           <Col span={14} offset={1}>
-            <Card bodyStyle={{ background: "#fefae0" }} bordered={false}>
+            <Card bordered={false}>
               <Search />
             </Card>
           </Col>
@@ -118,6 +118,7 @@ const Header = () => {
             </Col>
           )}
         </Row>
+        <Divider />
       </Card>
     </>
   );

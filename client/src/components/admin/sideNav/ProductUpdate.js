@@ -28,18 +28,13 @@ const initialState = {
     "Green",
     "Orange",
     "Cyan",
-    "Yellow Green",
+    "Peach",
+    "Violet",
+    "Nude",
   ],
   brands: [
-    "Restoration Hardware",
     "Roche Bobois",
     "Edra",
-    "Poliform",
-    "Christopher Guy",
-    "Kartell",
-    "Baker",
-    "BRABBU",
-    "Boca do Lobo",
     "FENDI CASA",
     "Joybird",
     "IKEA",
@@ -144,7 +139,7 @@ const ProductUpdate = ({ match, history }) => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-2">
           <AdminNav />

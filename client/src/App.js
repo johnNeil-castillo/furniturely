@@ -117,10 +117,17 @@ const App = () => {
         <Route path="/register" exact component={Register} />
         <Route path="/register/complete" exact component={RegisterComplete} />
         <Route path="/forgot/password" exact component={ForgotPassowrd} />
-        <Route path="/product/:slug" exact>
-          <Header />
-          <Product />
-        </Route>
+        <Route
+          path="/product/:slug"
+          exact
+          render={(props) => {
+            return (
+              <>
+                <Header /> <Product {...props} />
+              </>
+            );
+          }}
+        ></Route>
         <Route
           path="/category/:slug"
           exact

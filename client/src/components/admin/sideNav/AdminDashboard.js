@@ -33,14 +33,14 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row ">
         <div className="col col-md-2">
           <AdminNav />
         </div>
 
         <div className="col">
-          <h4 className="text-center my-4">Admin Dashboard</h4>
+          <h4 className="text-center mt-2 mb-4">Admin Dashboard</h4>
 
           <Orders orders={orders} handleStatusChange={handleStatusChange} />
         </div>

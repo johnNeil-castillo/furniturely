@@ -71,7 +71,7 @@ const SubCreate = () => {
   const searched = (keyword) => (s) => s.name.toLowerCase().includes(keyword);
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-2">
           <AdminNav />
@@ -80,7 +80,7 @@ const SubCreate = () => {
           {loading ? (
             <h4 className="text-danger">Loading..</h4>
           ) : (
-            <h4 className="text-center my-4">Create sub category</h4>
+            <h4 className="text-center my-2">Create sub category</h4>
           )}
 
           <div className="form-group">
@@ -116,12 +116,12 @@ const SubCreate = () => {
                   onClick={() => handleRemove(s.slug)}
                   className="btn btn-sm float-end"
                 >
-                  <DeleteOutlined className="text-danger" />
+                  <DeleteOutlined className="text-danger fs-6" />
                 </span>
 
                 <Link to={`/admin/sub/${s.slug}`}>
                   <span className="btn btn-sm float-end  ">
-                    <EditOutlined className="text-warning" />
+                    <EditOutlined className="text-warning fs-6" />
                   </span>
                 </Link>
               </Card>

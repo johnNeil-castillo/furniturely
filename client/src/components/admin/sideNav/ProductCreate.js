@@ -7,6 +7,7 @@ import ProductCreateForm from "../forms/ProductCreateForm";
 import { getCategories, getCategorySubs } from "../../../functions/category";
 import FileUpload from "../forms/FileUpload";
 import { LoadingOutlined } from "@ant-design/icons";
+import { Divider } from "antd";
 
 const initialState = {
   title: "",
@@ -93,7 +94,7 @@ const ProductCreate = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-2">
           <AdminNav />
@@ -103,8 +104,8 @@ const ProductCreate = () => {
             <LoadingOutlined className="text-danger h1" />
           ) : (
             <>
-              <h4 className="mt-4 mb-4 text-center">Product Create</h4>
-              <hr />
+              <h4 className="mt-2  text-center">Product Create</h4>
+              <Divider />
               <div className="p-3">
                 <FileUpload
                   values={values}

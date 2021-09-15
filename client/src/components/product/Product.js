@@ -6,7 +6,7 @@ import { getRelated } from "../../functions/product";
 import ProductCard from "../product/cards/ProductCard";
 import LoadingCard from "../product/cards/LoadingCard";
 
-import { Skeleton } from "antd";
+import { Divider, Skeleton } from "antd";
 
 const Product = ({ match }) => {
   const [product, setProduct] = useState({});
@@ -58,7 +58,7 @@ const Product = ({ match }) => {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container">
         {loading ? (
           <>
             <div className="row">
@@ -87,9 +87,9 @@ const Product = ({ match }) => {
             </div>
             <div className="row ">
               <div className="col text-center pt-5 pb-5">
-                <hr />
+                <Divider />
                 <h4>Related Products</h4>
-                <hr />
+                <Divider />
               </div>
             </div>
             <div className="row pb-5">

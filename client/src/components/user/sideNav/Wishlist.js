@@ -30,22 +30,24 @@ const Wishlist = () => {
     });
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-2">
           <UserNav />
         </div>
         <div className="col">
-          <h4 className="text-center my-4">Wishlist</h4>
+          <h4 className="text-center mb-4 mt-2 ">Wishlist</h4>
 
           {wishlist.map((p) => (
             <Card key={p._id}>
-              <Link to={`/product/${p.slug}`}>{p.title}</Link>
+              <Link className="fs-5 " to={`/product/${p.slug}`}>
+                {p.title}
+              </Link>
               <span
                 onClick={() => handleRemove(p._id)}
                 className="btn btn-sm float-end"
               >
-                <DeleteOutlined className="text-danger" />
+                <DeleteOutlined className="text-danger fs-6" />
               </span>
             </Card>
           ))}

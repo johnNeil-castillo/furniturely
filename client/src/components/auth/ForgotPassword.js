@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { Card, Spin } from "antd";
 import { Link } from "react-router-dom";
+import LogoWithText from "../../images/Logo-with-text-01.svg";
 
 const ForgotPassowrd = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -43,7 +44,7 @@ const ForgotPassowrd = ({ history }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6 offset-md-3 mt-5 pt-3">
+        <div className="col-md-6 offset-md-3 ">
           <Card bordered={false} className="p-3">
             {loading ? (
               <h4 className="text-danger">
@@ -52,9 +53,17 @@ const ForgotPassowrd = ({ history }) => {
             ) : (
               <>
                 <h4 className="text-center mb-3">
-                  <Link to="/">Logo</Link>
+                  <Link to="/">
+                    <img
+                      style={{ height: "150px" }}
+                      src={LogoWithText}
+                      alt="sample"
+                    />
+                  </Link>
                 </h4>
-                <h5 className="text-center mb-5">Forgot Password</h5>{" "}
+                <h5 className="text-center mb-5" style={{ color: "#515af6" }}>
+                  Forgot Password
+                </h5>{" "}
                 <form onSubmit={handleSubmit}>
                   <input
                     type="email"
@@ -66,7 +75,8 @@ const ForgotPassowrd = ({ history }) => {
                   />
                   <br />
                   <button
-                    className="btn btn-light d-grid gap-2 col-6 mx-auto"
+                    style={{ backgroundColor: "#515af6" }}
+                    className="btn btn-primary d-grid gap-2 col-6 mx-auto"
                     disabled={!email}
                   >
                     Submit

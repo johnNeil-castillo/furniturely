@@ -46,7 +46,7 @@ const SubUpdate = ({ match, history }) => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-2">
           <AdminNav />
@@ -55,7 +55,7 @@ const SubUpdate = ({ match, history }) => {
           {loading ? (
             <h4 className="text-danger">Loading..</h4>
           ) : (
-            <h4>Update sub category</h4>
+            <h4 className="text-center my-2">Update sub category</h4>
           )}
 
           <div className="form-group">

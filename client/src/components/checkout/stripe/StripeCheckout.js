@@ -105,9 +105,13 @@ const StripeCheckout = () => {
       {!succeeded && (
         <div>
           {coupon && totalAfterDiscount !== undefined ? (
-            <p className="alert alert-success">{`Total after discount: $${totalAfterDiscount}`}</p>
+            <Card bordered={false} className="text-success fs-5">
+              <b>{`Total after discount: $${totalAfterDiscount}`}</b>
+            </Card>
           ) : (
-            <p className="alert alert-danger">No coupon applied</p>
+            <Card bordered={false} className="text-danger fs-5">
+              No coupon applied
+            </Card>
           )}
         </div>
       )}

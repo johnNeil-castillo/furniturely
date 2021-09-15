@@ -10,6 +10,7 @@ import {
 import "react-datepicker/dist/react-datepicker.css";
 import { DeleteOutlined } from "@ant-design/icons";
 import AdminNav from "../AdminNav";
+import { Spin } from "antd";
 
 const CreateCouponPage = () => {
   const [name, setName] = useState("");
@@ -39,7 +40,9 @@ const CreateCouponPage = () => {
         setExpiry("");
         toast.success(`"${res.data.name}" is created`);
       })
-      .catch((err) => console.log("create coupon err", err));
+      .catch((err) => {
+        console.log("create coupon err", err);
+      });
   };
 
   const handleRemove = (couponId) => {
@@ -56,56 +59,62 @@ const CreateCouponPage = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         <div className="col-md-2">
           <AdminNav />
         </div>
         <div className="col-md-10">
           {loading ? (
-            <h4 className="text-danger">Loading...</h4>
+            <h4 className="text-center">
+              <Spin />
+            </h4>
           ) : (
-            <h4 className="text-center my-4">Coupon</h4>
+            <>
+              {" "}
+              <h4 className="text-center my-2">Coupon</h4>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group mt-3">
+                  <label className="text-muted my-2">Name</label>
+                  <input
+                    minLength="6"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setName(e.target.value)}
+                    value={name}
+                    autoFocus
+                    required
+                  />
+                </div>
+
+                <div className="form-group mt-3">
+                  <label className="text-muted mb-2">Discount %</label>
+                  <input
+                    maxLength="2"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setDiscount(e.target.value)}
+                    value={discount}
+                    required
+                  />
+                </div>
+
+                <div className="form-group mt-3">
+                  <label className="text-muted mb-2">Expiry</label>
+                  <br />
+                  <DatePicker
+                    className="form-control"
+                    selected={new Date()}
+                    value={expiry}
+                    onChange={(date) => setExpiry(date)}
+                    required
+                  />
+                </div>
+
+                <button className="btn btn-outline-primary mt-3">Save</button>
+              </form>
+            </>
           )}
-
-          <form onSubmit={handleSubmit}>
-            <div className="form-group mt-3">
-              <label className="text-muted my-2">Name</label>
-              <input
-                type="text"
-                className="form-control"
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-                autoFocus
-                required
-              />
-            </div>
-
-            <div className="form-group mt-3">
-              <label className="text-muted mb-2">Discount %</label>
-              <input
-                type="text"
-                className="form-control"
-                onChange={(e) => setDiscount(e.target.value)}
-                value={discount}
-                required
-              />
-            </div>
-
-            <div className="form-group mt-3">
-              <label className="text-muted mb-2">Expiry</label>
-              <br />
-              <DatePicker
-                className="form-control"
-                selected={new Date()}
-                value={expiry}
-                onChange={(date) => setExpiry(date)}
-                required
-              />
-            </div>
-
-            <button className="btn btn-outline-primary mt-3">Save</button>
-          </form>
 
           <br />
 

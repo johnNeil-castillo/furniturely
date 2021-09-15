@@ -27,15 +27,8 @@ const Shop = () => {
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
   const [brands, setBrands] = useState([
-    "Restoration Hardware",
     "Roche Bobois",
     "Edra",
-    "Poliform",
-    "Christopher Guy",
-    "Kartell",
-    "Baker",
-    "BRABBU",
-    "Boca do Lobo",
     "FENDI CASA",
     "Joybird",
     "IKEA",
@@ -53,7 +46,9 @@ const Shop = () => {
     "Green",
     "Orange",
     "Cyan",
-    "Yellow Green",
+    "Peach",
+    "Violet",
+    "Nude",
   ]);
   const [color, setColor] = useState("");
   const [shipping, setShipping] = useState("");
@@ -323,7 +318,7 @@ const Shop = () => {
   };
 
   return (
-    <div className="container-fluid mt-3">
+    <div className="container mt-3">
       <div className="row">
         <div className="col-lg-2 pt-2">
           <h6>Filter</h6>

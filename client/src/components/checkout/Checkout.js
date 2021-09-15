@@ -10,7 +10,7 @@ import {
 import { toast } from "react-toastify";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { Card, Input } from "antd";
+import { Card, Divider, Input } from "antd";
 
 const Checkout = ({ history }) => {
   const [products, setProducts] = useState([]);
@@ -90,7 +90,11 @@ const Checkout = ({ history }) => {
         onChange={setAddress}
         className="mb-2 "
       />
-      <button className="btn btn-primary mt-5" onClick={saveAddressToDb}>
+      <button
+        className="btn  mt-5"
+        onClick={saveAddressToDb}
+        style={{ backgroundColor: "#515af6", color: "white" }}
+      >
         Save
       </button>
     </>
@@ -119,7 +123,11 @@ const Checkout = ({ history }) => {
           }}
           value={coupon}
         />
-        <button onClick={applyDiscountCoupon} className="btn btn-primary mt-3">
+        <button
+          onClick={applyDiscountCoupon}
+          className="btn mt-3"
+          style={{ backgroundColor: "#515af6", color: "white" }}
+        >
           Apply
         </button>
       </>
@@ -151,7 +159,7 @@ const Checkout = ({ history }) => {
   };
 
   return (
-    <div className="row container-fluid">
+    <div className="row container mx-auto">
       <div className="col-md-7 mt-3">
         <Card bordered={false}>
           <h4 className="mb-3">Delivery Address</h4>
@@ -168,27 +176,28 @@ const Checkout = ({ history }) => {
         </Card>
       </div>
 
-      <div className="col-md-5 mt-5">
+      <div className="col-md-5 mt-4">
         <Card>
           <h4>Order Summary</h4>
-          <hr />
+          <Divider />
           <b>
             Total Product{products.length > 1 ? "s" : ""}: {products.length}
           </b>
 
           {showProductSummary()}
-          <hr />
+          <Divider />
           <h5>Cart Total: $ {total}</h5>
           {totalAfterDiscount > 0 && (
-            <h5 className="bg-success p-2 text-center">
-              Discount Applied: Total Payable: ${totalAfterDiscount}
-            </h5>
+            <Card bordered={false} className="text-center text-success fs-6">
+              <b>Discount Applied: Total Payable: ${totalAfterDiscount}</b>
+            </Card>
           )}
-          <div className="row text-center container-fluid">
-            <div className="col-md-6">
+          <div className="row text-center container">
+            <div className="col-md-7">
               {COD ? (
                 <button
-                  className="btn btn-primary"
+                  style={{ backgroundColor: "#515af6", color: "white" }}
+                  className="btn"
                   disabled={!addressSaved || !products.length}
                   onClick={createCashOrder}
                 >
@@ -196,7 +205,8 @@ const Checkout = ({ history }) => {
                 </button>
               ) : (
                 <button
-                  className="btn btn-primary"
+                  style={{ backgroundColor: "#515af6", color: "white" }}
+                  className="btn "
                   disabled={!addressSaved || !products.length}
                   onClick={() => history.push("/payment")}
                 >
@@ -205,11 +215,12 @@ const Checkout = ({ history }) => {
               )}
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-5">
               <button
                 disabled={!products.length}
                 onClick={emptyCart}
-                className="btn btn-primary"
+                className="btn "
+                style={{ backgroundColor: "#ba7272", color: "white" }}
               >
                 Empty Cart
               </button>
