@@ -11,6 +11,7 @@ const AdminProductCard = ({ product, handleRemove }) => {
 
   return (
     <Card
+      hoverable
       cover={
         <img
           alt="sample"

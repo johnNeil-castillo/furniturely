@@ -39,7 +39,6 @@ const Product = ({ match }) => {
     }
   }, [product.ratings, user]);
 
-  // Move to new component
   const loadProduct = () => {
     getProduct(slug).then((res) => {
       setProduct(res.data);

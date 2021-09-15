@@ -105,7 +105,7 @@ const Checkout = ({ history }) => {
       <div key={i} className="mt-4">
         <p>
           {p.product.title} ({p.color}) x {p.count} ={" "}
-          {p.product.price * p.count}
+          {(p.product.price * p.count).toLocaleString()}
         </p>
       </div>
     ));
@@ -186,10 +186,12 @@ const Checkout = ({ history }) => {
 
           {showProductSummary()}
           <Divider />
-          <h5>Cart Total: $ {total}</h5>
+          <h5>Cart Total: $ {total.toLocaleString()}</h5>
           {totalAfterDiscount > 0 && (
             <Card bordered={false} className="text-center text-success fs-6">
-              <b>Discount Applied: Total Payable: ${totalAfterDiscount}</b>
+              <b>
+                Discount Applied Total Payable: <br /> ${totalAfterDiscount}
+              </b>
             </Card>
           )}
           <div className="row text-center container">

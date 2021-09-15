@@ -15,7 +15,7 @@ const Home = () => {
           <Link to="/category/sofa">
             <img
               className="container"
-              src="https://res.cloudinary.com/dsg7j2b4z/image/upload/v1631639869/Sofa_flptco.jpg"
+              src="https://res.cloudinary.com/dsg7j2b4z/image/upload/v1631719576/Sofa_wmu5bd.jpg"
               alt=""
             />
           </Link>
@@ -24,7 +24,7 @@ const Home = () => {
           <Link to="/category/bed">
             <img
               className="container"
-              src="https://res.cloudinary.com/dsg7j2b4z/image/upload/v1631639869/Bed_ouyy3a.jpg"
+              src="https://res.cloudinary.com/dsg7j2b4z/image/upload/v1631719576/Sofa_wmu5bd.jpg"
               alt=""
             />
           </Link>
@@ -33,7 +33,7 @@ const Home = () => {
           <Link to="/category/table">
             <img
               className="container"
-              src="https://res.cloudinary.com/dsg7j2b4z/image/upload/v1631639869/Table_rgwhry.jpg"
+              src="https://res.cloudinary.com/dsg7j2b4z/image/upload/v1631719572/Table_jhtk2m.jpg"
               alt=""
             />
           </Link>

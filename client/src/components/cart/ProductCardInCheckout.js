@@ -89,7 +89,7 @@ const ProductCardInCheckout = ({ p }) => {
         </td>
         <td className="text-center py-4 ">{p.title}</td>
         <td className="text-center py-4">
-          <b>${p.price}</b>
+          <b>${p.price.toLocaleString()}</b>
         </td>
         <td className="text-center py-4">{p.brand}</td>
         <td className="text-center py-4">{p.color}</td>

@@ -18,7 +18,6 @@ const Wishlist = () => {
     loadSingleWishlist();
   }, [user.token]);
 
-  // Move to new Component
   const loadWishlist = () =>
     getWishlist(user.token).then((res) => {
       setWishlist(res.data.wishlist);

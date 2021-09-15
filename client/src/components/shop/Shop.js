@@ -56,11 +56,21 @@ const Shop = () => {
 
   useEffect(() => {
     loadAllProducts();
-
     getCategories().then((res) => setCategories(res.data));
-
     getSubs().then((res) => setSubs(res.data));
   }, []);
+
+  useEffect(() => {
+    const delayed = setTimeout(() => {
+      fetchProducts({ query: text });
+    }, 300);
+    return () => clearTimeout(delayed);
+  }, [text]);
+
+  useEffect(() => {
+    console.log("ok to request");
+    fetchProducts({ price });
+  }, [ok, price]);
 
   const fetchProducts = (arg) => {
     fetchProductsByFilter(arg).then((res) => {
@@ -74,18 +84,6 @@ const Shop = () => {
       setLoading(false);
     });
   };
-
-  useEffect(() => {
-    const delayed = setTimeout(() => {
-      fetchProducts({ query: text });
-    }, 300);
-    return () => clearTimeout(delayed);
-  }, [text]);
-
-  useEffect(() => {
-    console.log("ok to request");
-    fetchProducts({ price });
-  }, [ok, price]);
 
   const handleCheck = (e) => {
     dispatch({
@@ -188,19 +186,6 @@ const Shop = () => {
     </div>
   );
 
-  const showSubs = () => {
-    return subs.map((s) => (
-      <div
-        key={s._id}
-        className="p-1 m-1 badge bg-secondary "
-        onClick={() => handleSub(s)}
-        style={{ cursor: "pointer" }}
-      >
-        {s.name}
-      </div>
-    ));
-  };
-
   const handleSub = (sub) => {
     setSub(sub);
     dispatch({
@@ -214,6 +199,34 @@ const Shop = () => {
     setColor("");
     setShipping("");
     fetchProducts({ sub });
+  };
+
+  const showSubs = () => {
+    return subs.map((s) => (
+      <div
+        key={s._id}
+        className="p-1 m-1 badge bg-secondary "
+        onClick={() => handleSub(s)}
+        style={{ cursor: "pointer" }}
+      >
+        {s.name}
+      </div>
+    ));
+  };
+
+  const handleBrand = (e) => {
+    setSub("");
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryIds([]);
+    setStar("");
+    setColor("");
+    setShipping("");
+    setBrand(e.target.value);
+    fetchProducts({ brand: e.target.value });
   };
 
   const showBrands = () =>
@@ -232,7 +245,7 @@ const Shop = () => {
       </Col>
     ));
 
-  const handleBrand = (e) => {
+  const handleColor = (e) => {
     setSub("");
     dispatch({
       type: "SEARCH_QUERY",
@@ -241,10 +254,10 @@ const Shop = () => {
     setPrice([0, 0]);
     setCategoryIds([]);
     setStar("");
-    setColor("");
+    setBrand("");
+    setColor(e.target.value);
     setShipping("");
-    setBrand(e.target.value);
-    fetchProducts({ brand: e.target.value });
+    fetchProducts({ color: e.target.value });
   };
 
   const showColors = () =>
@@ -263,7 +276,7 @@ const Shop = () => {
       </Col>
     ));
 
-  const handleColor = (e) => {
+  const handleShippingChange = (e) => {
     setSub("");
     dispatch({
       type: "SEARCH_QUERY",
@@ -273,9 +286,9 @@ const Shop = () => {
     setCategoryIds([]);
     setStar("");
     setBrand("");
-    setColor(e.target.value);
-    setShipping("");
-    fetchProducts({ color: e.target.value });
+    setColor("");
+    setShipping(e.target.value);
+    fetchProducts({ shipping: e.target.value });
   };
 
   const showShipping = () => {
@@ -301,21 +314,6 @@ const Shop = () => {
         </div>
       </>
     );
-  };
-
-  const handleShippingChange = (e) => {
-    setSub("");
-    dispatch({
-      type: "SEARCH_QUERY",
-      payload: { text: "" },
-    });
-    setPrice([0, 0]);
-    setCategoryIds([]);
-    setStar("");
-    setBrand("");
-    setColor("");
-    setShipping(e.target.value);
-    fetchProducts({ shipping: e.target.value });
   };
 
   return (
@@ -382,7 +380,9 @@ const Shop = () => {
               <h5 style={{ color: "#515af6" }} className="text-center">
                 Products
               </h5>
-              {products.length < 1 && <p>No Products found</p>}
+              {products.length < 1 && (
+                <p className="text-center">No Products found</p>
+              )}
               <div className="row pb-5">
                 {products.map((p) => (
                   <div key={p._id} className="col-md-4 mt-3 mb-2">

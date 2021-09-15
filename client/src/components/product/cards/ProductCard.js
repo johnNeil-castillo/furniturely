@@ -60,7 +60,7 @@ const ProductCard = ({ product }) => {
         >
           <Card.Meta title={`${title}`} />
           <div>{brand}</div>
-          <h5 className="mt-3"> {`$${price}`}</h5>
+          <h5 className="mt-3"> {`$${price.toLocaleString()}`}</h5>
         </Card>
       </Link>
     </>
