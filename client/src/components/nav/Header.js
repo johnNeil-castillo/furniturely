@@ -8,6 +8,8 @@ import {
   BehanceOutlined,
   LinkedinFilled,
   GithubOutlined,
+  ExportOutlined,
+  IdcardOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
@@ -15,7 +17,7 @@ import { signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Search from "./Search";
-import Logo from "../../images/Logo-01.svg";
+import Logo from "../../images/Logo-with-text-01.svg";
 
 const Header = () => {
   const [current, setCurrent] = useState("home");
@@ -38,29 +40,45 @@ const Header = () => {
   return (
     <>
       <Card className="container mx-auto" bordered={false}>
-        <Row align="top">
-          <Col className="text-center" md={4} style={{ color: "#515af6" }}>
+        <Row align="top" gutter={[0, 16]}>
+          <Col
+            className="text-center"
+            lg={5}
+            md={6}
+            xs={24}
+            style={{ color: "#515af6" }}
+          >
             <a
-              className="mx-2 fs-6"
+              className="mx-3 fs-6"
               href="https://github.com/johnNeil-castillo"
               target="_blank"
             >
               <GithubOutlined />
             </a>
             <a
-              className="mx-2 fs-6"
+              className="mx-3 fs-6"
               href="https://www.linkedin.com/in/john-neil-castillo-981895157/"
               target="_blank"
             >
               <LinkedinFilled />
             </a>
             <a
-              className="mx-2 fs-6"
+              className="mx-3 fs-6"
               href="https://www.behance.net/NeilCastillo/"
               target="_blank"
             >
               <BehanceOutlined />
             </a>
+          </Col>
+          <Col
+            lg={{ offset: 6 }}
+            md={{ offset: 5 }}
+            sm={{ offset: 9 }}
+            xs={{ offset: 8 }}
+          >
+            <Link className="fs-4" to="/">
+              <img style={{ height: "100px" }} src={Logo} alt="" />
+            </Link>
           </Col>
           {!user && (
             <Col offset={16}>
@@ -79,9 +97,14 @@ const Header = () => {
 
           {user && user.role === "subscriber" && (
             <>
-              <Col md={{ offset: "16" }} xs={{ offset: "10" }}>
+              <Col
+                lg={{ offset: 6, span: 1 }}
+                md={{ offset: 6, span: 1 }}
+                sm={{ offset: 9, span: 4 }}
+                xs={{ offset: 2 }}
+              >
                 <Link style={{ color: "#515af6" }} to="/user/history">
-                  Dashboard
+                  <IdcardOutlined />
                 </Link>
               </Col>
             </>
@@ -95,7 +118,7 @@ const Header = () => {
                   className="primary"
                   onClick={logout}
                 >
-                  Logout
+                  <ExportOutlined />
                 </a>
               </Col>
             </>
@@ -103,9 +126,18 @@ const Header = () => {
 
           {user && user.role === "admin" && (
             <>
-              <Col md={{ offset: "16" }} xs={{ offset: "10" }}>
-                <Link style={{ color: "#515af6" }} to="/admin/dashboard">
-                  Dashboard
+              <Col
+                lg={{ offset: 6, span: 1 }}
+                md={{ offset: 6, span: 1 }}
+                sm={{ offset: 9, span: 4 }}
+                xs={{ offset: 2 }}
+              >
+                <Link
+                  className="fs-4"
+                  style={{ color: "#515af6" }}
+                  to="/admin/dashboard"
+                >
+                  <IdcardOutlined />
                 </Link>
               </Col>
             </>
@@ -117,33 +149,26 @@ const Header = () => {
                 <a
                   style={{ color: "#515af6" }}
                   onClick={logout}
-                  className="primary"
+                  className="primary fs-4"
                 >
-                  Logout
+                  <ExportOutlined />
                 </a>
               </Col>
             </>
           )}
         </Row>
         <Row align="middle">
-          <Col span={4}>
-            <Card bordered={false} className="text-center">
-              <Link className="fs-4" to="/">
-                <img style={{ height: "70px" }} src={Logo} alt="" />
-              </Link>
-            </Card>
-          </Col>
-          <Col span={14} offset={1}>
+          <Col span={14} offset={1} xs={{ span: 22 }}>
             <Card bordered={false}>
               <Search />
             </Card>
           </Col>
-          <Col span={1} className="text-center">
+          <Col span={1} xs={{ span: 8 }} className="text-center">
             <Link to="/shop">
               <ShoppingOutlined style={{ color: "#515af6" }} className="fs-5" />
             </Link>
           </Col>
-          <Col span={2} className="text-center">
+          <Col span={1} className="text-center" xs={{ span: 8 }}>
             <Link to="/cart">
               <ShoppingCartOutlined
                 style={{ color: "#515af6" }}
@@ -153,7 +178,7 @@ const Header = () => {
             <Badge count={cart.length} offset={[0, -15]}></Badge>
           </Col>
           {user && (
-            <Col span={1} className="text-center">
+            <Col span={1} className="text-center" xs={{ span: 8 }}>
               <Link to="/user/wishlist">
                 <HeartOutlined style={{ color: "#515af6" }} className="fs-5" />
               </Link>

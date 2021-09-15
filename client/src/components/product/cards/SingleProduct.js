@@ -88,7 +88,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
       </div>
 
       <div className="col-md-4">
-        <Card className="mb-2 fs-3">{title}</Card>
+        <Card className="mb-2 fs-3 text-center">{title}</Card>
         <Card
           actions={[
             <Tooltip title={tooltip}>
