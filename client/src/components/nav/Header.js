@@ -43,7 +43,7 @@ const Header = () => {
         <Row align="top" gutter={[0, 16]}>
           <Col
             className="text-center"
-            lg={5}
+            lg={4}
             md={6}
             xs={24}
             style={{ color: "#515af6" }}
@@ -71,13 +71,19 @@ const Header = () => {
             </a>
           </Col>
           <Col
-            lg={{ offset: 6 }}
-            md={{ offset: 5 }}
+            lg={{ offset: 7 }}
+            md={{ offset: 4 }}
             sm={{ offset: 9 }}
             xs={{ offset: 8 }}
           >
-            <Link className="fs-4" to="/">
-              <img style={{ height: "100px" }} src={Logo} alt="" />
+            <Link to="/">
+              <img
+                style={{
+                  height: "90px",
+                }}
+                src={Logo}
+                alt=""
+              />
             </Link>
           </Col>
           {!user && (

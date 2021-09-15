@@ -76,7 +76,6 @@ const ProductUpdate = ({ match, history }) => {
     loadCategories();
   }, [slug]);
 
-  // Move to new component
   const loadProduct = () => {
     getProduct(slug)
       .then((p) => {

@@ -20,7 +20,6 @@ const CategoryCreate = () => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
-  // searching filtering
   const [keyword, setKeyword] = useState("");
 
   const loadCategories = () =>

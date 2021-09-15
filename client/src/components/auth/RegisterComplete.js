@@ -9,7 +9,6 @@ const RegisterComplete = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const { user } = useSelector((state) => ({ ...state }));
   let dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,7 +18,6 @@ const RegisterComplete = ({ history }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // validation
     if (!email || !password) {
       toast.error("Password is required");
       return;

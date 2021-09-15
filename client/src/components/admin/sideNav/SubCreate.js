@@ -19,7 +19,6 @@ const SubCreate = () => {
   const [category, setCategory] = useState("");
   const [subs, setSubs] = useState([]);
 
-  // searching filtering
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
@@ -34,7 +33,6 @@ const SubCreate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(name);
     setLoading(true);
     createSub({ name, parent: category }, user.token)
       .then((res) => {
