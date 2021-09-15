@@ -5,6 +5,9 @@ import {
   ShoppingOutlined,
   HeartOutlined,
   ShoppingCartOutlined,
+  BehanceOutlined,
+  LinkedinFilled,
+  GithubOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
@@ -36,24 +39,50 @@ const Header = () => {
     <>
       <Card className="container mx-auto" bordered={false}>
         <Row align="top">
-          <Col className="text-center" span={4}>
-            <Link>Links</Link>
+          <Col className="text-center" md={4} style={{ color: "#515af6" }}>
+            <a
+              className="mx-2 fs-6"
+              href="https://github.com/johnNeil-castillo"
+              target="_blank"
+            >
+              <GithubOutlined />
+            </a>
+            <a
+              className="mx-2 fs-6"
+              href="https://www.linkedin.com/in/john-neil-castillo-981895157/"
+              target="_blank"
+            >
+              <LinkedinFilled />
+            </a>
+            <a
+              className="mx-2 fs-6"
+              href="https://www.behance.net/NeilCastillo/"
+              target="_blank"
+            >
+              <BehanceOutlined />
+            </a>
           </Col>
           {!user && (
             <Col offset={16}>
-              <Link to="/register">Register</Link>
+              <Link style={{ color: "#515af6" }} to="/register">
+                Register
+              </Link>
             </Col>
           )}
           {!user && (
             <Col offset={1}>
-              <Link to="/login">Login</Link>{" "}
+              <Link style={{ color: "#515af6" }} to="/login">
+                Login
+              </Link>{" "}
             </Col>
           )}
 
           {user && user.role === "subscriber" && (
             <>
-              <Col offset={16}>
-                <Link to="/user/history">Dashboard</Link>
+              <Col md={{ offset: "16" }} xs={{ offset: "10" }}>
+                <Link style={{ color: "#515af6" }} to="/user/history">
+                  Dashboard
+                </Link>
               </Col>
             </>
           )}
@@ -61,7 +90,11 @@ const Header = () => {
           {user && user.role === "subscriber" && (
             <>
               <Col offset={1}>
-                <a className="primary" onClick={logout}>
+                <a
+                  style={{ color: "#515af6" }}
+                  className="primary"
+                  onClick={logout}
+                >
                   Logout
                 </a>
               </Col>
@@ -70,8 +103,10 @@ const Header = () => {
 
           {user && user.role === "admin" && (
             <>
-              <Col offset={16}>
-                <Link to="/admin/dashboard">Dashboard</Link>
+              <Col md={{ offset: "16" }} xs={{ offset: "10" }}>
+                <Link style={{ color: "#515af6" }} to="/admin/dashboard">
+                  Dashboard
+                </Link>
               </Col>
             </>
           )}
@@ -79,7 +114,11 @@ const Header = () => {
           {user && user.role === "admin" && (
             <>
               <Col offset={1}>
-                <a onClick={logout} className="primary">
+                <a
+                  style={{ color: "#515af6" }}
+                  onClick={logout}
+                  className="primary"
+                >
                   Logout
                 </a>
               </Col>
@@ -90,7 +129,7 @@ const Header = () => {
           <Col span={4}>
             <Card bordered={false} className="text-center">
               <Link className="fs-4" to="/">
-                <img style={{ height: "90px" }} src={Logo} alt="" />
+                <img style={{ height: "70px" }} src={Logo} alt="" />
               </Link>
             </Card>
           </Col>
@@ -101,19 +140,22 @@ const Header = () => {
           </Col>
           <Col span={1} className="text-center">
             <Link to="/shop">
-              <ShoppingOutlined className="fs-5" />
+              <ShoppingOutlined style={{ color: "#515af6" }} className="fs-5" />
             </Link>
           </Col>
           <Col span={2} className="text-center">
             <Link to="/cart">
-              <ShoppingCartOutlined className="fs-5" />
+              <ShoppingCartOutlined
+                style={{ color: "#515af6" }}
+                className="fs-5"
+              />
             </Link>
             <Badge count={cart.length} offset={[0, -15]}></Badge>
           </Col>
           {user && (
             <Col span={1} className="text-center">
               <Link to="/user/wishlist">
-                <HeartOutlined className="fs-5" />
+                <HeartOutlined style={{ color: "#515af6" }} className="fs-5" />
               </Link>
             </Col>
           )}

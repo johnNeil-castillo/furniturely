@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../product/cards/ProductCard";
 import { Menu, Slider, Checkbox, Radio, Col } from "antd";
 import Star from "./Star";
+import "./shop.css";
 
 const { SubMenu } = Menu;
 
@@ -321,7 +322,7 @@ const Shop = () => {
     <div className="container mt-3">
       <div className="row">
         <div className="col-lg-2 pt-2">
-          <h6>Filter</h6>
+          <h6 style={{ color: "#515af6" }}>Filter</h6>
           <Menu mode="inline">
             <SubMenu key="1" title={<span className="h6">Price</span>}>
               <Slider
@@ -372,7 +373,7 @@ const Shop = () => {
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
           ) : (
-            <h5 className="text-danger">Products</h5>
+            <h5 style={{ color: "#515af6" }}>Products</h5>
           )}
           {products.length < 1 && <p>No Products found</p>}
           <div className="row pb-5">
