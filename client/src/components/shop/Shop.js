@@ -87,7 +87,6 @@ const Shop = () => {
   }, [text]);
 
   useEffect(() => {
-    console.log("ok to request");
     fetchProducts({ price });
     return () => fetchProducts({ price });
   }, [ok, price]);

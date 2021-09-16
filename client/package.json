@@ -30,6 +30,7 @@
     "react-toastify": "^8.0.1",
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
+    "validator": "^13.6.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

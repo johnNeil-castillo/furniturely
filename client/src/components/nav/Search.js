@@ -13,7 +13,7 @@ const Search = () => {
     console.log("SEARCH_QUERY->>>", e.target.value);
     dispatch({
       type: "SEARCH_QUERY",
-      payload: { text: e.target.value },
+      payload: { text: e.target.value.trim() },
     });
   };
 
