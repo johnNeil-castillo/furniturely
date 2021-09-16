@@ -20,6 +20,8 @@ const CategoryHome = ({ match }) => {
       setProducts(res.data.products);
       setLoading(false);
     });
+
+    return () => getCategory(slug);
   }, []);
 
   return (

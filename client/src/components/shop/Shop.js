@@ -54,6 +54,18 @@ const Shop = () => {
   const [color, setColor] = useState("");
   const [shipping, setShipping] = useState("");
 
+  useEffect(() => {
+    loadAllProducts();
+    getCategories().then((res) => setCategories(res.data));
+    getSubs().then((res) => setSubs(res.data));
+
+    return () => {
+      loadAllProducts();
+      getCategories();
+      getSubs();
+    };
+  }, []);
+
   const fetchProducts = (arg) => {
     fetchProductsByFilter(arg).then((res) => {
       setProducts(res.data);
@@ -66,22 +78,19 @@ const Shop = () => {
       setLoading(false);
     });
   };
-  useEffect(() => {
-    loadAllProducts();
-    getCategories().then((res) => setCategories(res.data));
-    getSubs().then((res) => setSubs(res.data));
-  }, []);
 
   useEffect(() => {
     const delayed = setTimeout(() => {
       fetchProducts({ query: text });
-    }, 500);
-    clearTimeout(delayed);
+    }, 300);
+    return () => clearTimeout(delayed);
   }, [text]);
 
   useEffect(() => {
+    console.log("ok to request");
     fetchProducts({ price });
-  }, [price]);
+    return () => fetchProducts({ price });
+  }, [ok, price]);
 
   const handleCheck = (e) => {
     dispatch({

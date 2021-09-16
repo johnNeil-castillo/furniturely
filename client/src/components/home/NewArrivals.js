@@ -20,11 +20,12 @@ const NewArrivals = () => {
     };
     loadAllProducts();
 
-    return () => {};
+    return () => loadAllProducts();
   }, [page]);
 
   useEffect(() => {
     getProductsCount().then((res) => setProductsCount(res.data));
+    return () => getProductsCount();
   }, []);
 
   return (

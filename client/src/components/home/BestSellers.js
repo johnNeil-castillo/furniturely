@@ -19,10 +19,12 @@ const BestSellers = () => {
       });
     };
     loadAllProducts();
+    return () => loadAllProducts();
   }, [page]);
 
   useEffect(() => {
     getProductsCount().then((res) => setProductsCount(res.data));
+    return () => getProductsCount();
   }, []);
 
   return (
