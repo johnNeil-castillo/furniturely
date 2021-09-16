@@ -20,7 +20,7 @@ const Shop = () => {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [price, setPrice] = useState([0, 0]);
+  const [price, setPrice] = useState([0, 21000]);
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoryIds, setCategoryIds] = useState([]);
@@ -55,12 +55,12 @@ const Shop = () => {
   const [shipping, setShipping] = useState("");
 
   useEffect(() => {
-    loadAllProducts();
+    // loadAllProducts();
     getCategories().then((res) => setCategories(res.data));
     getSubs().then((res) => setSubs(res.data));
 
     return () => {
-      loadAllProducts();
+      // loadAllProducts();
       getCategories();
       getSubs();
     };
@@ -330,7 +330,7 @@ const Shop = () => {
             Filter
           </h6>
 
-          <Menu mode="inline">
+          <Menu mode="inline" defaultOpenKeys={["1"]}>
             <SubMenu key="1" title={<span className="h6">Price</span>}>
               <Slider
                 step={500}
