@@ -327,12 +327,12 @@ const Shop = () => {
           <Menu mode="inline">
             <SubMenu key="1" title={<span className="h6">Price</span>}>
               <Slider
-                step={100}
+                step={400}
                 tipFormatter={(v) => `$${v}`}
                 range
                 value={price}
                 onChange={handleSlider}
-                max="4999"
+                max="50000"
               />
             </SubMenu>
 
