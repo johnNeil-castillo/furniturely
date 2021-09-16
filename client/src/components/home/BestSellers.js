@@ -33,7 +33,7 @@ const BestSellers = () => {
         ) : (
           <div className="row">
             {products.map((product) => (
-              <div key={product._id} className="col-md-3">
+              <div key={product._id} className="col-md-3 mb-3">
                 <ProductCard product={product} />
               </div>
             ))}
@@ -42,7 +42,7 @@ const BestSellers = () => {
       </div>
 
       <div>
-        <nav className="col-md-4 offset-md-4 text-center pt-3 pb-5">
+        <nav className="col-md-4 offset-md-4 text-center pt-3 pb-5 mb-3">
           <Pagination
             simple
             size="small"

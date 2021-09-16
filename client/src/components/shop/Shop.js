@@ -65,7 +65,7 @@ const Shop = () => {
       fetchProducts({ query: text });
     }, 300);
     return () => clearTimeout(delayed);
-  }, [text]);
+  }, []);
 
   useEffect(() => {
     console.log("ok to request");
