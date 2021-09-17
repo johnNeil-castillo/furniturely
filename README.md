@@ -2,7 +2,7 @@
 
 ## Ecommerce Furniture Store
 
-### Powered by firebase 9 in user authentication and stripe for handling online payments with cash on delivery option
+### Powered by firebase 9 in user authentication and stripe for handling online payments with cash on delivery option.
 
 ### Used MERN Stack for development of this website.
 
@@ -10,14 +10,12 @@
 
 ### Test User
 
-#### Username: BlueFeatherVerbara@gmail.com
-
-#### qwerty
+> Username: BlueFeatherVerbara@gmail.com
+> Password: qwerty
 
 ### Test Admin
 
-#### Username: JohnDoeVerbera@gmail.com
-
-#### Password: 123456
+> Username: JohnDoeVerbera@gmail.com
+> Password: 123456
 
 ### You can also try registering your email
