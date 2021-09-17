@@ -6,16 +6,18 @@
 
 ### Used MERN Stack for development of this website.
 
-### Webiste Link: https://furniturely.herokuapp.com/
+### [Furniturely](https://furniturely.herokuapp.com/)
 
 ### Test User
 
 > Username: BlueFeatherVerbara@gmail.com
-> Password: qwerty
+>
+> > Password: qwerty
 
 ### Test Admin
 
 > Username: JohnDoeVerbera@gmail.com
-> Password: 123456
+>
+> > Password: 123456
 
-### You can also try registering your email
+### You can also try register to login your email
