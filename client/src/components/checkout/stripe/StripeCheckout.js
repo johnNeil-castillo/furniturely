@@ -102,80 +102,94 @@ const StripeCheckout = () => {
 
   return (
     <>
-      {!succeeded && (
-        <div>
-          {coupon && totalAfterDiscount !== undefined ? (
-            <Card bordered={false} className="text-success fs-5">
-              <b>{`Total after discount: $${totalAfterDiscount}`}</b>
-            </Card>
-          ) : (
-            <Card bordered={false} className="text-danger fs-5">
-              No coupon applied
-            </Card>
-          )}
-        </div>
-      )}
-      <div className="text-center pb-5">
-        <Card
-          cover={
-            <img
-              alt="sample"
-              src={sampleImage}
-              style={{
-                height: "200px",
-                objectFit: "cover",
-                marginBottom: "-50px",
-              }}
-            />
-          }
-          actions={[
-            <>
-              <DollarOutlined className="text-info" /> <br />
-              <h5 className="mt-2">
-                Total: <br /> ${cartTotal.toLocaleString()}
-              </h5>
-            </>,
-            <>
-              <CheckOutlined className="text-info" /> <br />{" "}
-              <h5 className="mt-2">
-                Total payable: <br />${(payable / 100).toLocaleString()}
-              </h5>
-            </>,
-          ]}
-        />
-      </div>
-
       <Row justify="center">
-        <form id="payment-form" className="stripe-form" onSubmit={handleSubmit}>
-          <CardElement
-            id="card-element"
-            options={cartStyle}
-            onChange={handleChange}
-          />
-          <button
-            className="stripe-button"
-            disabled={processing || disabled || succeeded}
-          >
-            <span id="button-text">
-              {processing ? (
-                <div className="spinner" id="spinner"></div>
-              ) : (
-                "Pay"
-              )}
-            </span>
-          </button>
-          <br />
-          {error && (
-            <div className="card-error" role="alert">
-              {error}
+        <Col lg={10} md={18} sm={20}>
+          <Card className="mb-4">
+            {!succeeded && (
+              <div>
+                {coupon && totalAfterDiscount !== undefined ? (
+                  <Card bordered={false} className="text-success fs-5">
+                    <b>{`Total after discount: $${totalAfterDiscount}`}</b>
+                  </Card>
+                ) : (
+                  <Card bordered={false} className="text-danger fs-5">
+                    No coupon applied
+                  </Card>
+                )}
+              </div>
+            )}
+            <div className="text-center pb-5">
+              <Card
+                cover={
+                  <img
+                    alt="sample"
+                    src={sampleImage}
+                    style={{
+                      height: "200px",
+                      objectFit: "cover",
+                      marginBottom: "-50px",
+                    }}
+                  />
+                }
+                actions={[
+                  <>
+                    <DollarOutlined className="text-info" /> <br />
+                    <h5 className="mt-2">
+                      Total: <br /> ${cartTotal.toLocaleString()}
+                    </h5>
+                  </>,
+                  <>
+                    <CheckOutlined className="text-info" /> <br />{" "}
+                    <h5 className="mt-2">
+                      Total payable: <br />${(payable / 100).toLocaleString()}
+                    </h5>
+                  </>,
+                ]}
+              />
             </div>
-          )}
-          <br />
-          <p className={succeeded ? "result-message" : "result-message hidden"}>
-            Payment Successful.{" "}
-            <Link to="/user/history">See it in your purchase history.</Link>
-          </p>
-        </form>
+
+            <Row justify="center">
+              <Col lg={24} xs={24}>
+                <form id="payment-form" onSubmit={handleSubmit}>
+                  <CardElement
+                    id="card-element"
+                    options={cartStyle}
+                    onChange={handleChange}
+                  />
+                  <button
+                    className="stripe-button"
+                    disabled={processing || disabled || succeeded}
+                  >
+                    <span id="button-text">
+                      {processing ? (
+                        <div className="spinner" id="spinner"></div>
+                      ) : (
+                        "Pay"
+                      )}
+                    </span>
+                  </button>
+                  <br />
+                  {error && (
+                    <div className="card-error" role="alert">
+                      {error}
+                    </div>
+                  )}
+                  <br />
+                  <p
+                    className={
+                      succeeded ? "result-message" : "result-message hidden"
+                    }
+                  >
+                    Payment Successful.{" "}
+                    <Link to="/user/history">
+                      See it in your purchase history.
+                    </Link>
+                  </p>
+                </form>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
       </Row>
     </>
   );
