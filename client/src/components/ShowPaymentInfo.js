@@ -12,7 +12,8 @@ const ShowPaymentInfo = ({ order, showStatus = true }) => (
         </Col>
         <Col xs={8}>
           <div>
-            <b>Amount:</b>{" "}
+            <b>Amount:</b>
+            <br />
             {(order.paymentIntent.amount /= 10).toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
@@ -21,12 +22,14 @@ const ShowPaymentInfo = ({ order, showStatus = true }) => (
         </Col>
         <Col xs={8}>
           <div>
-            <b>Currency:</b> {order.paymentIntent.currency.toUpperCase()}
+            <b>Currency:</b>
+            <br /> {order.paymentIntent.currency.toUpperCase()}
           </div>
         </Col>
         <Col xs={8}>
           <div>
-            <b>Method:</b> {order.paymentIntent.payment_method_types[0]}
+            <b>Method:</b>
+            <br /> {order.paymentIntent.payment_method_types[0]}
           </div>
         </Col>
         <Col xs={24}>

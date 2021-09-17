@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../../functions/category";
-import { Button } from "antd";
+import { Button, Row, Col } from "antd";
 import LoadingButton from "../product/cards/LoadingButton";
 
 const CategoryList = () => {
@@ -30,7 +30,13 @@ const CategoryList = () => {
   return (
     <div>
       <div className="row">
-        {loading ? <LoadingButton count={4} /> : showCategories()}
+        {loading ? (
+          <>
+            <LoadingButton count={4} />
+          </>
+        ) : (
+          showCategories()
+        )}
       </div>
     </div>
   );

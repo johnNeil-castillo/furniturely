@@ -20,7 +20,7 @@ const Shop = () => {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [price, setPrice] = useState([0, 21000]);
+  const [price, setPrice] = useState([0, 0]);
   const [ok, setOk] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoryIds, setCategoryIds] = useState([]);
@@ -54,18 +54,6 @@ const Shop = () => {
   const [color, setColor] = useState("");
   const [shipping, setShipping] = useState("");
 
-  useEffect(() => {
-    // loadAllProducts();
-    getCategories().then((res) => setCategories(res.data));
-    getSubs().then((res) => setSubs(res.data));
-
-    return () => {
-      // loadAllProducts();
-      getCategories();
-      getSubs();
-    };
-  }, []);
-
   const fetchProducts = (arg) => {
     fetchProductsByFilter(arg).then((res) => {
       setProducts(res.data);
@@ -82,7 +70,7 @@ const Shop = () => {
   useEffect(() => {
     const delayed = setTimeout(() => {
       fetchProducts({ query: text });
-    }, 300);
+    }, 400);
     return () => clearTimeout(delayed);
   }, [text]);
 
@@ -90,6 +78,18 @@ const Shop = () => {
     fetchProducts({ price });
     return () => fetchProducts({ price });
   }, [ok, price]);
+
+  useEffect(() => {
+    loadAllProducts();
+    getCategories().then((res) => setCategories(res.data));
+    getSubs().then((res) => setSubs(res.data));
+
+    return () => {
+      loadAllProducts();
+      getCategories();
+      getSubs();
+    };
+  }, []);
 
   const handleCheck = (e) => {
     dispatch({
@@ -330,7 +330,7 @@ const Shop = () => {
             Filter
           </h6>
 
-          <Menu mode="inline" defaultOpenKeys={["1"]}>
+          <Menu mode="inline">
             <SubMenu key="1" title={<span className="h6">Price</span>}>
               <Slider
                 step={500}

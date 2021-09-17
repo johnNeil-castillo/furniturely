@@ -16,7 +16,11 @@ const AdminNav = () => {
   return (
     <Row justify="center">
       <Col xs={6} md={3}>
-        <Link className="fs-4 text-center" to="/admin/dashboard">
+        <Link
+          style={{ color: "#515af6" }}
+          className="fs-4 text-center"
+          to="/admin/dashboard"
+        >
           <IdcardOutlined />
 
           <p style={{ fontSize: "12px" }}>Admin</p>
@@ -24,42 +28,54 @@ const AdminNav = () => {
       </Col>
 
       <Col xs={6} md={3}>
-        <Link className="fs-4" to="/admin/category">
+        <Link
+          style={{ color: "#515af6" }}
+          className="fs-4"
+          to="/admin/category"
+        >
           <AppstoreAddOutlined /> <p style={{ fontSize: "12px" }}>Category</p>
         </Link>
       </Col>
 
       <Col xs={6} md={3}>
-        <Link className="fs-4" to="/admin/sub">
+        <Link style={{ color: "#515af6" }} className="fs-4" to="/admin/sub">
           <ApartmentOutlined /> <p style={{ fontSize: "12px" }}>Sub Category</p>
         </Link>
       </Col>
 
       <Col xs={6} md={3}>
-        <Link className="fs-4" to="/admin/product">
+        <Link style={{ color: "#515af6" }} className="fs-4" to="/admin/product">
           <FileAddOutlined /> <p style={{ fontSize: "12px" }}>Product</p>
         </Link>
       </Col>
 
       <Col xs={6} md={3}>
-        <Link className="fs-4" to="/admin/products">
+        <Link
+          style={{ color: "#515af6" }}
+          className="fs-4"
+          to="/admin/products"
+        >
           <GoldOutlined /> <p style={{ fontSize: "12px" }}>Products</p>
         </Link>
       </Col>
       <Col xs={6} md={3}>
-        <Link className="fs-4" to="/admin/coupon">
+        <Link style={{ color: "#515af6" }} className="fs-4" to="/admin/coupon">
           <TagOutlined /> <p style={{ fontSize: "12px" }}>Coupon</p>
         </Link>
       </Col>
 
       <Col xs={6} md={3}>
-        <Link className="fs-4" to="/admin/password">
+        <Link
+          style={{ color: "#515af6" }}
+          className="fs-4"
+          to="/admin/password"
+        >
           <SafetyOutlined /> <p style={{ fontSize: "12px" }}>Password</p>
         </Link>
       </Col>
 
       <Col xs={6} md={3}>
-        <Link className="fs-4" to="/user/history">
+        <Link style={{ color: "#515af6" }} className="fs-4" to="/user/history">
           <UserOutlined /> <p style={{ fontSize: "12px" }}>User Dash</p>
         </Link>
       </Col>

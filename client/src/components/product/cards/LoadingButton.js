@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Skeleton } from "antd";
+import { Card, Skeleton, Row, Col } from "antd";
 
 const LoadingButton = ({ count }) => {
   const cards = () => {
@@ -7,13 +7,15 @@ const LoadingButton = ({ count }) => {
 
     for (let i = 0; i < count; i++) {
       totalCards.push(
-        <div className="col-md-3">
-          <Skeleton.Button
+        <div className="col-md-3 col-3 text-center">
+          <Skeleton.Input
             active
-            style={{ width: 200 }}
+            size="large"
+            shape="default"
+            style={{ width: 50 }}
             key={i}
             active
-          ></Skeleton.Button>
+          ></Skeleton.Input>
         </div>
       );
     }

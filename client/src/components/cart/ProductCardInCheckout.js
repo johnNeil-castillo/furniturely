@@ -121,14 +121,21 @@ const ProductCardInCheckout = ({ p }) => {
         <Col xs={{ pull: 5 }} md={{ pull: 3 }}>
           <div className="text-center py-4">
             {p.shipping === "Yes" ? (
-              <CheckCircleOutlined className="text-success" />
+              <>
+                <p>Shipping</p>
+                <CheckCircleOutlined className="text-success" />
+              </>
             ) : (
-              <CloseCircleOutlined className="text-danger" />
+              <>
+                <p>Shipping</p>
+                <CloseCircleOutlined className="text-danger" />
+              </>
             )}
           </div>
         </Col>
         <Col xs={{ push: 5 }} md={{ push: 3 }}>
           <div className="text-center py-4">
+            <p>Remove</p>
             <CloseOutlined
               onClick={handleRemove}
               className="text-danger pointer"

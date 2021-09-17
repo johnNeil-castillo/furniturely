@@ -15,17 +15,29 @@ const UserNav = () => {
     <>
       <Row justify="center">
         <Col xs={5} md={3}>
-          <Link className="fs-4 text-center" to="/user/history">
+          <Link
+            style={{ color: "#515af6" }}
+            className="fs-4 text-center"
+            to="/user/history"
+          >
             <IdcardOutlined /> <p style={{ fontSize: "12px" }}>History</p>
           </Link>
         </Col>
         <Col xs={5} md={3}>
-          <Link className="fs-4 text-center" to="/user/password">
+          <Link
+            style={{ color: "#515af6" }}
+            className="fs-4 text-center"
+            to="/user/password"
+          >
             <SafetyOutlined /> <p style={{ fontSize: "12px" }}>Password</p>
           </Link>
         </Col>
         <Col xs={5} md={3}>
-          <Link className="fs-4 text-center" to="/user/wishlist">
+          <Link
+            style={{ color: "#515af6" }}
+            className="fs-4 text-center"
+            to="/user/wishlist"
+          >
             <HeartOutlined /> <p style={{ fontSize: "12px" }}>Wishlist</p>
           </Link>
         </Col>
@@ -33,7 +45,11 @@ const UserNav = () => {
         {user && user.role === "admin" && (
           <>
             <Col xs={5} md={3}>
-              <Link className="fs-4 text-center" to="/admin/dashboard">
+              <Link
+                style={{ color: "#515af6" }}
+                className="fs-4 text-center"
+                to="/admin/dashboard"
+              >
                 <UserOutlined /> <p style={{ fontSize: "12px" }}>Admin Dash</p>
               </Link>
             </Col>

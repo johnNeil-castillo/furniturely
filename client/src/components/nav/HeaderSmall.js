@@ -47,15 +47,14 @@ const HeaderSmall = () => {
             lg={{ pull: 7 }}
             md={{ pull: 5 }}
             sm={{ pull: 5 }}
-            xs={{ pull: 5 }}
-            style={{ color: "#515af6" }}
+            xs={{ pull: 4 }}
           >
             <a
               className="fs-6"
               href="https://github.com/johnNeil-castillo"
               target="_blank"
             >
-              <GithubOutlined />
+              <GithubOutlined style={{ color: "#515af6" }} />
             </a>
           </Col>
           <Col
@@ -63,15 +62,14 @@ const HeaderSmall = () => {
             lg={{ pull: 6 }}
             md={{ pull: 4 }}
             sm={{ pull: 4 }}
-            xs={{ pull: 4 }}
-            style={{ color: "#515af6" }}
+            xs={{ pull: 3 }}
           >
             <a
               className=" fs-6"
               href="https://www.linkedin.com/in/john-neil-castillo-981895157/"
               target="_blank"
             >
-              <LinkedinFilled />
+              <LinkedinFilled style={{ color: "#515af6" }} />
             </a>
           </Col>
           <Col
@@ -79,15 +77,14 @@ const HeaderSmall = () => {
             lg={{ pull: 5 }}
             md={{ pull: 3 }}
             sm={{ pull: 3 }}
-            xs={{ pull: 3 }}
-            style={{ color: "#515af6" }}
+            xs={{ pull: 2 }}
           >
             <a
               className="fs-6"
               href="https://www.behance.net/NeilCastillo/"
               target="_blank"
             >
-              <BehanceOutlined />
+              <BehanceOutlined style={{ color: "#515af6" }} />
             </a>
           </Col>
 
@@ -96,6 +93,7 @@ const HeaderSmall = () => {
               <img
                 style={{
                   height: "90px",
+                  marginLeft: "15px",
                 }}
                 src={Logo}
                 alt=""
@@ -114,7 +112,8 @@ const HeaderSmall = () => {
                 style={{ color: "#515af6" }}
                 to="/register"
               >
-                <UserAddOutlined />
+                <UserAddOutlined />{" "}
+                <p style={{ fontSize: "12px", marginLeft: "-8px" }}>Register</p>
               </Link>
             </Col>
           )}
@@ -127,7 +126,8 @@ const HeaderSmall = () => {
               xs={{ push: 4 }}
             >
               <Link className="fs-4" style={{ color: "#515af6" }} to="/login">
-                <SelectOutlined />
+                <SelectOutlined />{" "}
+                <p style={{ fontSize: "12px", marginLeft: "-4px" }}>Login</p>
               </Link>
             </Col>
           )}
@@ -146,6 +146,7 @@ const HeaderSmall = () => {
                   to="/user/history"
                 >
                   <IdcardOutlined />
+                  <p style={{ fontSize: "12px" }}>User</p>
                 </Link>
               </Col>
             </>
@@ -164,7 +165,8 @@ const HeaderSmall = () => {
                   style={{ color: "#515af6" }}
                   onClick={logout}
                 >
-                  <ExportOutlined />
+                  <ExportOutlined />{" "}
+                  <p style={{ fontSize: "12px", marginLeft: "-4px" }}>Logout</p>
                 </a>
               </Col>
             </>
@@ -184,6 +186,7 @@ const HeaderSmall = () => {
                   to="/admin/dashboard"
                 >
                   <IdcardOutlined />
+                  <p style={{ fontSize: "12px", marginLeft: "-4px" }}>Admin</p>
                 </Link>
               </Col>
             </>
@@ -203,6 +206,14 @@ const HeaderSmall = () => {
                   className=" fs-4"
                 >
                   <ExportOutlined />
+                  <p
+                    style={{
+                      fontSize: "12px",
+                      marginLeft: "-5px",
+                    }}
+                  >
+                    Logout
+                  </p>
                 </a>
               </Col>
             </>
@@ -210,28 +221,32 @@ const HeaderSmall = () => {
         </Row>
         <Row justify="center" className="mt-4">
           <Col span={1} xs={{ span: 8 }} className="text-center">
-            <Link to="/shop">
-              <ShoppingOutlined style={{ color: "#515af6" }} className="fs-5" />
+            <Link style={{ color: "#515af6" }} to="/shop">
+              <ShoppingOutlined className="fs-5" />{" "}
+              <p style={{ fontSize: "12px" }}>Shop</p>
             </Link>
           </Col>
           {user && (
             <Col span={1} className="text-center" xs={{ span: 8 }}>
-              <Link to="/user/wishlist" className="my-4">
-                <HeartOutlined style={{ color: "#515af6" }} className="fs-5" />
+              <Link
+                style={{ color: "#515af6" }}
+                to="/user/wishlist"
+                className="my-4"
+              >
+                <HeartOutlined className="fs-5" />
+                <p style={{ fontSize: "12px" }}>Wishlist</p>
               </Link>
             </Col>
           )}
           <Col span={1} className="text-center" xs={{ span: 8 }}>
-            <Link to="/cart">
-              <ShoppingCartOutlined
-                style={{ color: "#515af6" }}
-                className="fs-5"
-              />
+            <Link style={{ color: "#515af6" }} to="/cart">
+              <ShoppingCartOutlined className="fs-5" />
+              <p style={{ fontSize: "12px" }}>Cart</p>
             </Link>
-            <Badge count={cart.length} offset={[0, -15]}></Badge>
+            <Badge count={cart.length} offset={[15, -70]}></Badge>
           </Col>
+          <Divider style={{ marginTop: "-10px" }} />
         </Row>
-        <Divider />
       </Card>
     </>
   );
