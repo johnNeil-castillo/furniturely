@@ -24,7 +24,7 @@ const Home = () => {
           <Link to="/category/bed">
             <img
               className="container"
-              src="https://res.cloudinary.com/dsg7j2b4z/image/upload/v1631719576/Sofa_wmu5bd.jpg"
+              src="https://res.cloudinary.com/dsg7j2b4z/image/upload/v1631719574/Bed_tgnoto.jpg"
               alt=""
             />
           </Link>
