@@ -30,4 +30,4 @@
 > > >
 > > > > ZIP: 42424
 
-### You can also try register to login your email
+### You can also try register your email to login
