@@ -4,7 +4,7 @@
 
 ### Powered by firebase 9 in user authentication and stripe for handling online payments with cash on delivery option.
 
-### Used MERN Stack for development of this website.
+### Used MERN Stack for development of this website. And used antd and bootstrap in front end.
 
 ### [Furniturely](https://furniturely.herokuapp.com/)
 
