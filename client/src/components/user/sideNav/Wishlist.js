@@ -4,7 +4,7 @@ import { getWishlist, removeWishlist } from "../../../functions/user";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Card } from "antd";
+import { Card, Row, Col } from "antd";
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -30,10 +30,12 @@ const Wishlist = () => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-2">
-          <UserNav />
-        </div>
+      <div>
+        <Row justify="center">
+          <Col span={24} className="text-center mb-4">
+            <UserNav />
+          </Col>
+        </Row>
         <div className="col">
           <h4 className="text-center mb-4 mt-2 ">Wishlist</h4>
 

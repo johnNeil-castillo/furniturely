@@ -11,7 +11,7 @@ const Payment = () => {
     <div className="container p-3 text-center">
       <h4>Complete your purchase</h4>
       <Elements stripe={promise}>
-        <div className="col-md-6 mx-auto">
+        <div className="col-md-6 mx-auto ">
           <StripeCheckout />
         </div>
       </Elements>

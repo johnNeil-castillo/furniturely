@@ -4,7 +4,7 @@ import { getOrders, changeStatus } from "../../../functions/admin";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Orders from "../Orders";
-import { Card } from "antd";
+import { Card, Row, Col } from "antd";
 
 const AdminDashboard = () => {
   const [orders, setOrders] = useState([]);
@@ -34,16 +34,18 @@ const AdminDashboard = () => {
 
   return (
     <div className="container">
-      <div className="row ">
-        <div className="col col-md-2">
-          <AdminNav />
-        </div>
+      <div className="mb-2">
+        <Row justify="center">
+          <Col span={24} className="text-center mb-4">
+            <AdminNav />
+          </Col>
+        </Row>
+      </div>
 
-        <div className="col">
-          <h4 className="text-center mt-2 mb-4">Admin Dashboard</h4>
+      <div>
+        <h4 className="text-center mt-2 mb-4">Admin Dashboard</h4>
 
-          <Orders orders={orders} handleStatusChange={handleStatusChange} />
-        </div>
+        <Orders orders={orders} handleStatusChange={handleStatusChange} />
       </div>
     </div>
   );

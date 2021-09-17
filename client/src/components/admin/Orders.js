@@ -1,77 +1,85 @@
 import React from "react";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import ShowPaymentInfo from "../ShowPaymentInfo";
-import { Card } from "antd";
+import { Card, Row, Col } from "antd";
 
 const Orders = ({ orders, handleStatusChange }) => {
   const showOrderInTable = (order) => (
-    <table className="table table-bordered">
-      <thead className="thead-light">
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Price</th>
-          <th scope="col">Brand</th>
-          <th scope="col">Color</th>
-          <th scope="col">Count</th>
-          <th scope="col">Shipping</th>
-        </tr>
-      </thead>
-
-      <tbody>
+    <>
+      <Row justify="center">
         {order.products.map((p, i) => (
-          <tr key={i}>
-            <td>{p.product.title}</td>
-            <td>{p.product.price}</td>
-            <td>{p.product.brand}</td>
-            <td>{p.color}</td>
-            <td>{p.count}</td>
-            <td>
-              {p.product.shipping === "Yes" ? (
-                <CheckCircleOutlined style={{ color: "green" }} />
-              ) : (
-                <CloseCircleOutlined style={{ color: "red" }} />
-              )}
-            </td>
-          </tr>
+          <>
+            <Col lg={{ span: 12 }} xs={{ span: 12 }}>
+              <Card className="text-center">
+                <div className="mb-2">
+                  <b>{p.product.title}</b>
+                </div>
+                <div className="mb-2">
+                  Price: ${p.product.price.toLocaleString()}
+                </div>
+                <div className="mb-2">Brand: {p.product.brand}</div>
+                <div className="mb-2">Color: {p.color}</div>
+                <div className="mb-2">Quantity: {p.count}</div>
+                <div className="mb-2">
+                  Shipping:{" "}
+                  {p.product.shipping === "Yes" ? (
+                    <CheckCircleOutlined style={{ color: "green" }} />
+                  ) : (
+                    <CloseCircleOutlined style={{ color: "red" }} />
+                  )}
+                </div>
+              </Card>
+            </Col>
+          </>
         ))}
-      </tbody>
-    </table>
+      </Row>
+    </>
   );
   return (
     <>
-      {orders.map((order) => (
-        <Card className="mb-5 px-3">
-          <div key={order._id} className="row pb-2 ">
-            <div className="bg-light">
-              <ShowPaymentInfo order={order} showStatus={false} />
+      <Row justify="center">
+        {orders.map((order) => (
+          <Col lg={10} className="mx-1">
+            <Card className="mb-3 ">
+              <div key={order._id} className="row pb-2 ">
+                <div>
+                  <ShowPaymentInfo order={order} showStatus={false} />
 
-              <div className="row mb-3">
-                <div className="col-md-4 fs-6 text-end">
-                  <b>Delivery Status</b>
+                  <Row justify="center" align="middle" className="my-2">
+                    <Col xs={24}>
+                      <div className="mb-2 fs-6 text-center">
+                        <b>Delivery Status </b>{" "}
+                      </div>
+                    </Col>
+                    <Col>
+                      <div>
+                        <select
+                          onChange={(e) =>
+                            handleStatusChange(order._id, e.target.value)
+                          }
+                          className="form-control"
+                          defaultValue={order.orderStatus}
+                          name="status"
+                        >
+                          <option value="Not Processed">Not Processed</option>
+                          <option value="Cash On Delivery">
+                            Cash On Delivery
+                          </option>
+                          <option value="Processing">Processing</option>
+                          <option value="Dispatched">Dispatched</option>
+                          <option value="Cancelled">Cancelled</option>
+                          <option value="Completed">Completed</option>
+                        </select>
+                      </div>
+                    </Col>
+                  </Row>
                 </div>
-                <div className="col-md-5">
-                  <select
-                    onChange={(e) =>
-                      handleStatusChange(order._id, e.target.value)
-                    }
-                    className="form-control"
-                    defaultValue={order.orderStatus}
-                    name="status"
-                  >
-                    <option value="Not Processed">Not Processed</option>
-                    <option value="Cash On Delivery">Cash On Delivery</option>
-                    <option value="Processing">Processing</option>
-                    <option value="Dispatched">Dispatched</option>
-                    <option value="Cancelled">Cancelled</option>
-                    <option value="Completed">Completed</option>
-                  </select>
-                </div>
+                {showOrderInTable(order)}
               </div>
-            </div>
-            {showOrderInTable(order)}
-          </div>
-        </Card>
-      ))}
+            </Card>
+          </Col>
+        ))}{" "}
+      </Row>
     </>
   );
 };

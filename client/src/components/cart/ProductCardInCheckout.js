@@ -9,7 +9,7 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 
-import { Input } from "antd";
+import { Input, Row, Col } from "antd";
 
 const ProductCardInCheckout = ({ p }) => {
   let dispatch = useDispatch();
@@ -68,11 +68,16 @@ const ProductCardInCheckout = ({ p }) => {
   };
 
   return (
-    <tbody>
-      <tr>
-        <td>
+    <div>
+      <Row justify="center">
+        <div className="text-center mb-3">
+          <b>{p.title}</b>
+        </div>
+      </Row>
+      <Row justify="center">
+        <div>
           <div
-            className="py-1"
+            className="text-center"
             style={{
               width: "100px",
               height: "auto",
@@ -86,14 +91,23 @@ const ProductCardInCheckout = ({ p }) => {
               <ModalImage small={sampleImage} large={sampleImage} />
             )}
           </div>
-        </td>
-        <td className="text-center py-4 ">{p.title}</td>
-        <td className="text-center py-4">
+        </div>
+      </Row>
+
+      <Row justify="center">
+        <div className="text-center mt-2 ">
           <b>${p.price.toLocaleString()}</b>
-        </td>
-        <td className="text-center py-4">{p.brand}</td>
-        <td className="text-center py-4">{p.color}</td>
-        <td className="text-center py-4">
+        </div>
+      </Row>
+      <Row justify="center">
+        <div className="text-center ">{p.brand}</div>
+      </Row>
+      <Row justify="center">
+        <div className=" mt-2">{p.color}</div>
+      </Row>
+
+      <Row justify="center">
+        <div className="text-center mt-2">
           <Input
             style={{ width: 100 }}
             size="medium"
@@ -101,22 +115,28 @@ const ProductCardInCheckout = ({ p }) => {
             value={p.count}
             onChange={handleQuantityChange}
           />
-        </td>
-        <td className="text-center py-4">
-          {p.shipping === "Yes" ? (
-            <CheckCircleOutlined className="text-success" />
-          ) : (
-            <CloseCircleOutlined className="text-danger" />
-          )}
-        </td>
-        <td className="text-center py-4">
-          <CloseOutlined
-            onClick={handleRemove}
-            className="text-danger pointer"
-          />
-        </td>
-      </tr>
-    </tbody>
+        </div>
+      </Row>
+      <Row justify="center">
+        <Col xs={{ pull: 5 }} md={{ pull: 3 }}>
+          <div className="text-center py-4">
+            {p.shipping === "Yes" ? (
+              <CheckCircleOutlined className="text-success" />
+            ) : (
+              <CloseCircleOutlined className="text-danger" />
+            )}
+          </div>
+        </Col>
+        <Col xs={{ push: 5 }} md={{ push: 3 }}>
+          <div className="text-center py-4">
+            <CloseOutlined
+              onClick={handleRemove}
+              className="text-danger pointer"
+            />
+          </div>
+        </Col>
+      </Row>
+    </div>
   );
 };
 

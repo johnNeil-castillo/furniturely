@@ -94,7 +94,7 @@ const Product = ({ match }) => {
             <div className="row pb-5">
               {related.length ? (
                 related.map((r) => (
-                  <div key={r._id} className="col-md-3">
+                  <div key={r._id} className="col-md-3 mb-3">
                     <ProductCard product={r} />
                   </div>
                 ))

@@ -6,6 +6,7 @@ import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import ShowPaymentInfo from "../../ShowPaymentInfo";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Invoice from "./Invoice";
+import { Row, Col, Card } from "antd";
 
 const History = () => {
   const [orders, setOrders] = useState([]);
@@ -21,46 +22,42 @@ const History = () => {
   }, [user.token]);
 
   const showOrderInTable = (order) => (
-    <table className="table table-bordered">
-      <thead className="thead-light">
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Price</th>
-          <th scope="col">Brand</th>
-          <th scope="col">Color</th>
-          <th scope="col">Count</th>
-          <th scope="col">Shipping</th>
-        </tr>
-      </thead>
-
-      <tbody>
+    <>
+      <Row justify="center" className="mt-3">
         {order.products.map((p, i) => (
-          <tr key={i}>
-            <td>
-              <b>{p.product.title}</b>
-            </td>
-            <td>{p.product.price}</td>
-            <td>{p.product.brand}</td>
-            <td>{p.color}</td>
-            <td>{p.count}</td>
-            <td>
-              {p.product.shipping === "Yes" ? (
-                <CheckCircleOutlined style={{ color: "green" }} />
-              ) : (
-                <CloseCircleOutlined style={{ color: "red" }} />
-              )}
-            </td>
-          </tr>
+          <>
+            <Col lg={{ span: 12 }} xs={{ span: 12 }}>
+              <Card className="text-center">
+                <div className="mb-2">
+                  <b>{p.product.title}</b>
+                </div>
+                <div className="mb-2">
+                  Price: ${p.product.price.toLocaleString()}
+                </div>
+                <div className="mb-2">Brand: {p.product.brand}</div>
+                <div className="mb-2">Color: {p.color}</div>
+                <div className="mb-2">Quantity: {p.count}</div>
+                <div className="mb-2">
+                  Shipping:{" "}
+                  {p.product.shipping === "Yes" ? (
+                    <CheckCircleOutlined style={{ color: "green" }} />
+                  ) : (
+                    <CloseCircleOutlined style={{ color: "red" }} />
+                  )}
+                </div>
+              </Card>
+            </Col>
+          </>
         ))}
-      </tbody>
-    </table>
+      </Row>
+    </>
   );
 
   const showDownloadLink = (order) => (
     <PDFDownloadLink
       document={<Invoice order={order} />}
       fileName="invoice.pdf"
-      className="btn btn-sm btn-block btn-outline-primary"
+      className="btn btn-sm btn-block btn-outline-primary mt-3"
     >
       Download PDF
     </PDFDownloadLink>
@@ -68,26 +65,30 @@ const History = () => {
 
   const showEachOrders = () =>
     orders.reverse().map((order, i) => (
-      <div key={i} className="mx-5 mt-4 p-3 card">
-        <ShowPaymentInfo order={order} />
-        {showOrderInTable(order)}
-        <div className="row">
-          <div className="col">{showDownloadLink(order)}</div>
-        </div>
-      </div>
+      <Col lg={12}>
+        <Card key={i} className="mb-3 mx-2">
+          <ShowPaymentInfo order={order} />
+          {showOrderInTable(order)}
+          <div className="row">
+            <div className="col">{showDownloadLink(order)}</div>
+          </div>
+        </Card>
+      </Col>
     ));
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-2">
-          <UserNav />
-        </div>
-        <div className="col text-center mb-2">
-          <h4 className="mt-2">
+      <div>
+        <Row justify="center">
+          <Col span={24} className="text-center mb-4">
+            <UserNav />
+          </Col>
+        </Row>
+        <div className=" text-center mb-2">
+          <h4 className="mt-2 mb-4">
             {orders.length > 0 ? "User purchase orders" : "No purchase orders"}
           </h4>
-          {showEachOrders()}
+          <Row>{showEachOrders()}</Row>
         </div>
       </div>
     </div>

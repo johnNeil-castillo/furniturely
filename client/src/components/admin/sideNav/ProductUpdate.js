@@ -7,6 +7,7 @@ import { getCategories, getCategorySubs } from "../../../functions/category";
 import ProductUpdateForm from "../forms/ProductUpdateForm";
 import FileUpload from "../forms/FileUpload";
 import { LoadingOutlined } from "@ant-design/icons";
+import { Row, Col } from "antd";
 
 const initialState = {
   title: "",
@@ -139,12 +140,14 @@ const ProductUpdate = ({ match, history }) => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-2">
-          <AdminNav />
-        </div>
+      <div>
+        <Row justify="center">
+          <Col span={24} className="text-center mb-4">
+            <AdminNav />
+          </Col>
+        </Row>
 
-        <div className="col-md-10">
+        <div className="col-md-12">
           {loading ? (
             <LoadingOutlined className="text-danger h1" />
           ) : (

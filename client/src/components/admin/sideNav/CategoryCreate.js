@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import CategoryForm from "../forms/CategoryForm";
 import LocalSearch from "../forms/LocalSearch";
-import { Card } from "antd";
+import { Card, Row, Col } from "antd";
 
 const CategoryCreate = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -69,10 +69,12 @@ const CategoryCreate = () => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-2">
-          <AdminNav />
-        </div>
+      <div>
+        <Row justify="center">
+          <Col span={24} className="text-center mb-4">
+            <AdminNav />
+          </Col>
+        </Row>
         <div className="col">
           {loading ? (
             <h4 className="text-danger">Loading..</h4>

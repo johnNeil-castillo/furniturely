@@ -1,42 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import {
+  IdcardOutlined,
+  HeartOutlined,
+  SafetyOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Row, Col } from "antd";
 
 const UserNav = () => {
   let { user } = useSelector((state) => ({ ...state }));
   return (
-    <nav>
-      <ul className="nav flex-column">
-        <li className="nav-item">
-          <Link to="/user/history" className="nav-link">
-            History
+    <>
+      <Row justify="center">
+        <Col xs={5} md={3}>
+          <Link className="fs-4 text-center" to="/user/history">
+            <IdcardOutlined /> <p style={{ fontSize: "12px" }}>History</p>
           </Link>
-        </li>
-
-        <li className="nav-item">
-          <Link to="/user/password" className="nav-link">
-            Password
+        </Col>
+        <Col xs={5} md={3}>
+          <Link className="fs-4 text-center" to="/user/password">
+            <SafetyOutlined /> <p style={{ fontSize: "12px" }}>Password</p>
           </Link>
-        </li>
-
-        <li className="nav-item">
-          <Link to="/user/wishlist" className="nav-link">
-            Wishlist
+        </Col>
+        <Col xs={5} md={3}>
+          <Link className="fs-4 text-center" to="/user/wishlist">
+            <HeartOutlined /> <p style={{ fontSize: "12px" }}>Wishlist</p>
           </Link>
-        </li>
+        </Col>
 
         {user && user.role === "admin" && (
           <>
-            <hr />
-            <li className="nav-item">
-              <Link to="/admin/dashboard" className="nav-link">
-                Admin Dashboard
+            <Col xs={5} md={3}>
+              <Link className="fs-4 text-center" to="/admin/dashboard">
+                <UserOutlined /> <p style={{ fontSize: "12px" }}>Admin Dash</p>
               </Link>
-            </li>
+            </Col>
           </>
         )}
-      </ul>
-    </nav>
+      </Row>
+    </>
   );
 };
 

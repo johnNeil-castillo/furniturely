@@ -5,7 +5,7 @@ import AdminProductCard from "../AdminProductCard";
 import { removeProduct } from "../../../functions/product";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { Spin } from "antd";
+import { Spin, Row, Col } from "antd";
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
@@ -44,11 +44,13 @@ const AllProducts = () => {
 
   return (
     <div className="container">
-      <div className="row ">
-        <div className="col col-md-2">
-          <AdminNav />
-        </div>
-        <div className="col col-md-10">
+      <div>
+        <Row justify="center">
+          <Col span={24} className="text-center mb-4">
+            <AdminNav />
+          </Col>
+        </Row>
+        <div className="col col-md-12">
           {loading ? (
             <h4 className="my-2 text-center text-danger">
               <Spin />

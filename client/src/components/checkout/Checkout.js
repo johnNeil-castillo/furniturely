@@ -10,7 +10,7 @@ import {
 import { toast } from "react-toastify";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { Card, Divider, Input } from "antd";
+import { Card, Divider, Input, Row, Col } from "antd";
 
 const Checkout = ({ history }) => {
   const [products, setProducts] = useState([]);
@@ -84,14 +84,13 @@ const Checkout = ({ history }) => {
   const showAddress = () => (
     <>
       <ReactQuill
-        style={{ height: "100px" }}
         theme="snow"
         value={address}
         onChange={setAddress}
         className="mb-2 "
       />
       <button
-        className="btn  mt-5"
+        className="btn mt-2"
         onClick={saveAddressToDb}
         style={{ backgroundColor: "#515af6", color: "white" }}
       >
@@ -161,19 +160,15 @@ const Checkout = ({ history }) => {
   return (
     <div className="row container mx-auto">
       <div className="col-md-7 mt-3">
-        <Card bordered={false}>
-          <h4 className="mb-3">Delivery Address</h4>
+        <h4 className="mb-3">Delivery Address</h4>
 
-          {showAddress()}
-        </Card>
+        {showAddress()}
 
-        <Card bordered={false}>
-          <h4 className="mb-3">Got Coupon?</h4>
+        <h4 className="mb-3 mt-4">Got Coupon?</h4>
 
-          {showApplyCoupon()}
-          <br />
-          {discountError && <p className="text-danger mt-2">{discountError}</p>}
-        </Card>
+        {showApplyCoupon()}
+        <br />
+        {discountError && <p className="text-danger mt-2">{discountError}</p>}
       </div>
 
       <div className="col-md-5 mt-4">
@@ -188,45 +183,65 @@ const Checkout = ({ history }) => {
           <Divider />
           <h5>Cart Total: $ {total.toLocaleString()}</h5>
           {totalAfterDiscount > 0 && (
-            <Card bordered={false} className="text-center text-success fs-6">
+            <div className="text-center " style={{ color: "green" }}>
               <b>
                 Discount Applied Total Payable: <br /> ${totalAfterDiscount}
               </b>
-            </Card>
+            </div>
           )}
-          <div className="row text-center container">
-            <div className="col-md-7">
-              {COD ? (
-                <button
-                  style={{ backgroundColor: "#515af6", color: "white" }}
-                  className="btn"
-                  disabled={!addressSaved || !products.length}
-                  onClick={createCashOrder}
-                >
-                  Place Order
-                </button>
-              ) : (
-                <button
-                  style={{ backgroundColor: "#515af6", color: "white" }}
-                  className="btn "
-                  disabled={!addressSaved || !products.length}
-                  onClick={() => history.push("/payment")}
-                >
-                  Place Order
-                </button>
-              )}
-            </div>
 
-            <div className="col-md-5">
-              <button
-                disabled={!products.length}
-                onClick={emptyCart}
-                className="btn "
-                style={{ backgroundColor: "#ba7272", color: "white" }}
-              >
-                Empty Cart
-              </button>
-            </div>
+          <div className="row text-center container mt-3">
+            {COD ? (
+              <>
+                <Row justify="center">
+                  <Col xs={{ pull: 2 }}>
+                    <button
+                      style={{ backgroundColor: "#515af6", color: "white" }}
+                      className="btn btn-sm"
+                      disabled={!addressSaved || !products.length}
+                      onClick={createCashOrder}
+                    >
+                      Place Order
+                    </button>
+                  </Col>
+                  <Col>
+                    <button
+                      disabled={!products.length}
+                      onClick={emptyCart}
+                      className="btn btn-sm"
+                      style={{ backgroundColor: "#ba7272", color: "white" }}
+                    >
+                      Empty Cart
+                    </button>
+                  </Col>
+                </Row>
+              </>
+            ) : (
+              <>
+                <Row justify="center">
+                  <Col xs={{ pull: 1 }}>
+                    <button
+                      style={{ backgroundColor: "#515af6", color: "white" }}
+                      className="btn  btn-sm"
+                      disabled={!addressSaved || !products.length}
+                      onClick={() => history.push("/payment")}
+                    >
+                      Place Order
+                    </button>
+                  </Col>
+                  <Col xs={{ push: 3 }}>
+                    <button
+                      disabled={!products.length}
+                      onClick={emptyCart}
+                      className="btn btn-sm"
+                      style={{ backgroundColor: "#ba7272", color: "white" }}
+                    >
+                      Empty Cart
+                    </button>
+                  </Col>
+                </Row>
+              </>
+            )}
           </div>
         </Card>
       </div>

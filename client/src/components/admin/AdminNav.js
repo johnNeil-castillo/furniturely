@@ -1,61 +1,69 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Divider } from "antd";
+import { Divider, Menu, Row, Col, Card } from "antd";
+import {
+  IdcardOutlined,
+  AppstoreAddOutlined,
+  ApartmentOutlined,
+  FileAddOutlined,
+  GoldOutlined,
+  TagOutlined,
+  SafetyOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 const AdminNav = () => {
   return (
-    <nav>
-      <ul className="nav flex-column">
-        <li className="nav-item">
-          <Link to="/admin/dashboard" className="nav-link">
-            Dashboard
-          </Link>
-        </li>
+    <Row justify="center">
+      <Col xs={6} md={3}>
+        <Link className="fs-4 text-center" to="/admin/dashboard">
+          <IdcardOutlined />
 
-        <li className="nav-item">
-          <Link to="/admin/category" className="nav-link">
-            Category
-          </Link>
-        </li>
+          <p style={{ fontSize: "12px" }}>Admin</p>
+        </Link>
+      </Col>
 
-        <li className="nav-item">
-          <Link to="/admin/sub" className="nav-link">
-            Sub Category
-          </Link>
-        </li>
+      <Col xs={6} md={3}>
+        <Link className="fs-4" to="/admin/category">
+          <AppstoreAddOutlined /> <p style={{ fontSize: "12px" }}>Category</p>
+        </Link>
+      </Col>
 
-        <li className="nav-item">
-          <Link to="/admin/product" className="nav-link">
-            Product
-          </Link>
-        </li>
+      <Col xs={6} md={3}>
+        <Link className="fs-4" to="/admin/sub">
+          <ApartmentOutlined /> <p style={{ fontSize: "12px" }}>Sub Category</p>
+        </Link>
+      </Col>
 
-        <li className="nav-item">
-          <Link to="/admin/products" className="nav-link">
-            Products
-          </Link>
-        </li>
+      <Col xs={6} md={3}>
+        <Link className="fs-4" to="/admin/product">
+          <FileAddOutlined /> <p style={{ fontSize: "12px" }}>Product</p>
+        </Link>
+      </Col>
 
-        <li className="nav-item">
-          <Link to="/admin/coupon" className="nav-link">
-            Coupon
-          </Link>
-        </li>
+      <Col xs={6} md={3}>
+        <Link className="fs-4" to="/admin/products">
+          <GoldOutlined /> <p style={{ fontSize: "12px" }}>Products</p>
+        </Link>
+      </Col>
+      <Col xs={6} md={3}>
+        <Link className="fs-4" to="/admin/coupon">
+          <TagOutlined /> <p style={{ fontSize: "12px" }}>Coupon</p>
+        </Link>
+      </Col>
 
-        <li className="nav-item">
-          <Link to="/admin/password" className="nav-link">
-            Password
-          </Link>
-        </li>
+      <Col xs={6} md={3}>
+        <Link className="fs-4" to="/admin/password">
+          <SafetyOutlined /> <p style={{ fontSize: "12px" }}>Password</p>
+        </Link>
+      </Col>
 
-        <Divider />
-        <li className="nav-item">
-          <Link to="/user/history" className="nav-link">
-            User Dashboard
-          </Link>
-        </li>
-      </ul>
-    </nav>
+      <Col xs={6} md={3}>
+        <Link className="fs-4" to="/user/history">
+          <UserOutlined /> <p style={{ fontSize: "12px" }}>User Dash</p>
+        </Link>
+      </Col>
+    </Row>
   );
 };
 

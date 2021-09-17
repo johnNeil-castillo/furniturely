@@ -1,47 +1,57 @@
 import React from "react";
+import { Card, Row, Col } from "antd";
 
 const ShowPaymentInfo = ({ order, showStatus = true }) => (
-  <div>
-    <p className="mt-3 fs-6 text-center">
-      <span>
-        <b>Order Id:</b> {order.paymentIntent.id}
-      </span>
-      {" / "}
-      <span>
-        <b>Amount:</b>{" "}
-        {(order.paymentIntent.amount /= 10).toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })}
-      </span>
-      {" / "}
-      <span>
-        <b>Currency:</b> {order.paymentIntent.currency.toUpperCase()}
-      </span>
-      {" / "}
-      <span>
-        <b>Method:</b> {order.paymentIntent.payment_method_types[0]}
-      </span>
+  <Card>
+    <div className=" text-center">
+      <Row justify="center">
+        <Col xs={24}>
+          <div>
+            <b>Order Id:</b> {order.paymentIntent.id}
+          </div>
+        </Col>
+        <Col xs={8}>
+          <div>
+            <b>Amount:</b>{" "}
+            {(order.paymentIntent.amount /= 10).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}
+          </div>
+        </Col>
+        <Col xs={8}>
+          <div>
+            <b>Currency:</b> {order.paymentIntent.currency.toUpperCase()}
+          </div>
+        </Col>
+        <Col xs={8}>
+          <div>
+            <b>Method:</b> {order.paymentIntent.payment_method_types[0]}
+          </div>
+        </Col>
+        <Col xs={24}>
+          <div>
+            <b>Payment:</b> {order.paymentIntent.status.toUpperCase()}
+          </div>
+        </Col>
+        <Col xs={24}>
+          <div>
+            <b>Ordered on:</b>
+            {"  "}
+            {new Date(order.paymentIntent.created * 1000).toLocaleString()}
+          </div>
+        </Col>
 
-      <br />
-      <span>
-        <b>Payment:</b> {order.paymentIntent.status.toUpperCase()}
-      </span>
-      {" / "}
-      <span>
-        <b>Ordered on:</b>
-        {"  "}
-        {new Date(order.paymentIntent.created * 1000).toLocaleString()}
-      </span>
-
-      <br />
-      {showStatus && (
-        <span className="badge bg-primary text-white">
-          <b>STATUS:</b> {order.orderStatus}
-        </span>
-      )}
-    </p>
-  </div>
+        {showStatus && (
+          <Col>
+            <div className="badge  text-white text-center">
+              <b>STATUS:</b> {order.orderStatus}
+            </div>
+          </Col>
+        )}
+      </Row>
+    </div>
+  </Card>
 );
 
 export default ShowPaymentInfo;

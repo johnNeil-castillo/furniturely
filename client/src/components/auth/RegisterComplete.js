@@ -4,6 +4,9 @@ import { signInWithEmailLink, updatePassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { createOrUpdateUser } from "../../functions/auth";
+import { Card } from "antd";
+import LogoWithText from "../../images/Logo-with-text-01.svg";
+import { Link } from "react-router-dom";
 
 const RegisterComplete = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -86,7 +89,11 @@ const RegisterComplete = ({ history }) => {
           placeholder="Enter Password"
         />
         <br />
-        <button className="btn btn-light" type="submit">
+        <button
+          style={{ backgroundColor: "#515af6", color: "white" }}
+          className="btn btn-light d-grid gap-2 col-6 mx-auto"
+          type="submit"
+        >
           Complete Registration
         </button>
       </form>
@@ -94,12 +101,25 @@ const RegisterComplete = ({ history }) => {
   };
 
   return (
-    <div className="container p-5">
+    <div className="container p-3">
       <div className="row">
         <div className="col-md-6 offset-md-3">
-          <h4>Register Complete</h4>
+          <Card bordered={false}>
+            <h4 className="mb-3 text-center">
+              <Link to="/">
+                <img
+                  style={{ height: "150px" }}
+                  src={LogoWithText}
+                  alt="sample"
+                />
+              </Link>
+            </h4>
+            <h5 style={{ color: "#515af6" }} className="mb-5 text-center">
+              Register Complete
+            </h5>
 
-          {completeRegistrationForm()}
+            {completeRegistrationForm()}
+          </Card>
         </div>
       </div>
     </div>

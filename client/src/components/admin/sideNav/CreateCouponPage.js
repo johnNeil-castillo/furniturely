@@ -10,7 +10,7 @@ import {
 import "react-datepicker/dist/react-datepicker.css";
 import { DeleteOutlined } from "@ant-design/icons";
 import AdminNav from "../AdminNav";
-import { Spin } from "antd";
+import { Spin, Row, Col } from "antd";
 
 const CreateCouponPage = () => {
   const [name, setName] = useState("");
@@ -60,11 +60,13 @@ const CreateCouponPage = () => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-2">
-          <AdminNav />
-        </div>
-        <div className="col-md-10">
+      <div>
+        <Row justify="center">
+          <Col span={24} className="text-center mb-4">
+            <AdminNav />
+          </Col>
+        </Row>
+        <div className="col-md-12">
           {loading ? (
             <h4 className="text-center">
               <Spin />

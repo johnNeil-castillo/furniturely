@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { updateSub, getSub } from "../../../functions/sub";
 import { getCategories } from "../../../functions/category";
 import CategoryForm from "../../../components/admin/forms/CategoryForm";
+import { Row, Col } from "antd";
 
 const SubUpdate = ({ match, history }) => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -46,10 +47,12 @@ const SubUpdate = ({ match, history }) => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-2">
-          <AdminNav />
-        </div>
+      <div>
+        <Row justify="center">
+          <Col span={24} className="text-center mb-4">
+            <AdminNav />
+          </Col>
+        </Row>
         <div className="col">
           {loading ? (
             <h4 className="text-danger">Loading..</h4>

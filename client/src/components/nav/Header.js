@@ -141,7 +141,11 @@ const Header = () => {
                 sm={{ push: 4 }}
                 xs={{ push: 3 }}
               >
-                <Link style={{ color: "#515af6" }} to="/user/history">
+                <Link
+                  className="fs-4"
+                  style={{ color: "#515af6" }}
+                  to="/user/history"
+                >
                   <IdcardOutlined />
                 </Link>
               </Col>
@@ -156,7 +160,11 @@ const Header = () => {
                 sm={{ push: 5 }}
                 xs={{ push: 4 }}
               >
-                <a style={{ color: "#515af6" }} onClick={logout}>
+                <a
+                  className="fs-4"
+                  style={{ color: "#515af6" }}
+                  onClick={logout}
+                >
                   <ExportOutlined />
                 </a>
               </Col>

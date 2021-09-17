@@ -135,12 +135,16 @@ const HeaderSmall = () => {
           {user && user.role === "subscriber" && (
             <>
               <Col
-                lg={{ offset: 6, span: 1 }}
-                md={{ offset: 6, span: 1 }}
-                sm={{ offset: 9, span: 4 }}
-                xs={{ offset: 2 }}
+                lg={{ push: 6 }}
+                md={{ push: 4 }}
+                sm={{ push: 4 }}
+                xs={{ push: 3 }}
               >
-                <Link style={{ color: "#515af6" }} to="/user/history">
+                <Link
+                  className="fs-4"
+                  style={{ color: "#515af6" }}
+                  to="/user/history"
+                >
                   <IdcardOutlined />
                 </Link>
               </Col>
@@ -149,10 +153,15 @@ const HeaderSmall = () => {
 
           {user && user.role === "subscriber" && (
             <>
-              <Col offset={1}>
+              <Col
+                lg={{ push: 7 }}
+                md={{ push: 5 }}
+                sm={{ push: 5 }}
+                xs={{ push: 4 }}
+              >
                 <a
+                  className="fs-4"
                   style={{ color: "#515af6" }}
-                  className="primary"
                   onClick={logout}
                 >
                   <ExportOutlined />
@@ -167,7 +176,7 @@ const HeaderSmall = () => {
                 lg={{ push: 6 }}
                 md={{ push: 4 }}
                 sm={{ push: 4 }}
-                xs={{ push: 4 }}
+                xs={{ push: 3 }}
               >
                 <Link
                   className="fs-4"
@@ -186,12 +195,12 @@ const HeaderSmall = () => {
                 lg={{ push: 7 }}
                 md={{ push: 5 }}
                 sm={{ push: 5 }}
-                xs={{ push: 5 }}
+                xs={{ push: 4 }}
               >
                 <a
                   style={{ color: "#515af6" }}
                   onClick={logout}
-                  className="primary fs-4"
+                  className=" fs-4"
                 >
                   <ExportOutlined />
                 </a>

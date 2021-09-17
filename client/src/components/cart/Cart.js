@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ProductCardInCheckout from "./ProductCardInCheckout";
 import { userCart } from "../../functions/user";
-import { Card, Divider } from "antd";
+import { Card, Divider, Row, Col } from "antd";
 
 const Cart = ({ history }) => {
   const { cart, user } = useSelector((state) => ({ ...state }));
@@ -17,24 +17,15 @@ const Cart = ({ history }) => {
 
   const showCartItems = () => {
     return (
-      <table className="table mt-3 ">
-        <thead className="thead-light text-center">
-          <tr>
-            <th scope="col">Image</th>
-            <th scope="col">Title</th>
-            <th scope="col">Price</th>
-            <th scope="col">Brand</th>
-            <th scope="col">Color</th>
-            <th scope="col">Count</th>
-            <th scope="col">Shipping</th>
-            <th scope="col">Remove</th>
-          </tr>
-        </thead>
-
+      <Row justify="center">
         {cart.map((p) => (
-          <ProductCardInCheckout key={p._id} p={p} />
+          <Col lg={{ span: 8 }} xs={{ span: 12 }}>
+            <Card className=" mt-3 mx-1 ">
+              <ProductCardInCheckout key={p._id} p={p} />
+            </Card>
+          </Col>
         ))}
-      </table>
+      </Row>
     );
   };
 
@@ -102,36 +93,42 @@ const Cart = ({ history }) => {
             <Divider />
             Total: <b>${getTotal().toLocaleString()}</b>
             <Divider />
-            {user ? (
-              <>
-                <button
-                  onClick={saveOrderToDb}
-                  className="btn btn-sm  mt-2"
-                  disabled={!cart.length}
-                  style={{ backgroundColor: "#515af6", color: "white" }}
-                >
-                  Proceed to Checkout
-                </button>
+            <Row justify="center">
+              {user ? (
+                <>
+                  <Col md={{ pull: 1 }} xs={{ pull: 2 }}>
+                    <button
+                      onClick={saveOrderToDb}
+                      className="btn btn-sm  mt-2"
+                      disabled={!cart.length}
+                      style={{ backgroundColor: "#515af6", color: "white" }}
+                    >
+                      Card Payment
+                    </button>
+                  </Col>
 
-                <button
-                  onClick={saveCashOrderToDb}
-                  className="btn btn-sm mt-2 float-end"
-                  disabled={!cart.length}
-                  style={{ backgroundColor: "#bc72ad", color: "white" }}
-                >
-                  Pay Cash on Delivery
-                </button>
-              </>
-            ) : (
-              <Link to={{ pathname: "/login", state: { from: "cart" } }}>
-                <button
-                  className="btn btn-sm btn-primary mt-2"
-                  style={{ backgroundColor: "#515af6", color: "white" }}
-                >
-                  Login to Checkout
-                </button>
-              </Link>
-            )}
+                  <Col md={{ push: 1 }} xs={{ push: 2 }}>
+                    <button
+                      onClick={saveCashOrderToDb}
+                      className="btn btn-sm mt-2 float-end"
+                      disabled={!cart.length}
+                      style={{ backgroundColor: "#bc72ad", color: "white" }}
+                    >
+                      Cash on Delivery
+                    </button>
+                  </Col>
+                </>
+              ) : (
+                <Link to={{ pathname: "/login", state: { from: "cart" } }}>
+                  <button
+                    className="btn btn-sm btn-primary mt-2"
+                    style={{ backgroundColor: "#515af6", color: "white" }}
+                  >
+                    Login to Checkout
+                  </button>
+                </Link>
+              )}
+            </Row>
           </Card>
         </div>
       </div>

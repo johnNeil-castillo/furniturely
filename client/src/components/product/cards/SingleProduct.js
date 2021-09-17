@@ -59,11 +59,15 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 
   const handleAddToWishList = (e) => {
     e.preventDefault();
-    addToWishlist(product._id, user.token).then((res) => {
-      console.log("added to wishlist", res.data);
-      toast.success("Added to wishlist");
-      history.push("/user/wishlist");
-    });
+    if (user) {
+      addToWishlist(product._id, user.token).then((res) => {
+        console.log("added to wishlist", res.data);
+        toast.success("Added to wishlist");
+        history.push("/user/wishlist");
+      });
+    } else {
+      history.push("/login");
+    }
   };
 
   return (
@@ -100,7 +104,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
             <p onClick={handleAddToWishList}>
               <HeartOutlined className="text-info" />
               <br />
-              Add to WishList
+              {!user ? "Login to add wishlist" : "Add to WishList"}
             </p>,
             <RatingModal>
               <StarRating

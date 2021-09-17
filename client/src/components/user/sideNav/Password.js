@@ -3,6 +3,7 @@ import UserNav from "../UserNav";
 import { auth } from "../../../firebase";
 import { updatePassword } from "firebase/auth";
 import { toast } from "react-toastify";
+import { Row, Col } from "antd";
 
 const Password = () => {
   const [password, setPassword] = useState("");
@@ -52,10 +53,12 @@ const Password = () => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-2">
-          <UserNav />
-        </div>
+      <div>
+        <Row justify="center">
+          <Col span={24} className="text-center mb-4">
+            <UserNav />
+          </Col>
+        </Row>
         <div className="col">
           {loading ? (
             <h4 className="text-danger">Loading..</h4>
